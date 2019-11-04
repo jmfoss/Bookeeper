@@ -31,9 +31,9 @@
           ResultSet rs;
           String error;
 
-          Class.forName("com.mysql.jdbc.Driver").newInstance();
+          Class.forName("com.sqlserver.jdbc.Driver").newInstance();
           try {
-            con = DriverManager.getConnection("jdbc:mysql://db1.cs.uakron.edu:3306/ISP_jms590","jms590","Seattle2");
+            con = DriverManager.getConnection("jdbc:sqlserver://bookeeper.database.windows.net:1433;database=Bookeeper;user=jmfoss@bookeeper;password=Mikito98;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;");
             stmt = con.createStatement(); // SQL statement object
 
             qs="select * from TestNames";
