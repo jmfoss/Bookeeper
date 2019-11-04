@@ -1,0 +1,47 @@
+<!-- Joseph Santucci, Matthew Schaub
+     Internet Systems Programming Term Project
+     November 27, 2018 -->
+
+<!-- Take Test page -->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<title> Take Test </title>
+	</head>
+	<body>
+		<div id="title"> <h1 align="center"> Take Test </h1> </div>
+		<div class="topnav" id="myTopnav">
+			<a href="prj.html"> Home </a>
+		  <a href="main.html"> Create a Test </a>
+		  <a href="selectTest.jsp" class="active"> Take Test </a>
+		  <a href="viewGrades.html"> View Grades </a>
+		  <!-- <a href="uploadDoc.html"> Upload Documents </a> -->
+		  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+		    <i class="fa fa-bars"></i>
+		  </a>
+		</div>
+
+		<h2> Take a test </h2>
+		<form>
+		  	Test Name:
+		  	<select>
+			  <option value="">Example1</option>
+			  <option value="">Example2</option>
+			  <option value="">Example3</option>
+			  <option value="">Example4</option>
+			</select>
+			<input type="button" name="testName" value="Begin"><br> <br>
+		  	<div id="questions">
+		  	Example: <span>This is an example of a question</span> <br>
+		  	<input type="radio" name="q1"> <span>Example of an answer string</span><br>
+		  	<input type="radio" name="q1"> <span>Example of an answer string</span><br>
+		  	<input type="radio" name="q1"> <span>Example of an answer string</span><br>
+		  	<input type="radio" name="q1"> <span>Example of an answer string</span><br><br>
+		  	</div>
+		  	<button id="submitTest" type="submit"> Submit Test</button>
+		  	<!--<button id ='remove' onclick="addQuestion()">Add Question</button> -->
+		  </form>
+	</body>
+</html>
