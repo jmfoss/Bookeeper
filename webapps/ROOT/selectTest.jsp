@@ -31,7 +31,7 @@
           ResultSet rs;
           String error;
 
-          Class.forName("com.sqlserver.jdbc.Driver").newInstance();
+          Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver").newInstance();
           try {
             con = DriverManager.getConnection("jdbc:sqlserver://bookeeper.database.windows.net:1433;database=Bookeeper;user=jmfoss@bookeeper;password=Mikito98;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;");
             stmt = con.createStatement(); // SQL statement object
