@@ -14,7 +14,7 @@
         echo (sqlsrv_errors());
     while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) 
     {       
-       echo ($row['userID']);
+       echo ($row['userID']. "hi);
        echo ($row['username']);
        echo ($row['password']);
        echo ($row['join_date']);
