@@ -16,4 +16,4 @@ catch (PDOException $e) {
 $connectionInfo = array("UID" => "jmfoss", "pwd" => "Mikito98", "Database" => "Bookeeper", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
 $serverName = "tcp:bookeeper.database.windows.net,1433";
 $conn = sqlsrv_connect($serverName, $connectionInfo);
-echo $conn
+echo $conn;
