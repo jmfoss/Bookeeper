@@ -1,19 +1,19 @@
 <?php
-
-echo "We can do this!";
-
-// PHP Data Objects(PDO) Sample Code:
-try {
-    $conn = new PDO("sqlsrv:server = tcp:bookeeper.database.windows.net,1433; Database = Bookeeper", "jmfoss", "Mikito98");
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-}
-catch (PDOException $e) {
-    print("Error connecting to SQL Server.");
-    die(print_r($e));
-}
-
-// SQL Server Extension Sample Code:
-$connectionInfo = array("UID" => "jmfoss", "pwd" => "Mikito98", "Database" => "Bookeeper", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
-$serverName = "tcp:bookeeper.database.windows.net,1433";
-$conn = sqlsrv_connect($serverName, $connectionInfo);
-echo $conn;
+    $serverName = "bookeeper.database.windows.net"; // update me
+    $connectionOptions = array(
+        "Database" => "Bookeeper", // update me
+        "Uid" => "jmfoss", // update me
+        "PWD" => "Mikito98" // update me
+    );
+    //Establishes the connection
+    $conn = sqlsrv_connect($serverName, $connectionOptions);
+    $tsql= "SELECT * FROM users";
+    $getResults= sqlsrv_query($conn, $tsql);
+    echo ("Reading data from table" . PHP_EOL);
+    if ($getResults == FALSE)
+        echo (sqlsrv_errors());
+    while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
+     echo ($row['userID'] . " " . $row['username'] . " " . $row['password'] . " " . $row['join_date'] . PHP_EOL);
+    }
+    sqlsrv_free_stmt($getResults);
+?>
