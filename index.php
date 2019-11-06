@@ -1,9 +1,9 @@
 <?php
-    $serverName = "bookeeper.database.windows.net"; // update me
+    $serverName = "bookeeper.database.windows.net";
     $connectionOptions = array(
-        "Database" => "Bookeeper", // update me
-        "Uid" => "jmfoss", // update me
-        "PWD" => "Mikito98" // update me
+        "Database" => "Bookeeper",
+        "Uid" => "jmfoss",
+        "PWD" => "Mikito98"
     );
     //Establishes the connection
     $conn = sqlsrv_connect($serverName, $connectionOptions);
@@ -14,10 +14,11 @@
         echo (sqlsrv_errors());
     while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) 
     {       
-       echo ($row['userID']. "hi);
+       echo ($row['userID']);
        echo ($row['username']);
        echo ($row['password']);
        echo ($row['join_date']);
+       echo 'This ' . 'string ' . 'was ' . 'made ' . 'with concatenation.' . "\n";
        echo ($row['userID'] . " " . $row['username'] . " " . $row['password']);
     }
     sqlsrv_free_stmt($getResults);
