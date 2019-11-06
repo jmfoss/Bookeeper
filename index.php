@@ -18,7 +18,7 @@
        echo ($row['username']);
        echo ($row['password']);
        echo ($row['join_date']);
-       echo ($row['userID'] . " " . $row['username'] . " " . $row['password'] . " " . $row['join_date']);
+       echo ($row['userID'] . " " . $row['username'] . " " . $row['password']);
     }
     sqlsrv_free_stmt($getResults);
 ?>
