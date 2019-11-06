@@ -14,7 +14,7 @@
         echo (sqlsrv_errors());
     while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) 
     {       
-       echo $row['userID'] . " " . $row['username'] . " " . $row['password'] . " " . $row['join_date'] . "\n";
+       echo $row['userID'] . " " . $row['username'] . " " . $row['password'] . " " . date_format($row['join_date'],"Y/m/d H:i:s") . "\n";
     }
     sqlsrv_free_stmt($getResults);
 ?>
