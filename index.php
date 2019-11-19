@@ -21,4 +21,9 @@
        echo $row['userID'] . " " . $row['username'] . " " . $row['password'] . " " . date_format($row['join_date'],"Y/m/d H:i:s") . "\n";
     }
     sqlsrv_free_stmt($getResults);
+public bool DOMDocument::loadHTMLFile ( string $filename [, int $options = 0 ] )
+$doc = new DOMDocument();
+$doc->loadHTMLFile("dbm_main.html");
+echo $doc->saveHTML();
+
 ?>
