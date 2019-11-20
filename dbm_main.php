@@ -3,8 +3,7 @@
      28 October 2019 -->
 
 <!-- Main page -->
-<?php
-    
+<?php   
 session_start();
      $serverName = "bookeeper.database.windows.net";
      $connectionOptions = array( "Bookeeper", "jmfoss", "Mikito98" );
@@ -14,15 +13,13 @@ session_start();
               $username = $_REQUEST['username'];
               $password = $_REQUEST['password'];
               if (empty($username))
-                   echo "No username";
+                   echo "PLease input a username";
               $sqlQuery= "SELECT userID FROM users WHERE username = $username";
               $getResults= sqlsrv_query($conn, $sqlQuery);
               if ($getResults == FALSE)
                   echo (sqlsrv_errors());
               if(sqlsrv_num_rows($getResults) == 1)
-                  echo "username taken";
-              else
-                   echo "you're in luck";
+                  echo "This username is taken";
               sqlsrv_free_stmt($getResults);
          }
 ?>
@@ -70,7 +67,6 @@ session_start();
               <td> <label style = "margin:10px; padding:10px"> Username: </label> <input id="ip2" type="text" name="username" style = "margin:10px; padding:2px"> </td>
               <td> <label style = "margin:10px; padding:10px"> Password: </label> <input id="ip2" type="text" name="password" style = "margin:10px; padding:2px"> </td>
               <td> <label style = "margin:10px; padding:10px"> <input type="submit" name="submit" /> </td>
-                   <?php echo "hi"; ?>
           </form>
         </tr>
     </table>
