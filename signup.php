@@ -7,10 +7,10 @@
                  array($username, SQLSRV_PARAM_IN),  
                  array($exists, SQLSRV_PARAM_OUT)  
                ); 
-  $sql = "EXEC checkUsername @username = ?";
+  $sql = "{call checkUsername(?, ?)}";
   $stmt = sqlsrv_query($conn, $sql, $params);
   if(!$stmt)  
-  {  
+  { 
      die( print_r( sqlsrv_errors(), true));  
   }
   sqlsrv_free_stmt( $stmt);
@@ -26,7 +26,7 @@
                  array($password, SQLSRV_PARAM_IN),  
                  array(&$stength, SQLSRV_PARAM_OUT)  
                );
-  $sql = "EXEC checkPassword @password = ?";
+  $sql = "{call checkPassword(?, ?)}";
   $stmt = sqlsrv_query($conn, $sql, $params);
   if(!$stmt)  
   {  
