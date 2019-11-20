@@ -8,7 +8,7 @@
                  array(&$exists, SQLSRV_PARAM_OUT), 
                  array($username, SQLSRV_PARAM_IN),  
                ); 
-  $sql = "EXEC ?=checkUsername(?)";
+  $sql = "EXEC ?=checkUsername @username = ?";
   $stmt = sqlsrv_query($conn, $sql, $params);
   if(!$stmt)  
   { 
@@ -27,7 +27,7 @@
                  array(&$strength, SQLSRV_PARAM_OUT), 
                  array($password, SQLSRV_PARAM_IN), 
                );
-  $sql = "EXEC ?=checkPassword(?)}";
+  $sql = "EXEC ?=checkPassword @password = ?";
   $stmt = sqlsrv_query($conn, $sql, $params);
   if(!$stmt)  
   {  
