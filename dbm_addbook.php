@@ -135,8 +135,9 @@ for ($row_num = 0; $row_num < $num_rows; $row_num++) {
     $row = mysqli_fetch_array($result);
 }
 print "</table>";
-?>
 
-*/
+    */
+    ?>
+
 </body>
 </html>
