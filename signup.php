@@ -4,16 +4,15 @@
   $exists = 0;
   $strength = 0;
   $params = array(   
+                 array(&$exists, SQLSRV_PARAM_OUT), 
                  array($username, SQLSRV_PARAM_IN),  
-                 array($exists, SQLSRV_PARAM_OUT)  
                ); 
-  $sql = "{call checkUsername(?, ?)}";
+  $sql = "EXEC ?=checkUsername(?)";
   $stmt = sqlsrv_query($conn, $sql);
   if(!$stmt)  
   { 
      die( print_r( sqlsrv_errors(), true));  
   }
-echo $stmt;
   sqlsrv_free_stmt( $stmt);
   if($exists)
   {
@@ -24,10 +23,10 @@ echo $stmt;
     echo "This user name is not taken";
   }
   $params = array(   
-                 array($password, SQLSRV_PARAM_IN),  
-                 array(&$stength, SQLSRV_PARAM_OUT)  
+                 array(&$strength, SQLSRV_PARAM_OUT), 
+                 array($password, SQLSRV_PARAM_IN), 
                );
-  $sql = "{call checkPassword(?, ?)}";
+  $sql = "EXEC ?=checkPassword(?)}";
   $stmt = sqlsrv_query($conn, $sql, $params);
   if(!$stmt)  
   {  
