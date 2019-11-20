@@ -7,12 +7,13 @@
                  array($username, SQLSRV_PARAM_IN),  
                  array($exists, SQLSRV_PARAM_OUT)  
                ); 
-  $sql = "{call checkUsername(?, ?)}";
-  $stmt = sqlsrv_query($conn, $sql, $params);
+  $sql = "{call checkUsername("jmfoss")}";
+  $stmt = sqlsrv_query($conn, $sql);
   if(!$stmt)  
   { 
      die( print_r( sqlsrv_errors(), true));  
   }
+echo $stmt;
   sqlsrv_free_stmt( $stmt);
   if($exists)
   {
