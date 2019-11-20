@@ -34,8 +34,5 @@
     die( print_r( sqlsrv_errors(), true));  
   }
   sqlsrv_free_stmt( $stmt);
-  echo "test";
-  echo $strength;
-  
 ?>
  
