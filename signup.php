@@ -31,10 +31,10 @@
   $stmt = sqlsrv_query($conn, $sql, $params);
   if(!$stmt)  
   {  
-    echo "error";
     die( print_r( sqlsrv_errors(), true));  
   }
   sqlsrv_free_stmt( $stmt);
+  echo "test";
   echo $strength;
   
 ?>
