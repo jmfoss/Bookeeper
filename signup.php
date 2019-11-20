@@ -7,7 +7,7 @@
                  array($username, SQLSRV_PARAM_IN),  
                  array($exists, SQLSRV_PARAM_OUT)  
                ); 
-  $sql = "{call checkUsername("jmfoss")}";
+  $sql = "{call checkUsername(?, ?)}";
   $stmt = sqlsrv_query($conn, $sql);
   if(!$stmt)  
   { 
