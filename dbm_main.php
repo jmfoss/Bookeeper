@@ -4,26 +4,26 @@
 
 <!-- Main page -->
 <?php   
-require_once "config.php";
+#require_once "config.php";
 echo "Testing";
 session_start();
-     $serverName = "bookeeper.database.windows.net";
-     $connectionOptions = array( "Bookeeper", "jmfoss", "Mikito98" );
-     if ( isset( $_POST['submit'] )
-         {
-              $conn = sqlsrv_connect($serverName, $connectionOptions);
-              $username = $_REQUEST['username'];
-              $password = $_REQUEST['password'];
-              if (empty($username))
+     #$serverName = "bookeeper.database.windows.net";
+     #$connectionOptions = array( "Bookeeper", "jmfoss", "Mikito98" );
+     #if ( isset( $_POST['submit'] )
+        # {
+             # $conn = sqlsrv_connect($serverName, $connectionOptions);
+             # $username = $_REQUEST['username'];
+             # $password = $_REQUEST['password'];
+             # if (empty($username))
                    echo "PLease input a username";
-              $sqlQuery= "SELECT userID FROM users WHERE username = $username";
-              $getResults= sqlsrv_query($conn, $sqlQuery);
-              if ($getResults == FALSE)
-                  echo (sqlsrv_errors());
-              if(sqlsrv_num_rows($getResults) == 1)
+             # $sqlQuery= "SELECT userID FROM users WHERE username = $username";
+             # $getResults= sqlsrv_query($conn, $sqlQuery);
+             # if ($getResults == FALSE)
+             #     echo (sqlsrv_errors());
+             # if(sqlsrv_num_rows($getResults) == 1)
                   echo "This username is taken";
-              sqlsrv_free_stmt($getResults);
-         }
+             # sqlsrv_free_stmt($getResults);
+        # }
 ?>
 <!DOCTYPE html>
 
