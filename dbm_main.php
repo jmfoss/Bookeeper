@@ -6,7 +6,7 @@
 <?php   
 #require_once "config.php";
 echo "Testing";
-session_start();
+#session_start();
      #$serverName = "bookeeper.database.windows.net";
      #$connectionOptions = array( "Bookeeper", "jmfoss", "Mikito98" );
      #if ( isset( $_POST['submit'] )
@@ -66,8 +66,8 @@ session_start();
     <table align = "center">
         <tr>
           <form action="" method="post">
-              <td> <label style = "margin:10px; padding:10px"> Username: </label> <input id="ip2" type="text" name="username" value="<?php echo htmlspecialchars($username); ?>" style = "margin:10px; padding:2px"> </td>
-              <td> <label style = "margin:10px; padding:10px"> Password: </label> <input id="ip2" type="text" name="password" value="<?php echo htmlspecialchars($password); ?>" style = "margin:10px; padding:2px"> </td>
+              <td> <label style = "margin:10px; padding:10px"> Username: </label> <input id="ip2" type="text" name="username" value="<?php echo "Test"; ?>" style = "margin:10px; padding:2px"> </td>
+              <td> <label style = "margin:10px; padding:10px"> Password: </label> <input id="ip2" type="text" name="password" value="<?php echo "test"); ?>" style = "margin:10px; padding:2px"> </td>
               <td> <label style = "margin:10px; padding:10px"> <input type="submit" name="submit" value="Login" style = "margin:10px; padding:2px"/> </td>
           </form>
         </tr>
