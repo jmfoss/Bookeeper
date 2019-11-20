@@ -6,11 +6,7 @@
 <?php
     session_start();
     $serverName = "bookeeper.database.windows.net";
-    $connectionOptions = array(
-        "Database" => "Bookeeper",
-        "Uid" => "jmfoss",
-        "PWD" => "Mikito98"
-    );
+    $connectionOptions = array( "Bookeeper", "jmfoss", "Mikito98" );
 ?>
 <!DOCTYPE html>
 
