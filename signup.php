@@ -35,5 +35,6 @@
   }
   sqlsrv_free_stmt( $stmt);
   echo $stength;
+  echo "Anything?";
 ?>
  
