@@ -1,13 +1,22 @@
-<!-- db-starter.php
-     A PHP script to demonstrate database programming.
--->
 <html>
-<head>
-    <title> book library </title>
-    <style type = "text/css">
-    td, th, table {border: thin solid black;}
-    </style>
-</head>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div id="title" align="center"> <img src="logo.png" style ="margin-top: 50px"> </div>
+    <!-- <div id="title"> <h1 align="center"> B O O K E E P E R </h1> </div> -->
+    <div class="topnav" id="myTopnav">
+      <a href="dbm_main.html" class="active"> Home </a>
+      <a href="dbm_searchbooks.html"> Search Books </a>
+      <a href="dbm_addbooks.html"> Add Books </a>
+      <a href="dbm_library.html"> My Library </a>
+      <!-- <a href="uploadDoc.html"> Upload Documents </a> -->
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"> </i>
+      </a>
+    </div>
 <body>
 
 <?php
