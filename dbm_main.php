@@ -4,7 +4,8 @@
 
 <!-- Main page -->
 <?php
-     session_start();
+echo "hi";     
+session_start();
      $serverName = "bookeeper.database.windows.net";
      $connectionOptions = array( "Bookeeper", "jmfoss", "Mikito98" );
      if ( isset( $_POST['submit'] )
