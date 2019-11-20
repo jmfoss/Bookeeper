@@ -34,7 +34,9 @@
      die( print_r( sqlsrv_errors(), true));  
   }
   sqlsrv_free_stmt( $stmt);
-  echo $stength;
-  echo "Anything?";
+  if(empty($stength))
+    echo"Thats odd";
+  else
+    echo "This is just annoying";
 ?>
  
