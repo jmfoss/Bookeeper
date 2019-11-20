@@ -8,15 +8,17 @@
     <div id="title" align="center"> <img src="logo.png" style ="margin-top: 50px"> </div>
     <!-- <div id="title"> <h1 align="center"> B O O K E E P E R </h1> </div> -->
     <div class="topnav" id="myTopnav">
-      <a href="dbm_main.html" class="active"> Home </a>
+      <a href="dbm_main.html"> Home </a>
       <a href="dbm_searchbooks.html"> Search Books </a>
-      <a href="dbm_addbooks.html"> Add Books </a>
+      <a href="dbm_addbooks.html" class="active"> Add Books </a>
       <a href="dbm_library.html"> My Library </a>
       <!-- <a href="uploadDoc.html"> Upload Documents </a> -->
       <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"> </i>
       </a>
     </div>
+    <br>
+    <br>
 <body>
 
 <?php
