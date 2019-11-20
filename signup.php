@@ -3,7 +3,6 @@
   $username = trim($_POST["username"]);
   $password = trim($_POST["password"]);
   $exists = 0;
-  $strength;
   $params = array(   
                  array(&$exists, SQLSRV_PARAM_OUT), 
                  array($username, SQLSRV_PARAM_IN),  
