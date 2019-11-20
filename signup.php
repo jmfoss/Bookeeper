@@ -1,4 +1,5 @@
 <?php
+  require_once "config.php";
   $username = trim($_POST["username"]);
   $password = trim($_POST["password"]);
   $exists = 0;
@@ -8,7 +9,7 @@
                  array($username, SQLSRV_PARAM_IN),  
                ); 
   $sql = "EXEC ?=checkUsername(?)";
-  #$stmt = sqlsrv_query($conn, $sql, $params);
+  $stmt = sqlsrv_query($conn, $sql, $params);
   if(!$stmt)  
   { 
      die( print_r( sqlsrv_errors(), true));  
