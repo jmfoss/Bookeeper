@@ -24,7 +24,7 @@
   }
   $params = array(   
                  array($password, SQLSRV_PARAM_IN),  
-                 array($stength, SQLSRV_PARAM_OUT)  
+                 array(&$stength, SQLSRV_PARAM_OUT)  
                );
   $sql = "EXEC checkPassword @password = ?";
   $stmt = sqlsrv_query($conn, $sql, $params);
