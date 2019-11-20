@@ -3,7 +3,8 @@
   $username = trim($_POST["username"]);
   $password = trim($_POST["password"]);
   $exists = 0;
-  $strength = "Whoa! what happen?";
+  $strength = 0;
+  $strengthword = "";
   $params = array(   
                  array(&$exists, SQLSRV_PARAM_OUT), 
                  array($username, SQLSRV_PARAM_IN),  
@@ -24,7 +25,8 @@
     echo "This user name is not taken";
   }
   $params = array(   
-                 array(&$strength, SQLSRV_PARAM_OUT), 
+                 array(&$strength, SQLSRV_PARAM_OUT),
+                 array(&$strengthword, SQLSRV_PARAM_OUT)
                  array($password, SQLSRV_PARAM_IN), 
                );
   $sql = "EXEC ?=checkPassword @password = ?";
@@ -34,9 +36,7 @@
      die( print_r( sqlsrv_errors(), true));  
   }
   sqlsrv_free_stmt( $stmt);
-  if(empty($stength))
-    echo"Thats odd";
-  else
-    echo "This is just annoying";
+  echo $strength
+  
 ?>
  
