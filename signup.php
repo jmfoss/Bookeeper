@@ -26,7 +26,7 @@
   }
   $params = array(   
                  array(&$strength, SQLSRV_PARAM_OUT),
-                 array(&$strengthword, SQLSRV_PARAM_OUT)
+                 array(&$strengthword, SQLSRV_PARAM_OUT),
                  array($password, SQLSRV_PARAM_IN), 
                );
   $sql = "EXEC ?=checkPassword @password = ?";
