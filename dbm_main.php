@@ -4,7 +4,7 @@
 
 <!-- Main page -->
 <?php   
-session_start();
+
 
 ?>
 
