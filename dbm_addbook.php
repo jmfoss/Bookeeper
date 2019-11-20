@@ -26,6 +26,10 @@
     /*echo "<textarea name='mydata'>\n";
     echo htmlspecialchars($data)."\n";
     echo "</textarea>";*/
+    
+    $title = $_POST["title"];
+    $author = $_POST["author"];
+    $published_date = $_POST["published"];
 
     $serverName = "bookeeper.database.windows.net";
     $connectionOptions = array(
@@ -35,14 +39,16 @@
     );
     //Establishes the connection
     $conn = sqlsrv_connect($serverName, $connectionOptions);
-    $tsql= "SELECT * FROM users";
+    $tsql= "insert into books values('$title', '$author', $published_date)";
+    $getResults= sqlsrv_query($conn, $tsql);
+    $tsql= "SEARCH * FROM books";
     $getResults= sqlsrv_query($conn, $tsql);
     echo ("Reading data from table<br>" . PHP_EOL);
     if ($getResults == FALSE)
         echo (sqlsrv_errors());
     while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) 
     {       
-       echo $row['userID'] . " " . $row['username'] . " " . $row['password'] . " " . date_format($row['join_date'],"Y/m/d H:i:s") . "\n";
+       echo $row['title'] . " " . $row['author'] . " " . $row['published_date'] . " " . date_format($row['join_date'],"Y/m/d H:i:s") . "\n";
     }
     sqlsrv_free_stmt($getResults);
   /*  
