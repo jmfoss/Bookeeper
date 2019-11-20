@@ -73,6 +73,8 @@
                        echo (sqlsrv_errors());
                    if(sqlsrv_num_rows($getResults) == 1)
                        echo "username taken";
+                   else
+                        echo "you're in luck";
                    sqlsrv_free_stmt($getResults);
               }
                    
