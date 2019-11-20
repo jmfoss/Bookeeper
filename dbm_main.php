@@ -4,6 +4,7 @@
 
 <!-- Main page -->
 <?php   
+require_once "config.php";
 session_start();
      $serverName = "bookeeper.database.windows.net";
      $connectionOptions = array( "Bookeeper", "jmfoss", "Mikito98" );
