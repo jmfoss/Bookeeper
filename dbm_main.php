@@ -4,7 +4,13 @@
 
 <!-- Main page -->
 <?php
-session_start();
+    session_start();
+    $serverName = "bookeeper.database.windows.net";
+    $connectionOptions = array(
+        "Database" => "Bookeeper",
+        "Uid" => "jmfoss",
+        "PWD" => "Mikito98"
+    );
 ?>
 <!DOCTYPE html>
 
@@ -49,9 +55,28 @@ session_start();
           <form action="" method="post">
               <td> <label style = "margin:10px; padding:10px"> Username: </label> <input id="ip2" type="text" name="username" style = "margin:10px; padding:2px"> </td>
               <td> <label style = "margin:10px; padding:10px"> Password: </label> <input id="ip2" type="text" name="password" style = "margin:10px; padding:2px"> </td>
-              <td> <label style = "margin:10px; padding:10px"> <input type="submit" name="Login" /> </td>
+              <td> <label style = "margin:10px; padding:10px"> <input type="submit" name="submit" /> </td>
           </form>
         </tr>
     </table>
+    <?php
+          $conn = sqlsrv_connect($serverName, $connectionOptions);
+          if ( isset( $_POST['submit'] )
+              {
+                   $username = $_REQUEST['username'];
+                   $password = $_REQUEST['password'];
+                   if (empty($username))
+                        echo "No username";
+                   $sqlQuery= "SELECT userID FROM users WHERE username = $username";
+                   $getResults= sqlsrv_query($conn, $sqlQuery);
+                   if ($getResults == FALSE)
+                       echo (sqlsrv_errors());
+                   if(sqlsrv_num_rows($getResults) == 1)
+                       echo "username taken";
+                   sqlsrv_free_stmt($getResults);
+              }
+                   
+     ?>
   </body>
 </html>
+
