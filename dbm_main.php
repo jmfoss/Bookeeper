@@ -5,6 +5,46 @@
 <!-- Main page -->
 <?php   
 session_start();
+if ($_SERVER["REQUEST_METHOD"] == "POST")
+{
+  require_once "config.php";
+  $username = trim($_POST["username"]);
+  $password = trim($_POST["password"]);
+  $exists = 0;
+  $strength = 0;
+  $strengthword = "";
+  $params = array(   
+                 array(&$exists, SQLSRV_PARAM_OUT), 
+                 array($username, SQLSRV_PARAM_IN),  
+               ); 
+  $sql = "EXEC ?=checkUsername @username = ?";
+  $stmt = sqlsrv_query($conn, $sql, $params);
+  if(!$stmt)  
+  { 
+     die( print_r( sqlsrv_errors(), true));  
+  }
+  sqlsrv_free_stmt( $stmt);
+  if($exists)
+  {
+    echo "This user name is taken";
+  }
+  else
+  {
+    echo "This user name is not taken";
+  }
+  $params = array(   
+                 array(&$strength, SQLSRV_PARAM_OUT),
+                 array($password, SQLSRV_PARAM_IN), 
+               );
+  $sql = "EXEC ?=checkPassword @password = ?";
+  $stmt = sqlsrv_query($conn, $sql, $params);
+  if(!$stmt)  
+  {  
+     die( print_r( sqlsrv_errors(), true));  
+  }
+  sqlsrv_free_stmt( $stmt);
+  echo $strength
+}
 ?>
 
 
@@ -46,7 +86,7 @@ session_start();
     </p>
     <table align = "center">
         <tr>
-          <form action="signup.php" method="post">
+          <form action="" method="post">
               <td> <label style = "margin:10px; padding:10px"> Username: </label> <input id="ip2" type="text" name="username" style = "margin:10px; padding:2px"> </td>
               <td> <label style = "margin:10px; padding:10px"> Password: </label> <input id="ip2" type="text" name="password" style = "margin:10px; padding:2px"> </td>
               <td> <label style = "margin:10px; padding:10px"> <input type="submit" name="submit" value="Sign Up" style = "margin:10px; padding:2px"/> </td>
