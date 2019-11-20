@@ -49,7 +49,7 @@ session_start();
           <form action="" method="post">
               <td> <label style = "margin:10px; padding:10px"> Username: </label> <input id="ip2" type="text" name="username" style = "margin:10px; padding:2px"> </td>
               <td> <label style = "margin:10px; padding:10px"> Password: </label> <input id="ip2" type="text" name="password" style = "margin:10px; padding:2px"> </td>
-              <input type="submit" name="Login" />
+              <td> <label style = "margin:10px; padding:10px"> <input type="submit" name="Login" /> </td>
           </form>
         </tr>
     </table>
