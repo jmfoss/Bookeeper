@@ -4,7 +4,7 @@
 
 <!-- Main page -->
 <?php
-if(isset($_POST["signup"]))
+if(false)
 {
   require_once "config.php";
   $username = trim($_POST["username"]);
