@@ -91,7 +91,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     <body>
         <div id="title" align="center"> <img src="logo.png" style ="margin-top: 50px; margin-bottom: 100px"> </div>
         
-        <form action = "" method = "post">
+        <form action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method = "post">
             <table align = "center" style = "margin-bottom: 40px; border: 1px " >
                 <tr>
                     <td> New? Sign up!</td>
