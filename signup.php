@@ -92,6 +92,10 @@
     $stmt = sqlsrv_query($conn, $sql, $params);
     echo "User added";
   }
+  else
+  {
+    echo "Error adding user";
+  }
   
 ?>
      
