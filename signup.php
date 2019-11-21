@@ -25,7 +25,11 @@
   $username = trim($_POST["username"]);
   $password = trim($_POST["password"]);
   $exists = 0;
-  $strength = "test";
+  $strength = " ";
+  $usernameMSG = "";
+  $passwordMSG = "";
+  $passwordValid = false;
+  $usernameValid = false;
   $params = array(   
                  array(&$exists, SQLSRV_PARAM_OUT), 
                  array($username, SQLSRV_PARAM_IN),  
@@ -39,11 +43,12 @@
   sqlsrv_free_stmt( $stmt);
   if($exists)
   {
-    echo "This user name is taken";
+    $usernameValid = false;
+    $usernameMSG == "This user name is taken";
   }
   else
   {
-    echo "This user name is not taken";
+    $usernameValid = true;
   }
   $params = array(   
                   array($password, SQLSRV_PARAM_IN),
@@ -56,7 +61,29 @@
     die( print_r( sqlsrv_errors(), true));  
   }
   sqlsrv_free_stmt( $stmt);
-  echo $strength;
+  If ($strength == "STRONG")
+    $passwordValid = true;
+    $passwordMSG = "This is a strong password";
+  else if ($strength == "MEDIUM")
+    $passwordValid = true;
+    $passwordMSG = "This is a medium password";
+  else if ($strength == "WEAK")
+    $passwordValid = false;
+    $passwordMSG = "This is password is too weak";
+  else
+    $passwordValid = false;
+    $passwordMSG = "Passwords cannot contain spaces";
+  
+  if ($passwordValid || $usernameValid)
+  {
+    $params = array(   
+                  array($username, SQLSRV_PARAM_IN),
+                  array($password, SQLSRV_PARAM_IN),
+               );
+    $sql = "EXEC addUser @username = ?, @password = ?";
+    $stmt = sqlsrv_query($conn, $sql, $params);
+  }
+  
 ?>
      
     </body>
