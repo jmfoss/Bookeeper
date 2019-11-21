@@ -91,7 +91,7 @@ if(isset($_POST["signup"]))
     <body>
         <div id="title" align="center"> <img src="logo.png" style ="margin-top: 50px; margin-bottom: 100px"> </div>
         
-        <form action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method = "post">
+        <form action = "" method = "post">
             <table align = "center" style = "margin-bottom: 40px; border: 1px " >
                 <tr>
                     <td> New? Sign up!</td>
