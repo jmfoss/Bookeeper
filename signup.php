@@ -24,10 +24,10 @@
     echo "This user name is not taken";
   }
   $params = array(   
-                 array(&$strength, SQLSRV_PARAM_OUT),
-                 array($password, SQLSRV_PARAM_IN), 
+                  array($password, SQLSRV_PARAM_IN),
+                  array(&$strength, SQLSRV_PARAM_OUT),
                );
-  $sql = "EXEC ?=checkPassword @password = ?";
+  $sql = "EXEC checkPassword @password = ?, @OutString = ?";
   $stmt = sqlsrv_query($conn, $sql, $params);
   if(!$stmt)  
   {  
