@@ -4,9 +4,10 @@
 
 <!-- Main page -->
 <?php
+  require_once "config.php";
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
-  require_once "config.php";
+
   $username = trim($_POST["username"]);
   $password = trim($_POST["password"]);
   $exists = 0;
