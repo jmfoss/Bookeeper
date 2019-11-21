@@ -8,7 +8,7 @@
     <div id="title" align="center"> <img src="logo.png" style ="margin-top: 50px"> </div>
     <!-- <div id="title"> <h1 align="center"> B O O K E E P E R </h1> </div> -->
     <div class="topnav" id="myTopnav">
-      <a href="dbm_main.html"> Home </a>
+      <a href="dbm_main.php"> Home </a>
       <a href="dbm_searchbooks.html"> Search Books </a>
       <a href="dbm_addbooks.html" class="active"> Add Books </a>
       <a href="dbm_library.html"> My Library </a>
@@ -27,16 +27,12 @@
     echo htmlspecialchars($data)."\n";
     echo "</textarea>";*/
     
+    require_once "config.php";
+    
     $title = $_POST["title"];
     $author = $_POST["author"];
     $published_date = $_POST["published"];
-
-    $serverName = "bookeeper.database.windows.net";
-    $connectionOptions = array(
-        "Database" => "Bookeeper",
-        "Uid" => "jmfoss",
-        "PWD" => "Mikito98"
-    );
+    
     //Establishes the connection
     $conn = sqlsrv_connect($serverName, $connectionOptions);
     $tsql= "INSERT INTO books values('$title', '$author')";
