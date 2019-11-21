@@ -18,6 +18,8 @@
       </a>
     </div>
     
+   <body> 
+    
 <?php
   require_once "config.php";
   $username = trim($_POST["username"]);
@@ -56,5 +58,7 @@
   sqlsrv_free_stmt( $stmt);
   echo $strength;
 ?>
+     
+    </body>
  
 </html>
