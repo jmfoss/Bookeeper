@@ -4,7 +4,7 @@
 
 <!-- Main page -->
 <?php
-if(false)
+if($_SERVER["REQUEST_METHOD"] == "POST")
 {
   require_once "config.php";
   $username = trim($_POST["username"]);
