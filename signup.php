@@ -82,7 +82,7 @@
     $passwordMSG = "Passwords cannot contain spaces";
   }
   
-  if ($passwordValid || $usernameValid)
+  if ($passwordValid && $usernameValid)
   {
     $params = array(   
                   array($username, SQLSRV_PARAM_IN),
