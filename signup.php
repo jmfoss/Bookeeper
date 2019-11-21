@@ -94,7 +94,8 @@
   }
   else
   {
-    echo "Error adding user";
+    
+    echo "<font size ='7'> Error adding user </font>";
   }
   
 ?>
