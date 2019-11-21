@@ -62,17 +62,25 @@
   }
   sqlsrv_free_stmt( $stmt);
   If ($strength == "STRONG")
+  {
     $passwordValid = true;
     $passwordMSG = "This is a strong password";
+  }
   else if ($strength == "MEDIUM")
+  {
     $passwordValid = true;
     $passwordMSG = "This is a medium password";
+  }
   else if ($strength == "WEAK")
+  {
     $passwordValid = false;
     $passwordMSG = "This is password is too weak";
+  }
   else
+  {
     $passwordValid = false;
     $passwordMSG = "Passwords cannot contain spaces";
+  }
   
   if ($passwordValid || $usernameValid)
   {
@@ -82,6 +90,7 @@
                );
     $sql = "EXEC addUser @username = ?, @password = ?";
     $stmt = sqlsrv_query($conn, $sql, $params);
+    echo "User added";
   }
   
 ?>
