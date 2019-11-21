@@ -19,7 +19,7 @@
     <div id="title" align="center"> <img src="logo.png" style ="margin-top: 50px"> </div>
     <!-- <div id="title"> <h1 align="center"> B O O K E E P E R </h1> </div> -->
     <div class="topnav" id="myTopnav">
-      <a href="dbm_main.html" class="active"> Home </a>
+      <a href="dbm_main.php" class="active"> Home </a>
       <a href="dbm_searchbooks.html"> Search Books </a>
       <a href="dbm_addbooks.html"> Add Books </a>
       <a href="dbm_library.html"> My Library </a>
