@@ -39,7 +39,7 @@
     );
     //Establishes the connection
     $conn = sqlsrv_connect($serverName, $connectionOptions);
-    $tsql= "insert into books values('$title', '$author', $published_date)";
+    $tsql= "insert into books values('$title', '$author')";
     $getResults= sqlsrv_query($conn, $tsql);
     $tsql= "SEARCH * FROM books";
     $getResults= sqlsrv_query($conn, $tsql);
