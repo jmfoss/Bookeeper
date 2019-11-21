@@ -39,9 +39,9 @@
     );
     //Establishes the connection
     $conn = sqlsrv_connect($serverName, $connectionOptions);
-    $tsql= "insert into books values('$title', '$author')";
+    $tsql= "INSERT INTO books values('$title', '$author')";
     $getResults= sqlsrv_query($conn, $tsql);
-    $tsql= "SEARCH * FROM books";
+    /*$tsql= "SEARCH * FROM books";
     $getResults= sqlsrv_query($conn, $tsql);
     echo ("Reading data from table<br>" . PHP_EOL);
     if ($getResults == FALSE)
@@ -50,7 +50,7 @@
     {       
        echo $row['title'] . " " . $row['author'] . " " . $row['published_date'] . " " . date_format($row['join_date'],"Y/m/d H:i:s") . "\n";
     }
-    sqlsrv_free_stmt($getResults);
+    sqlsrv_free_stmt($getResults);*/
   /*  
 // Get input data
     $id = $_POST["id"];
@@ -154,7 +154,7 @@ for ($row_num = 0; $row_num < $num_rows; $row_num++) {
 print "</table>";
 
     */
-    ?>
+?>
 
 </body>
 </html>
