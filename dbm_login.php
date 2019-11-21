@@ -99,7 +99,7 @@ if(false)
                 <tr>
                     <td> <label style = "margin:10px; padding:10px"> Username: </label> <input id="ip2" type="text" name="username" style = "margin:10px; padding:2px"> </td>
                     <td> <label style = "margin:10px; padding:10px"> Password: </label> <input id="ip2" type="text" name="password" style = "margin:10px; padding:2px"> </td>
-                    <td> <input type = "submit"  name = "signup" value = "Sign Up" style = "margin:20px;margin-top:10px"/> </td>
+                    <td> <input type = "submit" value = "Sign Up" style = "margin:20px;margin-top:10px"/> </td>
                 </tr>
             </table>
         </form>
