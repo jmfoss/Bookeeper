@@ -36,6 +36,30 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         }
         sqlsrv_free_stmt( $stmt);
     }
+ 
+    $params = array(   
+                    array(trim($_POST["password"]), SQLSRV_PARAM_IN),
+                    array(&$strength, SQLSRV_PARAM_OUT),
+                    );
+    $sql = "EXEC checkPassword @password = ?, @OutString = ?";
+    $stmt = sqlsrv_query($conn, $sql, $params);
+    // Validate password
+    if(empty(trim($_POST["password"])))
+    {
+        $password_err = "Please enter a password.";     
+    } 
+    elseif($strength == "WEAK")
+    {
+        $password_err = "Your password is too weak.";
+    } 
+    elseif($strength == "SPACE")
+    {
+        $password_err = "Your password cannot contain a space.";
+    }
+    else
+    {
+        $password = trim($_POST["password"]);
+    }
 }
 ?>
  
