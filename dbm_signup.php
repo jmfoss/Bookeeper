@@ -86,6 +86,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                         array($username, SQLSRV_PARAM_IN),
                         array($password, SQLSRV_PARAM_IN),
                         );
+        $sql = "EXEC ?=addUser @username = ?, @password = ?";
+        $stmt = sqlsrv_query($conn, $sql, $params);
     }
 }
 ?>
