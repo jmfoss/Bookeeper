@@ -6,8 +6,8 @@
 <?php  
 session_start();
 require_once "config.php";
-$username = " ";
-$password = " ";
+$username = "";
+$password = "";
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
 
@@ -74,13 +74,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   if ($passwordValid && $usernameValid)
   {
     $params = array(   
+                  array($_SESSION["userID"], SQLSRV_PARAM_OUT),         
                   array($username, SQLSRV_PARAM_IN),
                   array($password, SQLSRV_PARAM_IN),
                );
-    $sql = "EXEC addUser @username = ?, @password = ?";
+    $sql = "EXEC ?=addUser @username = ?, @password = ?";
     $stmt = sqlsrv_query($conn, $sql, $params);
-    $homepage = file_get_contents('dbm_main.php');
-    echo $homepage;
+    header("dbm_main.php");
+    exit();
   }
 }
 ?>
