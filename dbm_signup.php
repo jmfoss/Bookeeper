@@ -93,6 +93,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             // Redirect to login page
             header("location: dbm_main.php");
         }
+        else
+        {
+            echo "Something went wrong. Please try again later.";
+        }
     }
 }
 ?>
