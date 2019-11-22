@@ -97,7 +97,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         {
             echo "Something went wrong. Please try again later.";
         }
-        sqlsrv_free_stmt($stmt)
     }
 }
 ?>
