@@ -7,4 +7,8 @@ $conn = sqlsrv_connect( $serverName, $connectionInfo);
 if( !$conn ) {
      die( print_r( sqlsrv_errors(), true));
 }
+else
+{
+ echo "Connection Established";
+}
 ?>
