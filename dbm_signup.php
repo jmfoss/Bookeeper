@@ -7,88 +7,98 @@ $username = $password = $confirm_password = "";
 $username_err = $password_err = $confirm_password_err = "";
  
 // Processing form data when form is submitted
-if($_SERVER["REQUEST_METHOD"] == "POST"){
- 
+if($_SERVER["REQUEST_METHOD"] == "POST")
+{
     // Validate username
-    if(empty(trim($_POST["username"]))){
+    if(empty(trim($_POST["username"])))
+    {
         $username_err = "Please enter a username.";
     } 
     else
     {         
-     
-     $params = array(   
-                     array(&$exists, SQLSRV_PARAM_OUT), 
-                     array(trim($_POST["username"]), SQLSRV_PARAM_IN),  
-                     ); 
-     $sql = "EXEC ?=checkUsername @username = ?";
-     $stmt = sqlsrv_query($conn, $sql, $params);
-     if(!$stmt)
-     {
-        $username_err = "Oops! Something went wrong.";
-     }    
-     elseif($exists)
-     {
-             $username_err = "This username is already taken.";
-     } 
-     else
-     {
+        $params = array(   
+                        array(&$exists, SQLSRV_PARAM_OUT), 
+                        array(trim($_POST["username"]), SQLSRV_PARAM_IN),  
+                        ); 
+        $sql = "EXEC ?=checkUsername @username = ?";
+        $stmt = sqlsrv_query($conn, $sql, $params);
+        if(!$stmt)
+        {
+            $username_err = "Oops! Something went wrong.";
+        }    
+        elseif($exists)
+        {
+            $username_err = "This username is already taken.";
+        } 
+        else
+        {
             $username = trim($_POST["username"]); 
-     }
-     }
-
-     // Close statement
-     sqlsrv_free_stmt( $stmt);
-     $params = array(   
-                  array(trim($_POST["password"]), SQLSRV_PARAM_IN),
-                  array(&$strength, SQLSRV_PARAM_OUT),
-               );
+        }
+        sqlsrv_free_stmt( $stmt);
+    }
+    
+    $params = array(   
+                    array(trim($_POST["password"]), SQLSRV_PARAM_IN),
+                    array(&$strength, SQLSRV_PARAM_OUT),
+                    );
     $sql = "EXEC checkPassword @password = ?, @OutString = ?";
     $stmt = sqlsrv_query($conn, $sql, $params);
     // Validate password
-    if(empty(trim($_POST["password"]))){
+    if(empty(trim($_POST["password"])))
+    {
         $password_err = "Please enter a password.";     
-    } elseif($strength == "WEAK"){
+    } 
+    elseif($strength == "WEAK")
+    {
         $password_err = "Your password is too weak.";
-    } elseif($strength == "SPACE"){
-      $password_err = "Your password cannot contain a space.";
+    } 
+    elseif($strength == "SPACE")
+    {
+        $password_err = "Your password cannot contain a space.";
     }
-    else{
+    else
+    {
         $password = trim($_POST["password"]);
     }
-    
+
     // Validate confirm password
-    if(empty(trim($_POST["confirm_password"]))){
+    if(empty(trim($_POST["confirm_password"])))
+    {
         $confirm_password_err = "Please confirm password.";     
-    } else{
+    } 
+    else
+    {
         $confirm_password = trim($_POST["confirm_password"]);
-        if(empty($password_err) && ($password != $confirm_password)){
+        if(empty($password_err) && ($password != $confirm_password))
+        {
             $confirm_password_err = "Password did not match.";
         }
     }
-    
+
     // Check input errors before inserting in database
-    if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
-        
+    if(empty($username_err) && empty($password_err) && empty($confirm_password_err))
+    {
         $params = array(   
-                  array(&$_SESSION["userID"], SQLSRV_PARM_OUT),
-                  array($username, SQLSRV_PARAM_IN),
-                  array($password, SQLSRV_PARAM_IN),
-               );
+                        array(&$_SESSION["userID"], SQLSRV_PARM_OUT),
+                        array($username, SQLSRV_PARAM_IN),
+                        array($password, SQLSRV_PARAM_IN),
+                        );
         $sql = "EXEC ?=addUser @username = ?, @password = ?";
         $stmt = sqlsrv_query($conn, $sql, $params);
         // Attempt to execute the prepared statement
-        if($stmt){
+        if($stmt)
+        {
             // Redirect to login page
             header("location: dbm_main.php");
-        } else{
+        } 
+        else
+        {
             echo "Something went wrong. Please try again later.";
         }
-        }
-         
-        // Close statement
         sqlsrv_free_stmt($stmt)
-       // Close connection
-       sqlsrv_close($conn);
+    }
+    // Close connection
+    sqlsrv_close($conn);
 }
 ?>
  
