@@ -86,11 +86,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
          
         // Close statement
-        sqlsrv_free_stmt($stmt);
-    }
-    
-    // Close connection
-    sqlsrv_close($conn);
+        sqlsrv_free_stmt($stmt)
+       // Close connection
+       sqlsrv_close($conn);
 }
 ?>
  
