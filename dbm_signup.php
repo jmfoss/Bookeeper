@@ -16,7 +16,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     } 
     else
     {         
-       $exists = false; 
+       $exists = 0; 
        $params = array(   
                         array(&$exists, SQLSRV_PARAM_OUT), 
                         array(trim($_POST["username"]), SQLSRV_PARAM_IN),  
@@ -28,7 +28,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             $username_err = "Oops! Something went wrong.";
             die( print_r( sqlsrv_errors(), true));
         }    
-        elseif($exists)
+        elseif($exists == 1)
         {
             $username_err = "This username is already taken.";
         } 
