@@ -3,8 +3,9 @@
      28 October 2019 -->
 
 <!-- Main page -->
-<?php
-  require_once "config.php";
+<?php  
+session_start();
+require_once "config.php";
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
 
@@ -92,13 +93,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     <body>
         <div id="title" align="center"> <img src="logo.png" style ="margin-top: 50px; margin-bottom: 100px"> </div>
         
-        <form action = "dbm_login.php" method = "post">
+        <form action = "" method = "post">
             <table align = "center" style = "margin-bottom: 40px; border: 1px " >
                 <tr>
                     <td> New? Sign up!</td>
                 </tr>
                 <tr>
-                    <td> <label style = "margin:10px; padding:10px"> Username: </label> <input id="ip2" type="text" name="username" style = "margin:10px; padding:2px"> </td>
+                    <td> <label style = "margin:10px; padding:10px"> Username: </label> <input id="ip2" type="text" name="username" value = "<? echo $username; ?>" style = "margin:10px; padding:2px"> </td>
                     <td> <label style = "margin:10px; padding:10px"> Password: </label> <input id="ip2" type="text" name="password" style = "margin:10px; padding:2px"> </td>
                     <td> <input type = "submit" value = "Sign Up" style = "margin:20px;margin-top:10px"/> </td>
                 </tr>
