@@ -80,7 +80,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                );
     $sql = "EXEC ?=addUser @username = ?, @password = ?";
     $stmt = sqlsrv_query($conn, $sql, $params);
-    header("dbm_main.php");
+    header("Location: dbm_main.php");
     exit();
   }
 }
