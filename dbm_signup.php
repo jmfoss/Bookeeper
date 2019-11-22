@@ -16,11 +16,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     } 
     else
     {         
-        $userparm = "";
-        $userparm = trim($_POST["username"]);
-        $params = array(   
+       $exists = false; 
+       $params = array(   
                         array(&$exists, SQLSRV_PARAM_OUT), 
-                        array($userparm, SQLSRV_PARAM_IN),  
+                        array(trim($_POST["username"]), SQLSRV_PARAM_IN),  
                         ); 
         $sql = "EXEC ?=CheckUsername @username = ?";
         $stmt = sqlsrv_query($conn, $sql, $params);
