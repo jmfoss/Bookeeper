@@ -74,6 +74,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             $confirm_password_err = "Password did not match.";
         }
     }
+ 
+     // Check input errors before inserting in database
+    if(empty($username_err) && empty($password_err) && empty($confirm_password_err))
+    {
+        $params = array(   
+                        array(&$_SESSION["userID"], SQLSRV_PARM_OUT),
+                        array($username, SQLSRV_PARAM_IN),
+                        array($password, SQLSRV_PARAM_IN),
+                        );
+        $sql = "EXEC ?=addUser @username = ?, @password = ?";
+        $stmt = sqlsrv_query($conn, $sql, $params);
+        // Attempt to execute the prepared statement
+        if($stmt)
+        {
+            // Redirect to login page
+            header("location: dbm_main.php");
+        } 
+        else
+        {
+            echo "Something went wrong. Please try again later.";
+        }
+        sqlsrv_free_stmt($stmt)
+     }
 }
 ?>
  
