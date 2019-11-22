@@ -18,7 +18,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     {         
         $params = array(   
                         array(&$exists, SQLSRV_PARAM_OUT), 
-                        array(trim($_POST["username"]), SQLSRV_PARAM_IN),  
+                        array($username, SQLSRV_PARAM_IN),  
                         ); 
         $sql = "EXEC ?=checkUsername @username = ?";
         $stmt = sqlsrv_query($conn, $sql, $params);
@@ -38,7 +38,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     }
     
     $params = array(   
-                    array(trim($_POST["password"]), SQLSRV_PARAM_IN),
+                    array($password, SQLSRV_PARAM_IN),
                     array(&$strength, SQLSRV_PARAM_OUT),
                     );
     $sql = "EXEC checkPassword @password = ?, @OutString = ?";
