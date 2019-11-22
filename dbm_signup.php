@@ -82,11 +82,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err))
     {
         $params = array(   
-                        array(&$_SESSION["userID"], SQLSRV_PARM_OUT),
+                        //array(&$_SESSION["userID"], SQLSRV_PARM_OUT),
                         array($username, SQLSRV_PARAM_IN),
                         array($password, SQLSRV_PARAM_IN),
                         );
-        $sql = "EXEC ?=addUser @username = ?, @password = ?";
+        $sql = "EXEC addUser @username = ?, @password = ?";
         $stmt = sqlsrv_query($conn, $sql, $params);
         if($stmt != False)
         {
@@ -96,7 +96,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         else
         {
             echo "Something went wrong. Please try again later.";
-            echo $_SESSION["userID"];
         }
     }
 }
