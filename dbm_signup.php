@@ -26,6 +26,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         if(!$stmt)
         {
             $username_err = "Oops! Something went wrong.";
+            die( print_r( sqlsrv_errors(), true));
         }    
         elseif($exists)
         {
