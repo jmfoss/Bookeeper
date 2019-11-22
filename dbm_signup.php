@@ -21,7 +21,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                         array(&$exists, SQLSRV_PARAM_OUT), 
                         array($userparm, SQLSRV_PARAM_IN),  
                         ); 
-        $sql = "EXEC ?=checkUsername @username = ?";
+        $sql = "EXEC ?=CheckUsername @username = ?";
         $stmt = sqlsrv_query($conn, $sql, $params);
         if(!$stmt)
         {
