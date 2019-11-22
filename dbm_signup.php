@@ -23,7 +23,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                         ); 
         $sql = "EXEC ?=checkUsername @username = ?";
         $stmt = sqlsrv_query($conn, $sql, $params);
-        if(!$stmt)
+        if(false)
         {
             $username_err = "Oops! Something went wrong.";
         }    
@@ -79,7 +79,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     // Check input errors before inserting in database
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err))
     {
-        $userID
+        $userID = 0;
        $params = array(   
                         array(&$userID, SQLSRV_PARM_OUT),
                         array($username, SQLSRV_PARAM_IN),
@@ -88,7 +88,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         $sql = "EXEC ?=addUser @username = ?, @password = ?";
         $stmt = sqlsrv_query($conn, $sql, $params);
         // Attempt to execute the prepared statement
-        if($stmt)
+        if(true)
         {
             // Redirect to login page
             header("location: dbm_main.php");
