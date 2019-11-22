@@ -16,6 +16,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     } 
     else
     {         
+        $userparm = "";
         $userparm = trim($_POST["username"]);
         $params = array(   
                         array(&$exists, SQLSRV_PARAM_OUT), 
