@@ -93,28 +93,28 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     <body>
         <div id="title" align="center"> <img src="logo.png" style ="margin-top: 50px; margin-bottom: 100px"> </div>
         
-        <form action = "" method = "post">
+        <form action = "<? echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method = "post">
             <table align = "center" style = "margin-bottom: 40px; border: 1px " >
                 <tr>
                     <td> New? Sign up!</td>
                 </tr>
                 <tr>
                     <td> <label style = "margin:10px; padding:10px"> Username: </label> <input id="ip2" type="text" name="username" value = "<? echo $username; ?>" style = "margin:10px; padding:2px"> </td>
-                    <td> <label style = "margin:10px; padding:10px"> Password: </label> <input id="ip2" type="text" name="password" style = "margin:10px; padding:2px"> </td>
+                    <td> <label style = "margin:10px; padding:10px"> Password: </label> <input id="ip2" type="text" name="password" value = "<? echo $password; ?>" style = "margin:10px; padding:2px"> </td>
                     <td> <input type = "submit" value = "Sign Up" style = "margin:20px;margin-top:10px"/> </td>
                 </tr>
             </table>
         </form>
         <hr class ="striped-border">
         <br>
-        <form action = "" method = "post">
+        <form action = "<? echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method = "post">
             <table align = "center">
                 <tr>
                     <td> Already have an account? Log In!</td>
                 </tr>
                 <tr>
-                    <td> <label style = "margin:10px; padding:10px"> Username: </label> <input id="ip2" type="text" name="username" style = "margin:10px; padding:2px"> </td>
-                    <td> <label style = "margin:10px; padding:10px"> Password: </label> <input id="ip2" type="text" name="password" style = "margin:10px; padding:2px"> </td>
+                    <td> <label style = "margin:10px; padding:10px"> Username: </label> <input id="ip2" type="text" name="username" value = "<? echo $username; ?>" style = "margin:10px; padding:2px"> </td>
+                    <td> <label style = "margin:10px; padding:10px"> Password: </label> <input id="ip2" type="text" name="password" value = "<? echo $password; ?>" style = "margin:10px; padding:2px"> </td>
                     <td> <input type = "submit"  value = "Log In" style = "margin:20px;margin-top:10px"/> </td>
                 </tr>
             </table>
