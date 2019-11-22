@@ -88,6 +88,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                         );
         $sql = "EXEC ?=addUser @username = ?, @password = ?";
         $stmt = sqlsrv_query($conn, $sql, $params);
+        if($stmt != False)
+        {
+            // Redirect to login page
+            header("location: dbm_main.php");
+        }
     }
 }
 ?>
