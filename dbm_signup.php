@@ -1,7 +1,7 @@
 <?php
 session_start();
 // Include config file
-require "config.php";
+require_once "config.php";
  
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = "";
