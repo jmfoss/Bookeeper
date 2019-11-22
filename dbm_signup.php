@@ -10,7 +10,32 @@ $username_err = $password_err = $confirm_password_err = "";
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
-   
+   if(empty(trim($_POST["username"])))
+    {
+        $username_err = "Please enter a username.";
+    } 
+    else
+    {         
+        $params = array(   
+                        array(&$exists, SQLSRV_PARAM_OUT), 
+                        array(trim($_POST["username"]), SQLSRV_PARAM_IN),  
+                        ); 
+        $sql = "EXEC ?=checkUsername @username = ?";
+        $stmt = sqlsrv_query($conn, $sql, $params);
+        if(!$stmt)
+        {
+            $username_err = "Oops! Something went wrong.";
+        }    
+        elseif($exists)
+        {
+            $username_err = "This username is already taken.";
+        } 
+        else
+        {
+            $username = trim($_POST["username"]); 
+        }
+        sqlsrv_free_stmt( $stmt);
+    }
 }
 ?>
  
