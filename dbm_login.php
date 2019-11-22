@@ -6,8 +6,8 @@
 <?php  
 session_start();
 require_once "config.php";
-$username = "";
-$password = "";
+$username = " ";
+$password = " ";
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
 
