@@ -12,42 +12,47 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate username
     if(empty(trim($_POST["username"]))){
         $username_err = "Please enter a username.";
-    } else{
-        // Prepare a select statement
-        $sql = "SELECT userid FROM users WHERE username = ?";
-        
-        if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "s", $param_username);
-            
-            // Set parameters
-            $param_username = trim($_POST["username"]);
-            
-            // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
-                /* store result */
-                mysqli_stmt_store_result($stmt);
-                
-                if(mysqli_stmt_num_rows($stmt) == 1){
-                    $username_err = "This username is already taken.";
-                } else{
-                    $username = trim($_POST["username"]);
-                }
-            } else{
-                echo "Oops! Something went wrong. Please try again later.";
-            }
-        }
-         
-        // Close statement
-        mysqli_stmt_close($stmt);
-    }
-    
+    } 
+    else
+    {         
+     
+     $params = array(   
+                     array(&$exists, SQLSRV_PARAM_OUT), 
+                     array(trim($_POST["username"]), SQLSRV_PARAM_IN),  
+                     ); 
+     $sql = "EXEC ?=checkUsername @username = ?";
+     $stmt = sqlsrv_query($conn, $sql, $params);
+     if(!$stmt)
+     {
+        $username_err = "Oops! Something went wrong.";
+     }    
+     elseif($exists)
+     {
+             $username_err = "This username is already taken.";
+     } 
+     else
+     {
+            $username = trim($_POST["username"]); 
+     }
+     }
+
+     // Close statement
+     sqlsrv_free_stmt( $stmt);
+     $params = array(   
+                  array(trim($_POST["password"]), SQLSRV_PARAM_IN),
+                  array(&$strength, SQLSRV_PARAM_OUT),
+               );
+    $sql = "EXEC checkPassword @password = ?, @OutString = ?";
+    $stmt = sqlsrv_query($conn, $sql, $params);
     // Validate password
     if(empty(trim($_POST["password"]))){
         $password_err = "Please enter a password.";     
-    } elseif(strlen(trim($_POST["password"])) < 6){
-        $password_err = "Password must have atleast 6 characters.";
-    } else{
+    } elseif($strength == "WEAK"){
+        $password_err = "Your password is too weak.";
+    } elseif($strength == "SPACE"){
+      $password_err = "Your password cannot contain a space.";
+    }
+    else{
         $password = trim($_POST["password"]);
     }
     
@@ -64,32 +69,28 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Check input errors before inserting in database
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
         
-        // Prepare an insert statement
-        $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
-         
-        if($stmt = mysqli_prepare($link, $sql)){
-            // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ss", $param_username, $param_password);
-            
-            // Set parameters
-            $param_username = $username;
-            $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
-            
-            // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
-                // Redirect to login page
-                header("location: login.php");
-            } else{
-                echo "Something went wrong. Please try again later.";
-            }
+        $params = array(   
+                  array(&$_SESSION["userID"], SQLSRV_PARM_OUT),
+                  array($username, SQLSRV_PARAM_IN),
+                  array($password, SQLSRV_PARAM_IN),
+               );
+        $sql = "EXEC ?=addUser @username = ?, @password = ?";
+        $stmt = sqlsrv_query($conn, $sql, $params);
+        // Attempt to execute the prepared statement
+        if($stmt){
+            // Redirect to login page
+            header("location: dbm_main.php");
+        } else{
+            echo "Something went wrong. Please try again later.";
+        }
         }
          
         // Close statement
-        mysqli_stmt_close($stmt);
+        sqlsrv_free_stmt($stmt);
     }
     
     // Close connection
-    mysqli_close($link);
+    sqlsrv_close($conn);
 }
 ?>
  
