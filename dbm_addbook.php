@@ -118,23 +118,28 @@
                 <table>
                     <tr>
                         <td> <label style = "margin:10px; padding:10px"> Title </label> </td>
-                        <td> <input id="ip2" type="text" name="title" style = "margin:10px; padding:2px"> </td> 
+                        <td> <input id="ip2" type="text" name="title" value="<?php echo $title; ?>" style = "margin:10px; padding:2px"> </td>
+			<span class="help-block"><?php echo $title_err; ?></span>
                     </tr>
                     <tr>
                         <td> <label style = "margin:10px; padding:10px"> Author </label> </td>
-                        <td> <input id="ip2" type="text" name="author" style = "margin:10px; padding:2px"> </td> 
+                        <td> <input id="ip2" type="text" name="author" value="<?php echo $author; ?>" style = "margin:10px; padding:2px"> </td>
+			<span class="help-block"><?php echo $author_err; ?></span>
                     </tr>
                     <tr>
                         <td> <label style = "margin:10px; padding:10px"> Published </label> </td>
-                        <td> <input id="ip2" type="text" name="published" style = "margin:10px; padding:2px"> </td> 
+                        <td> <input id="ip2" type="text" name="published" value="<?php echo $published; ?>" style = "margin:10px; padding:2px"> </td>
+			<span class="help-block"><?php echo $published_err; ?></span>
                     </tr>
                     <tr>
                         <td> <label style = "margin:10px; padding:10px"> Publisher </label> </td>
-                        <td> <input id="ip2" type="text" name="publisher" style = "margin:10px; padding:2px"> </td> 
+                        <td> <input id="ip2" type="text" name="publisher" value="<?php echo $publisher; ?>" style = "margin:10px; padding:2px"> </td>
+			<span class="help-block"><?php echo $publisher_err; ?></span>
                     </tr>
                     <tr>
                         <td> <label style = "margin:10px; padding:10px"> Language </label> </td>
-                        <td> <input id="ip2" type="text" name="language" style = "margin:10px; padding:2px"> </td> 
+                        <td> <input id="ip2" type="text" name="language" value="<?php echo $language; ?>" style = "margin:10px; padding:2px"> </td>
+			<span class="help-block"><?php echo $language_err; ?></span>
                     </tr>
                 </table>
         	</div>
