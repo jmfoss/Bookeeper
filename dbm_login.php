@@ -43,7 +43,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     if(empty($username_err) && empty($password_err))
     {
         // Prepare a select statement
-        $sql = "SELECT userid, username, password FROM users WHERE username = ?";
+        $sql = "SELECT userID, username, password FROM users WHERE username = ?";
 
         if($stmt = sqlsrv_query($conn, $sql, $username))
         {              
