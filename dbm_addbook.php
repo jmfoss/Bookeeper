@@ -9,7 +9,7 @@
 	    $published = trim($_POST["published"]);
 	    $publisher = trim($_POST["publisher"]);
 	    $language = trim($_POST["language"]);
-	    $result = -1;
+	    $result = 0;
 	    $params = array(   
 			array(&$result, SQLSRV_PARAM_OUT), 
 			array($title, SQLSRV_PARAM_IN),  
@@ -22,7 +22,7 @@
         $stmt = sqlsrv_query($conn, $stmt, $params);
         if($stmt != false)
         {
-            if($result)
+            if($result == 1)
             {
 		$msg = "$title has been added to library.";
             }
