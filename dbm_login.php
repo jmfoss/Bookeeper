@@ -49,7 +49,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         if($stmt != false)
         {              
             // Check if username exists, if yes then verify password
-            if(sqlsrv_num_rows($stmt) == 1)
+            if(($row = sqlsrv_fetch_array($stmt)) != null)
             {                    
                 // Bind result
                 $row = sqlsrv_fetch_array($stmt);
