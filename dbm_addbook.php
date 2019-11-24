@@ -24,16 +24,15 @@
         {
             if($error != null)
             {
-                $msg = $title + " added to library.";
+                $msg = "$title has been added to library.";
             }
             else
             {
-                $msg =$title + " is already in the library.";
+                $msg = "$title is already in the library.";
             }
         }
         else
         {
-            	print_r($stmt);
 		echo "Oops! Something went wrong.";
         }
     }
