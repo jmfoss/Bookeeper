@@ -32,15 +32,16 @@
         
 ?>
 
+<!DOCTYPE html>
+
 <html>
-    <head>
+  <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
     <div id="title" align="center"> <img src="logo.png" style ="margin-top: 50px"> </div>
-    <!-- <div id="title"> <h1 align="center"> B O O K E E P E R </h1> </div> -->
     <div class="topnav" id="myTopnav">
       <a href="dbm_main.php"> Home </a>
       <a href="dbm_searchbooks.html"> Search Books </a>
@@ -50,9 +51,44 @@
       <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"> </i>
       </a>
-    </div>
-    <br>
-    <br>
-<body>
-</body>
+      </div>
+      </br>
+    </br>
+    <form action = "dbm_addbook.php" method = "post">
+		<div class="custom-select" style="width:200px;">  	
+            <select style = "margin:20px; padding:10px">
+                <option value="read"> Read </option>
+                <option value="wanttoread"> Want to Read </option>
+                <option value="currentlyreading"> Currently Reading </option>
+			</select>
+        </div>
+        	<div id="questions">
+                <table>
+                    <tr>
+                        <td> <label style = "margin:10px; padding:10px"> Title </label> </td>
+                        <td> <input id="ip2" type="text" name="title" style = "margin:10px; padding:2px"> </td> 
+                    </tr>
+                    <tr>
+                        <td> <label style = "margin:10px; padding:10px"> Author </label> </td>
+                        <td> <input id="ip2" type="text" name="author" style = "margin:10px; padding:2px"> </td> 
+                    </tr>
+                    <tr>
+                        <td> <label style = "margin:10px; padding:10px"> Published </label> </td>
+                        <td> <input id="ip2" type="text" name="published" style = "margin:10px; padding:2px"> </td> 
+                    </tr>
+                    <tr>
+                        <td> <label style = "margin:10px; padding:10px"> Publisher </label> </td>
+                        <td> <input id="ip2" type="text" name="published" style = "margin:10px; padding:2px"> </td> 
+                    </tr>
+                    <tr>
+                        <td> <label style = "margin:10px; padding:10px"> Language </label> </td>
+                        <td> <input id="ip2" type="text" name="language" style = "margin:10px; padding:2px"> </td> 
+                    </tr>
+                </table>
+        	</div>
+          <input type = "reset"  value = "Reset Form" style = "margin:20px;margin-top:10px"/>
+	      <input type = "submit"  value = "Submit" style = "margin:20px;margin-top:10px"/>
+      </form>
+      
+  </body>
 </html>
