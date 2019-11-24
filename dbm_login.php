@@ -42,35 +42,31 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     // Validate credentials
     if(empty($username_err) && empty($password_err))
     {
+        $userID = 0;
+        $params = array(   
+                        array(&$userID, SQLSRV_PARM_OUT),
+                        array($username, SQLSRV_PARAM_IN),
+                        array($password, SQLSRV_PARAM_IN),
+                        );
         // Prepare a select statement
-        $sql = "SELECT userID, username, password FROM users WHERE username = ?";
-        $stmt = sqlsrv_query($conn, $sql, array($username));
-        print_r(sqlsrv_num_rows($stmt));
+        $sql = "EXEC ? = login @username = ?, @password = ?";
+        $stmt = sqlsrv_query($conn, $sql, $params);
         if($stmt != false)
         {              
             // Check if username exists, if yes then verify password
-            if(($row = sqlsrv_fetch_array($stmt)) != null)
+            if($userID != 0)
             {                    
-                // Bind result
-                $row = sqlsrv_fetch_array($stmt);
-                if(password_verify($password, $row["password"]))
-                {
-                    // Password is correct, so start a new session
-                    session_start();
+                // Password is correct, so start a new session
+                session_start();
 
-                    // Store data in session variables
-                    $_SESSION["loggedin"] = true;
-                    $_SESSION["id"] = $row["userID"];
-                    $_SESSION["username"] = $row["username"];                            
+                // Store data in session variables
+                $_SESSION["loggedin"] = true;
+                $_SESSION["userID"] = $userID;
+                $_SESSION["username"] = $username;                            
 
-                    // Redirect user to welcome page
-                    header("location: dbm_main.php");
+                // Redirect user to welcome page
+                header("location: dbm_main.php");
                 } 
-                else
-                {
-                    // Display an error message if password is not valid
-                    $password_err = "The password you entered was not valid.";
-                }
             } 
             else
             {
