@@ -66,7 +66,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
                 // Redirect user to welcome page
                 header("location: dbm_main.php");
-                } 
             } 
             else
             {
