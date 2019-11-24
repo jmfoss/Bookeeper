@@ -79,7 +79,7 @@
                     </tr>
                     <tr>
                         <td> <label style = "margin:10px; padding:10px"> Publisher </label> </td>
-                        <td> <input id="ip2" type="text" name="published" style = "margin:10px; padding:2px"> </td> 
+                        <td> <input id="ip2" type="text" name="publisher" style = "margin:10px; padding:2px"> </td> 
                     </tr>
                     <tr>
                         <td> <label style = "margin:10px; padding:10px"> Language </label> </td>
