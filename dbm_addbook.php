@@ -1,23 +1,22 @@
 <?php
-    require_once "config.php";
-    $msg = "";
-    $title = $author = $published = $publisher = $language = "";
+    require_once "config.php";;
+    $msg = $title = $author = $published = $publisher = $language = "";
     if($_SERVER["REQUEST_METHOD"] == "POST")
     {
                
-            $title = trim($_POST["title"];
-	    $author = trim($_POST["author"];
-	    $published = trim($_POST["published"];
-	    $publisher = trim($_POST["publisher"];
-	    $language = trim($_POST["language"];
+            $title = trim($_POST["title"]);
+	    $author = trim($_POST["author"]);
+	    $published = trim($_POST["published"]);
+	    $publisher = trim($_POST["publisher"]);
+	    $language = trim($_POST["language"]);
 	    $error = 0;
 	    $params = array(   
 			array(&$error, SQLSRV_PARAM_OUT), 
-			array($title), SQLSRV_PARAM_IN),  
-			array($author), SQLSRV_PARAM_IN),
-			array($published), SQLSRV_PARAM_IN),
-			array($publisher), SQLSRV_PARAM_IN),
-			array($language), SQLSRV_PARAM_IN),
+			array($title, SQLSRV_PARAM_IN),  
+			array($author, SQLSRV_PARAM_IN),
+			array($published, SQLSRV_PARAM_IN),
+			array($publisher, SQLSRV_PARAM_IN),
+			array($language, SQLSRV_PARAM_IN),
            );
         $sql = "EXEC ? = addBook @title = ?, @author = ?, @published = ?, @publisher = ?, @language = ?";
         $stmt = sqlsrv_query($conn, $stmt, $params);
