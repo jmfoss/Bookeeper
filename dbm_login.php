@@ -75,7 +75,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             {
 
                 // Display an error message if username doesn't exist
-                $username_err = "No account found with that username.";
+                $username_err = "No account found with that username." + $array["username"];
             }
         } 
         else
