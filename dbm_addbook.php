@@ -1,8 +1,9 @@
 <?php
     require_once "config.php";
+    $msg = "";
     if($_SERVER["REQUEST_METHOD"] == "POST")
     {
-        $msg = "";       
+               
         $params = array(   
                         array(&$error, SQLSRV_PARAM_OUT), 
                         array(trim($_POST["title"]), SQLSRV_PARAM_IN),  
@@ -88,6 +89,7 @@
         	</div>
           <input type = "reset"  value = "Reset Form" style = "margin:20px;margin-top:10px"/>
 	      <input type = "submit"  value = "Submit" style = "margin:20px;margin-top:10px"/>
+	      <span class="help-block"><?php echo $msg; ?></span>
       </form>
       
   </body>
