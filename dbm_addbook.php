@@ -14,7 +14,7 @@
            );
         $sql = "EXEC ? = addBook @title = ?, @author = ?, @published = ?, @publisher = ?, @language = ?";
         $stmt = sqlsrv_query($conn, $stmt, $params);
-        if($stmt)
+        if($stmt != false)
         {
             if($error != null)
             {
