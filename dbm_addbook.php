@@ -1,14 +1,54 @@
 <?php
     require_once "config.php";;
     $msg = $title = $author = $published = $publisher = $language = "";
+    $title_err = $author_err = $published_err = $publisher_err = $language_err = "";
     if($_SERVER["REQUEST_METHOD"] == "POST")
     {
                
-            $title = trim($_POST["title"]);
-	    $author = trim($_POST["author"]);
-	    $published = trim($_POST["published"]);
-	    $publisher = trim($_POST["publisher"]);
-	    $language = trim($_POST["language"]);
+            if(empty(trim($_POST["title"])))
+	    {
+		$title_err = "Please enter a title.";
+	    } 
+	    else
+	    {
+		$title = trim($_POST["title"]);
+	    }
+	    
+	    if(empty(trim($_POST["author"])))
+	    {
+		$author_err = "Please enter an author.";
+	    } 
+	    else
+	    {
+		$author = trim($_POST["author"]);
+	    }
+	    
+	    if(empty(trim($_POST["published"])))
+	    {
+		$published_err = "Please enter a publishing date.";
+	    } 
+	    else
+	    {
+		$published = trim($_POST["published"]);
+	    }
+	    
+	    if(empty(trim($_POST["publisher"])))
+	    {
+		$publisher_err = "Please enter a publisher.";
+	    } 
+	    else
+	    {
+		$publisher = trim($_POST["publisher"]);
+	    }
+	    
+	    if(empty(trim($_POST["langauge"])))
+	    {
+		$language_err = "Please enter a language.";
+	    } 
+	    else
+	    {
+		$language = trim($_POST["language"]);
+	    }
 	    $result = "";
 	    $params = array(   
 			array(&$result, SQLSRV_PARAM_OUT), 
