@@ -77,6 +77,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             } 
             else
             {
+                echo sqlsrv_num_rows($stmt);
                 // Display an error message if username doesn't exist
                 $username_err = "No account found with that username.";
             }
