@@ -117,9 +117,11 @@
         	<div id="questions">
                 <table>
                     <tr>
-                        <td> <label style = "margin:10px; padding:10px"> Title </label> </td>
-                        <td> <input id="ip2" type="text" name="title" value="<?php echo $title; ?>" style = "margin:10px; padding:2px"> </td>
-			<span class="help-block"><?php echo $title_err; ?></span>
+                        <div class="form-group <?php echo (!empty($title_err)) ? 'has-error' : ''; ?>">
+			  <td> <label style = "margin:10px; padding:10px"> Title </label> </td>
+                          <td> <input id="ip2" type="text" name="title" value="<?php echo $title; ?>" style = "margin:10px; padding:2px"> </td>
+			  <span class="help-block"><?php echo $title_err; ?></span>
+		        </div>  
                     </tr>
                     <tr>
                         <td> <label style = "margin:10px; padding:10px"> Author </label> </td>
