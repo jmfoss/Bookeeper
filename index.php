@@ -1,3 +1,3 @@
 <?php
-header("location: dbm_signup.php");
+header("location: dbm_login.php");
 ?>
