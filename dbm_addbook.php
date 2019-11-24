@@ -30,6 +30,10 @@
             {
 		$msg = "$title is already in the library.";
             }
+	    else
+	    {
+		echo $result;
+	    }
         }
         else
         {
