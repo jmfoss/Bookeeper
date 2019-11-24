@@ -9,7 +9,7 @@
 	    $published = trim($_POST["published"]);
 	    $publisher = trim($_POST["publisher"]);
 	    $language = trim($_POST["language"]);
-	    $error = 0;
+	    $error = -1;
 	    $params = array(   
 			array(&$error, SQLSRV_PARAM_OUT), 
 			array($title, SQLSRV_PARAM_IN),  
@@ -24,11 +24,13 @@
         {
             if($error)
             {
-                $msg = "$title has been added to library.";
+            	echo $error;
+		$msg = "$title has been added to library.";
             }
             else
             {
-                $msg = "$title is already in the library.";
+                echo $error;
+		$msg = "$title is already in the library.";
             }
         }
         else
