@@ -22,7 +22,7 @@
         $stmt = sqlsrv_query($conn, $stmt, $params);
         if($stmt != false)
         {
-            if($error != null)
+            if($error)
             {
                 $msg = "$title has been added to library.";
             }
