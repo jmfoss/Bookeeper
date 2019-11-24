@@ -52,15 +52,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             {                    
                 // Bind result
                 $row = sqlsrv_fetch_array($stmt);
-                if(password_verify($password, $array["password"]))
+                if(password_verify($password, $row["password"]))
                 {
                     // Password is correct, so start a new session
                     session_start();
 
                     // Store data in session variables
                     $_SESSION["loggedin"] = true;
-                    $_SESSION["id"] = $array["userID"];
-                    $_SESSION["username"] = $array["username"];                            
+                    $_SESSION["id"] = $row["userID"];
+                    $_SESSION["username"] = $row["username"];                            
 
                     // Redirect user to welcome page
                     header("location: dbm_main.php");
@@ -73,9 +73,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             } 
             else
             {
-
+`               $row = sqlsrv_fetch_array($stmt);
                 // Display an error message if username doesn't exist
-                $username_err = "No account found with that username." + $array["username"];
+                $username_err = "No account found with that username.";
+                echo $row["username"];
             }
         } 
         else
