@@ -19,7 +19,7 @@
 			array($language, SQLSRV_PARAM_IN),
            );
         $sql = "EXEC addBook @result = ?, @title = ?, @author = ?, @published = ?, @publisher = ?, @language = ?";
-        $stmt = sqlsrv_query($conn, $stmt, $params);
+        $stmt = sqlsrv_query($conn, $sql, $params);
 	echo $result;
         if($stmt != false)
         {
