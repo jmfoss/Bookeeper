@@ -27,7 +27,8 @@
         }
         else
         {
-            echo "Oops! Something went wrong.";
+            	print_r( sqlsrv_errors());
+		echo "Oops! Something went wrong.";
         }
     }
         
