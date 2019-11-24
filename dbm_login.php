@@ -44,7 +44,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     {
         // Prepare a select statement
         $sql = "SELECT userID, username, password FROM users WHERE username = ?";
-        $stmt = sqlsrv_query($conn, $sql);
+        $stmt = sqlsrv_query($conn, $sql, array($username));
+        echo $stmt;
         if($stmt != false)
         {              
             // Check if username exists, if yes then verify password
