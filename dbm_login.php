@@ -50,11 +50,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         $stmt = sqlsrv_query($conn, $sql, $param);
         if($stmt != false)
         {              
-            $array = [];
-            sqlsrv_fetch_array($stmt, $array);
-            echo "hi";
-            echo $array["username"];
-            echo sqlsrv_num_rows($stmt);
             // Check if username exists, if yes then verify password
             if(sqlsrv_num_rows($stmt) == 1)
             {                    
@@ -84,7 +79,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             {
 
                 // Display an error message if username doesn't exist
-                $username_err = "No account found with that username.";
+                $username_err = "No account found with that username." + sqlsrv_num_rows($stmt);
             }
         } 
         else
