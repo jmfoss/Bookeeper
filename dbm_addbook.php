@@ -43,7 +43,7 @@
       $publisher = trim($_POST["publisher"]);
     }
 
-    if(empty(trim($_POST["langauge"])))
+    if(empty(trim($_POST["language"])))
     {
       $language_err = "Please enter a language.";
     } 
