@@ -22,18 +22,15 @@
         $stmt = sqlsrv_query($conn, $sql, $params);
         if($stmt != false)
         {
-	    if($result == "ADDED")
-            {
-		$msg = "$title has been added to library.";
-            }
-            else if ($result == "ERROR")
+	    if($result == "ERROR")
             {
 		$msg = "$title is already in the library.";
+
             }
-	    else
-	    {
-		echo $result;
-	    }
+            else
+            {
+	        $msg = "$title has been added to library.";
+            }
         }
         else
         {
