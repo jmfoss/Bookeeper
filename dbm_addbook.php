@@ -9,27 +9,25 @@
 	    $published = trim($_POST["published"]);
 	    $publisher = trim($_POST["publisher"]);
 	    $language = trim($_POST["language"]);
-	    $error = -1;
+	    $result = -1;
 	    $params = array(   
-			array(&$error, SQLSRV_PARAM_OUT), 
+			array(&$result, SQLSRV_PARAM_OUT), 
 			array($title, SQLSRV_PARAM_IN),  
 			array($author, SQLSRV_PARAM_IN),
 			array($published, SQLSRV_PARAM_IN),
 			array($publisher, SQLSRV_PARAM_IN),
 			array($language, SQLSRV_PARAM_IN),
            );
-        $sql = "EXEC ? = addBook @title = ?, @author = ?, @published = ?, @publisher = ?, @language = ?";
+        $sql = "EXEC addBook @result = ? @title = ?, @author = ?, @published = ?, @publisher = ?, @language = ?";
         $stmt = sqlsrv_query($conn, $stmt, $params);
         if($stmt != false)
         {
-            if($error)
+            if($result)
             {
-            	echo $error;
 		$msg = "$title has been added to library.";
             }
             else
             {
-                echo $error;
 		$msg = "$title is already in the library.";
             }
         }
