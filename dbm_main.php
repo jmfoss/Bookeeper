@@ -3,10 +3,14 @@
      28 October 2019 -->
 
 <!-- Main page -->
-<?php   
+<?php
 session_start();
+ 
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: dbm_login.php");
+    exit;
 ?>
-
 
 <html>
   <head>
@@ -44,15 +48,6 @@ session_start();
     <p align = "center" style = "margin-bottom:75px; margin-top:50px"> Navigate the website using the above tool bar. <br>
         (Plan to add better website description)<br>
     </p>
-    <table align = "center">
-        <tr>
-          <form action="signup.php" method="post">
-              <td> <label style = "margin:10px; padding:10px"> Username: </label> <input id="ip2" type="text" name="username" style = "margin:10px; padding:2px"> </td>
-              <td> <label style = "margin:10px; padding:10px"> Password: </label> <input id="ip2" type="text" name="password" style = "margin:10px; padding:2px"> </td>
-              <td> <label style = "margin:10px; padding:10px"> <input type="submit" name="submit" value="Sign Up" style = "margin:10px; padding:2px"/> </td>
-          </form>
-        </tr>
-    </table>
   </body>
 </html>
 
