@@ -43,7 +43,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     if(empty($username_err) && empty($password_err))
     {
         // Prepare a select statement
-        $sql = "SELECT userID, username, password FROM users WHERE @username = ?";
+        $sql = "SELECT userID, username, password FROM users WHERE username = ?";
         $stmt = sqlsrv_query($conn, $sql, array($username));
         if($stmt != false)
         {              
@@ -75,7 +75,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             {
 
                 // Display an error message if username doesn't exist
-                $username_err = "No account found with that username.";
+                $username_err = "No account found with that username." + sqlsrv_errors();
             }
         } 
         else
