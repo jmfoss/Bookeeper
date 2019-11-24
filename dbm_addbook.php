@@ -4,13 +4,14 @@
     if($_SERVER["REQUEST_METHOD"] == "POST")
     {
                
-        $params = array(   
-                        array(&$error, SQLSRV_PARAM_OUT), 
-                        array(trim($_POST["title"]), SQLSRV_PARAM_IN),  
-                        array(trim($_POST["author"]), SQLSRV_PARAM_IN),
-                        array(trim($_POST["published"]), SQLSRV_PARAM_IN),
-                        array(trim($_POST["publisher"]), SQLSRV_PARAM_IN),
-                        array(trim($_POST["language"]), SQLSRV_PARAM_IN),
+            $error = 0;
+	    $params = array(   
+			array(&$error, SQLSRV_PARAM_OUT), 
+			array(trim($_POST["title"]), SQLSRV_PARAM_IN),  
+			array(trim($_POST["author"]), SQLSRV_PARAM_IN),
+			array(trim($_POST["published"]), SQLSRV_PARAM_IN),
+			array(trim($_POST["publisher"]), SQLSRV_PARAM_IN),
+			array(trim($_POST["language"]), SQLSRV_PARAM_IN),
            );
         $sql = "EXEC ? = addBook @title = ?, @author = ?, @published = ?, @publisher = ?, @language = ?";
         $stmt = sqlsrv_query($conn, $stmt, $params);
