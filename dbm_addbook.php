@@ -114,7 +114,7 @@
                 <option value="currentlyreading"> Currently Reading </option>
 			</select>
         </div>
-        	<div id="questions">
+              <div class = "wrapper" id="questions">
                 <table>
                     <tr>
                         <div class="form-group <?php echo (!empty($title_err)) ? 'has-error' : ''; ?>">
