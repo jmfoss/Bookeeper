@@ -44,15 +44,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     {
         // Prepare a select statement
         $sql = "SELECT userID, username, password FROM users WHERE username = ?";
-        $stmt = sqlsrv_query($conn, $sql, $username);
+        $stmt = sqlsrv_query($conn, $sql, array($username));
         if($stmt != false)
         {              
             // Check if username exists, if yes then verify password
-            if(sqlsrv_num_rows($stmt) == 1)
+            if($row = sqlsrv_fetch_array($stmt))
             {                    
-                // Bind result variables
-                $array = [];
-                sqlsrv_fetch_array($stmt, $array);
+                // Bind result
+                $row = sqlsrv_fetch_array($stmt);
                 if(password_verify($password, $array["password"]))
                 {
                     // Password is correct, so start a new session
