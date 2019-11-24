@@ -1,83 +1,87 @@
-<?php
-    require_once "config.php";;
-    $msg = $title = $author = $published = $publisher = $language = "";
-    $title_err = $author_err = $published_err = $publisher_err = $language_err = "";
-    if($_SERVER["REQUEST_METHOD"] == "POST")
-    {
-               
-            if(empty(trim($_POST["title"])))
-	    {
-		$title_err = "Please enter a title.";
-	    } 
-	    else
-	    {
-		$title = trim($_POST["title"]);
-	    }
-	    
-	    if(empty(trim($_POST["author"])))
-	    {
-		$author_err = "Please enter an author.";
-	    } 
-	    else
-	    {
-		$author = trim($_POST["author"]);
-	    }
-	    
-	    if(empty(trim($_POST["published"])))
-	    {
-		$published_err = "Please enter a publishing date.";
-	    } 
-	    else
-	    {
-		$published = trim($_POST["published"]);
-	    }
-	    
-	    if(empty(trim($_POST["publisher"])))
-	    {
-		$publisher_err = "Please enter a publisher.";
-	    } 
-	    else
-	    {
-		$publisher = trim($_POST["publisher"]);
-	    }
-	    
-	    if(empty(trim($_POST["langauge"])))
-	    {
-		$language_err = "Please enter a language.";
-	    } 
-	    else
-	    {
-		$language = trim($_POST["language"]);
-	    }
-	    $result = "";
-	    $params = array(   
-			array(&$result, SQLSRV_PARAM_OUT), 
-			array($title, SQLSRV_PARAM_IN),  
-			array($author, SQLSRV_PARAM_IN),
-			array($published, SQLSRV_PARAM_IN),
-			array($publisher, SQLSRV_PARAM_IN),
-			array($language, SQLSRV_PARAM_IN),
-           );
-        $sql = "EXEC addBook @result = ?, @title = ?, @author = ?, @published = ?, @publisher = ?, @language = ?";
-        $stmt = sqlsrv_query($conn, $sql, $params);
-        if($stmt != false)
-        {
-	    if($result == "ERROR")
-            {
-		$msg = "$title is already in the library.";
 
-            }
-            else
-            {
-	        $msg = "$title has been added to library.";
-            }
+
+<?php
+  require_once "config.php";;
+  $msg = $title = $author = $published = $publisher = $language = "";
+  $title_err = $author_err = $published_err = $publisher_err = $language_err = "";
+  if($_SERVER["REQUEST_METHOD"] == "POST")
+  {
+
+    if(empty(trim($_POST["title"])))
+    {
+      $title_err = "Please enter a title.";
+    } 
+    else
+    {
+      $title = trim($_POST["title"]);
+    }
+
+    if(empty(trim($_POST["author"])))
+    {
+      $author_err = "Please enter an author.";
+    } 
+    else
+    {
+      $author = trim($_POST["author"]);
+    }
+
+    if(empty(trim($_POST["published"])))
+    {
+      $published_err = "Please enter a publishing date.";
+    } 
+    else
+    {
+      $published = trim($_POST["published"]);
+    }
+
+    if(empty(trim($_POST["publisher"])))
+    {
+      $publisher_err = "Please enter a publisher.";
+    } 
+    else
+    {
+      $publisher = trim($_POST["publisher"]);
+    }
+
+    if(empty(trim($_POST["langauge"])))
+    {
+      $language_err = "Please enter a language.";
+    } 
+    else
+    {
+      $language = trim($_POST["language"]);
+    }
+
+    if (empty($title_err) && empty($author_err) && empty($published_err) && empty($publisher_err) && empty($language_err))
+    {
+      $result = "";
+      $params = array(   
+                      array(&$result, SQLSRV_PARAM_OUT), 
+                      array($title, SQLSRV_PARAM_IN),  
+                      array($author, SQLSRV_PARAM_IN),
+                      array($published, SQLSRV_PARAM_IN),
+                      array($publisher, SQLSRV_PARAM_IN),
+                      array($language, SQLSRV_PARAM_IN),
+                      );
+      $sql = "EXEC addBook @result = ?, @title = ?, @author = ?, @published = ?, @publisher = ?, @language = ?";
+      $stmt = sqlsrv_query($conn, $sql, $params);
+      if($stmt != false)
+      {
+        if($result == "ERROR")
+        {
+          $msg = "$title is already in the library.";
         }
         else
         {
-		echo "Oops! Something went wrong.";
+          $msg = "$title has been added to library.";
         }
+      }
+      else
+      {
+        echo "Oops! Something went wrong.";
+      }
     }
-        
+  }
 ?>
 
 <!DOCTYPE html>
