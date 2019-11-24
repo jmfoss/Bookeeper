@@ -12,7 +12,7 @@
                         array(trim($_POST["publisher"]), SQLSRV_PARAM_IN),
                         array(trim($_POST["language"]), SQLSRV_PARAM_IN),
            );
-        $sql = "EXEC ? = addbook @title = ?, @author = ?, @published = ?, @publisher = ?, @language = ?";
+        $sql = "EXEC ? = addBook @title = ?, @author = ?, @published = ?, @publisher = ?, @language = ?";
         $stmt = sqlsrv_query($conn, $stmt, $params);
         if($stmt)
         {
