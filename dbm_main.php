@@ -3,14 +3,7 @@
      28 October 2019 -->
 
 <!-- Main page -->
-<?php
-session_start();
- 
-// Check if the user is logged in, if not then redirect him to login page
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: dbm_login.php");
-    exit;
-?>
+
 
 <html>
   <head>
