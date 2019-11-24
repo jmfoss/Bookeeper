@@ -53,7 +53,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <table align = "center">
         <tr>
           <form action="dbm_logout.php" method="post">
-                <td> <label style = "margin:10px; padding:10px"> <input type="submit" name="submit" value="Sign Up" style = "margin:10px; padding:2px"/> </td>
+                <td> <label style = "margin:10px; padding:10px"> <input type="submit" name="submit" value="Log out" style = "margin:10px; padding:2px"/> </td>
           </form>
         </tr>
     </table>
