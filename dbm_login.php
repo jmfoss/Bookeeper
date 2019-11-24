@@ -42,9 +42,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     // Validate credentials
     if(empty($username_err) && empty($password_err))
     {
+        $param = array(   
+                        array($username, SQLSRV_PARAM_IN),
+                        );
         // Prepare a select statement
         $sql = "SELECT userID, username, password FROM users WHERE username = ?";
-        $stmt = sqlsrv_query($conn, $sql, $username);
+        $stmt = sqlsrv_query($conn, $sql, $param);
         if($stmt != false)
         {              
             // Check if username exists, if yes then verify password
