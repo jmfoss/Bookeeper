@@ -76,12 +76,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
                 // Display an error message if username doesn't exist
                 $username_err = "No account found with that username.";
-                    if( ($errors = sqlsrv_errors() ) != null) {
-        foreach( $errors as $error ) {
-            echo "SQLSTATE: ".$error[ 'SQLSTATE']."<br />";
-            echo "code: ".$error[ 'code']."<br />";
-            echo "message: ".$error[ 'message']."<br />";
-        }
             }
         } 
         else
