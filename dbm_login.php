@@ -42,30 +42,32 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     // Validate credentials
     if(empty($username_err) && empty($password_err))
     {
-        $userID = 0;
-        $params = array(   
-                        array(&$userID, SQLSRV_PARM_OUT),
-                        array($username, SQLSRV_PARAM_IN),
-                        array($password, SQLSRV_PARAM_IN),
-                        );
         // Prepare a select statement
-        $sql = "EXEC ? = login @username = ?, @password = ?";
-        $stmt = sqlsrv_query($conn, $sql, $params);
+        $sql = "SELECT userID, username, password FROM users WHERE username = ?";
+        $stmt = sqlsrv_query($conn, $sql, array($username));
         if($stmt != false)
         {              
+            $row = sqlsrv_fetch_array($stmt);
             // Check if username exists, if yes then verify password
-            if($userID != 0)
+            if(!empty($row))
             {                    
-                // Password is correct, so start a new session
-                session_start();
+                if($password == $row["password"])
+                {
+                    // Password is correct, so start a new session
+                    session_start();
 
-                // Store data in session variables
-                $_SESSION["loggedin"] = true;
-                $_SESSION["userID"] = $userID;
-                $_SESSION["username"] = $username;                            
+                    // Store data in session variables
+                    $_SESSION["loggedin"] = true;
+                    $_SESSION["userID"] = $row["userID"];
+                    $_SESSION["username"] = $row["username"];                            
 
-                // Redirect user to welcome page
-                header("location: dbm_main.php");
+                    // Redirect user to welcome page
+                    header("location: dbm_main.php");
+                }
+                else
+                {
+                    $password_err = "The password you entered was not valid.";
+                }
             } 
             else
             {
