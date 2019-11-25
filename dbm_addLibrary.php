@@ -37,6 +37,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
           {
                echo "This book is already in the your list.";
           }
+	  else
+	  {
+		echo "$title was added to $list";
+	  }
      }
 }
 
