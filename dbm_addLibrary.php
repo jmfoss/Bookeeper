@@ -32,11 +32,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                           array($list, SQLSRV_PARAM_IN)
                          );
           $sql = "EXEC addToList @userID = ?, @title = ?, @list = ?";
-	  print_r($params);
           $stmt = sqlsrv_query($conn, $sql, $params);
           if($stmt == false)
           {
                echo "Oops! Something went wrong.";
+		print_r(sqlsrv_errors());
           }
      }
 }
