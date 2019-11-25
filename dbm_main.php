@@ -27,7 +27,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       <a href="dbm_main.php" class="active"> Home </a>
       <a href="dbm_searchbooks.html"> Search Books </a>
       <a href="dbm_addbook.php"> Add Books </a>
-      <a href="dbm_library.html"> My Library </a>
+      <a href="dbm_addLibrary.php"> My Library </a>
       <!-- <a href="uploadDoc.html"> Upload Documents </a> -->
       <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"> </i>
