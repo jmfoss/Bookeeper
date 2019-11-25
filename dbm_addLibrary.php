@@ -12,6 +12,20 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: dbm_login.php");
     exit;
 }
+if (isset($_REQUEST['query'])) {
+    $query = $_REQUEST['query'];
+    $sql = "SELECT title FROM books WHERE title LIKE ?";
+    $stmt = sqlsrv_query($conn, $sql, array($query));
+	$array = array();
+    while ($row = sqlsrv_fetch_array($stmt)) {
+        $array[] = array (
+            'label' => $row['title'],
+            'value' => $row['title'],
+        );
+    }
+    //RETURN JSON ARRAY
+    echo json_encode ($array);
+}
 $title = $list = "";
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
@@ -67,6 +81,24 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
       <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"> </i>
       </a>
+<script>
+    $(document).ready(function () {
+        $('title').typeahead({
+            source: function (query, result) {
+                $.ajax({
+                    url: "server.php",
+					data: 'query=' + query,            
+                    dataType: "json",
+                    type: "POST",
+                    success: function (data) {
+						result($.map(data, function (item) {
+							return item;
+                        }));
+                    }
+                });
+            }
+        });
+    });
     </div>
         <form action = "" method = "post">
 
