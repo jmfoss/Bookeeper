@@ -27,7 +27,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
      $list = trim($_POST["list"]);
      if (empty($title_err))
      {
-          $params = array(
+          echo $_SESSION["userID"];
+	  $params = array(
                           array($_SESSION["userID"], SQLSRV_PARAM_IN),
                           array($title, SQLSRV_PARAM_IN),
                           array($list, SQLSRV_PARAM_IN)
