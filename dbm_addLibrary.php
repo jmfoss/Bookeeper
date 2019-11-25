@@ -12,7 +12,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)
     header("location: dbm_main.php");
     exit;
 }
-//list options: read, reading, wantTo
 $title = $list = "";
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
@@ -65,6 +64,28 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         <i class="fa fa-bars"> </i>
       </a>
     </div>
+        <form action = "" method = "post">
+		<div class="custom-select" style="width:200px;">  	
+            <select style = "margin:20px; padding:10px">
+                <option value="read"> Read </option>
+                <option value="wanttoread"> Want to Read </option>
+                <option value="currentlyreading"> Currently Reading </option>
+			</select>
+        </div>
+              <div class = "wrapper" id="questions">
+                <table>
+                    <tr>
+                        <div class="form-group <?php echo (!empty($title_err)) ? 'has-error' : ''; ?>">
+			  <td> <label style = "margin:10px; padding:10px"> Title </label> </td>
+                          <td> <input id="ip2" type="text" name="title" value="<?php echo $title; ?>" style = "margin:10px; padding:2px"> </td>
+			  <span class="help-block"><?php echo $title_err; ?></span>
+		        </div>  
+                </table>
+        	</div>
+          <input type = "reset"  value = "Reset Form" style = "margin:20px;margin-top:10px"/>
+	      <input type = "submit"  value = "Submit" style = "margin:20px;margin-top:10px"/>
+	      <span class="help-block"><?php echo $msg; ?></span>
+      </form>
 
     
   </body>
