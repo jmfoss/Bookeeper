@@ -35,8 +35,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
           $stmt = sqlsrv_query($conn, $sql, $params);
           if($stmt == false)
           {
-               echo "Oops! Something went wrong.";
-		print_r(sqlsrv_errors());
+               echo "This book is already in the your list.";
           }
      }
 }
