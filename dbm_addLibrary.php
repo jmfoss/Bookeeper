@@ -82,23 +82,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         <i class="fa fa-bars"> </i>
       </a>
 <script>
-    $(document).ready(function () {
-        $('title').typeahead({
-            source: function (query, result) {
-                $.ajax({
-                    url: "server.php",
-					data: 'query=' + query,            
-                    dataType: "json",
-                    type: "POST",
-                    success: function (data) {
-						result($.map(data, function (item) {
-							return item;
-                        }));
-                    }
-                });
-            }
-        });
+$(document).ready(function(){
+    // Sonstructs the suggestion engine
+    var countries = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.whitespace,
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        // The url points to a json file that contains an array of country names
+        prefetch: 'dbm_addLibrary.php?query=%QUERY'
     });
+    
+    // Initializing the typeahead with remote dataset without highlighting
+    $('.typeahead').typeahead(null, {
+        name: 'countries',
+        source: countries,
+        limit: 10 /* Specify max number of suggestions to be displayed */
+    });
+});
+</script>
     </div>
         <form action = "" method = "post">
 
