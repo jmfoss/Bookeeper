@@ -65,16 +65,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
       </a>
     </div>
         <form action = "" method = "post">
-		<div class="custom-select" style="width:200px;">  	
-            <select style = "margin:20px; padding:10px">
-                <option value="read"> Read </option>
-                <option value="wanttoread"> Want to Read </option>
-                <option value="currentlyreading"> Currently Reading </option>
-			</select>
+
         </div>
               <div class = "wrapper" id="questions">
                 <table>
                     <tr>
+			<div class="custom-select" style="width:200px;">  	
+            			<select style = "margin:20px; padding:10px">
+                			<option value="read"> Read </option>
+                			<option value="wanttoread"> Want to Read </option>
+                			<option value="currentlyreading"> Currently Reading </option>
+				</select>
                         <div class="form-group <?php echo (!empty($title_err)) ? 'has-error' : ''; ?>">
 			  <td> <label style = "margin:10px; padding:10px"> Title </label> </td>
                           <td> <input id="ip2" type="text" name="title" value="<?php echo $title; ?>" style = "margin:10px; padding:2px"> </td>
