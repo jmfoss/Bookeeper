@@ -1,7 +1,7 @@
 
 
 <?php
-  require_once "config.php";;
+  require_once "config.php";
   $msg = $title = $author = $published = $publisher = $language = "";
   $title_err = $author_err = $published_err = $publisher_err = $language_err = "";
   if($_SERVER["REQUEST_METHOD"] == "POST")
