@@ -7,10 +7,9 @@
 // Initialize the session
 session_start();
 require_once "config.php";
-// Check if the user is already logged in, if yes then redirect him to welcome page
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] !== true)
-{
-    header("location: dbm_main.php");
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: dbm_login.php");
     exit;
 }
 $title = $list = "";
