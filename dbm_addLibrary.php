@@ -16,19 +16,6 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)
 // Include config file
 require_once "config.php";
 $list = $book = "";
-if($_SERVER["REQUEST_METHOD"] == "POST")
-{
-     //Options: read, reading, future
-     $list = trim($_POST["list"]);
-     $book = trim($_POST["book"]);
-     &sql = "EXEC addToList @userID = ?, @listName = ?, @title = ?";
-     $params = array(   
-                     array($_SESSION["userID"], SQLSRV_PARAM_IN), 
-                     array($list, SQLSRV_PARAM_IN),
-                     array($book, SQLSRV_PARAM_IN)
-                     ); 
-     $stmt = sqlsrv_query($conn, $sql, $params); 
-}
 ?>
 
 <!DOCTYPE html>
