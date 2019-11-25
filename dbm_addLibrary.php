@@ -71,7 +71,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                 <table>
                     <tr>
 			<div class="custom-select" style="width:200px;">  	
-            			<select style = "margin:20px; padding:10px">
+            			<select name="list" style = "margin:20px; padding:10px">
                 			<option value="read"> Read </option>
                 			<option value="wanttoread"> Want to Read </option>
                 			<option value="currentlyreading"> Currently Reading </option>
