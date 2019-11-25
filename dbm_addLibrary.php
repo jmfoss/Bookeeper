@@ -25,16 +25,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
      $params = array(   
                      array($_SESSION["userID"], SQLSRV_PARAM_IN), 
                      array($list, SQLSRV_PARAM_IN),
-                     array($book, SQLSRV_PARAM_IN),
+                     array($book, SQLSRV_PARAM_IN)
                      ); 
-     $stmt = sqlsrv_query($conn, $sql, $params);
-     if($stmt != false)
-        {              
-          
-        } 
-        else
-        {
-            echo "Oops! Something went wrong. Please try again later.";
-        }                   
+     $stmt = sqlsrv_query($conn, $sql, $params);                  
 ?>
 
