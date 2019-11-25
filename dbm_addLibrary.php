@@ -12,32 +12,36 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)
     header("location: dbm_main.php");
     exit;
 }
+//list options: read, reading, wantTo
+$title = $list = "";
+if($_SERVER["REQUEST_METHOD"] == "POST")
+{
+     if(empty(trim($_POST["title"])))
+     {
+      $title_err = "Please enter a title.";
+     } 
+     else
+     {
+      $title = trim($_POST["title"]);
+     }
+     $list = trim($_POST["list"]);
+     if (empty($title_err))
+     {
+          $params = array(
+                          array($_SESSION["userID"], SQLSRV_PARAM_IN),
+                          array($title, SQLSRV_PARAM_IN),
+                          array($list, SQLSRV_PARAM_IN)
+                         );
+          $sql = "EXEC addToList @userID = ?, @title = ?, @list = ?";
+          $stmt = sqlsrv_query($conn, $sql, $params);
+          if($stmt == false)
+          {
+               echo "Oops! Something went wrong.";
+          }
+     }
+}
 
-// Include config file
-require_once "config.php";
-$list = $book = "";
-$options = array
-(
-    'hostname' => SOLR_SERVER_HOSTNAME,
-    'login'    => SOLR_SERVER_USERNAME,
-    'password' => SOLR_SERVER_PASSWORD,
-    'port'     => SOLR_SERVER_PORT,
-);
-$client = new SolrClient($options);
 
-$query = new SolrQuery();
-
-$query->setQuery('*:*');
-
-$query->setStart(0);
-
-$query->setRows(50);
-
-$query_response = $client->query($query);
-
-$response = $query_response->getResponse();
-
-print_r($response);
 
 ?>
 
