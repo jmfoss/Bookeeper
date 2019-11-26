@@ -46,8 +46,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       </tr>
     </table>
 
-    <p align = "center" style = "margin-bottom:75px; margin-top:50px"> Navigate the website using the above tool bar. <br>
-        (Plan to add better website description)<br>
+    <p align = "center" style = "margin-bottom:75px; margin-top:50px"> Bookeeper is a web application that stores each user’s library of books. <br>
+        Add books to any of your lists, including previously read, books you want to read, books you are currently reading. <br>
+        Single sign on allows you to manage and edit your lists without repeatedly entering your credentials. <br>
     </p>
     <table align = "center">
         <tr>
