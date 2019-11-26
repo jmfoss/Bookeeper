@@ -37,11 +37,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <!-- Intro to application -->
     <h2 align = "center" style = "margin:20px; margin-bottom:10px"> Welcome to Bookeeper!</h2>
     <h4 align ="center" style="margin-bottom:50px"> Joey Santucci and Josh Foss </h4>
-       
-    <p align = "center" style = "margin-bottom:75px; margin-top:50px"> Bookeeper is a web application that stores each user’s library of books. <br>
-        Add books to any of your lists, including previously read, books you want to read, <br> books you are currently reading.
-        Single sign on allows you to manage and edit <br> your lists without repeatedly entering your credentials. <br>
-    </p>
 
     <!-- Table with links to ppt, tech doc and progress report -->
     <table align = "center">
@@ -50,6 +45,11 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <td style = "margin:20px; padding:20px; color:#2b3770; background-color:#b1bfcc"> <a href="ppt.pdf"> Final Report </a> </td>
       </tr>
     </table>
+       
+    <p align = "center" style = "margin-bottom:75px; margin-top:50px"> Bookeeper is a web application that stores each user’s library of books. <br>
+        Add books to any of your lists, including previously read, books you want to read, <br> books you are currently reading.
+        Single sign on allows you to manage and edit <br> your lists without repeatedly entering your credentials. <br>
+    </p>
        
     <table align = "center">
         <tr>
