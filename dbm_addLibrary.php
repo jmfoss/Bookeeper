@@ -12,8 +12,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: dbm_login.php");
     exit;
 }
-if (isset($_REQUEST['title'])) {
-    $query = $_REQUEST['title'];
+if (isset($_REQUEST['query'])) {
+    $query = $_REQUEST['query'];
     $sql = "SELECT title FROM books WHERE title LIKE ?";
     $stmt = sqlsrv_query($conn, $sql, array($query));
     if(!$stmt)
