@@ -24,7 +24,7 @@ if (isset($_REQUEST['query'])) {
         );
     }
     //RETURN JSON ARRAY
-    echo json_encode ($array);
+    print_r($array);
 }
 $title = $list = "";
 if($_SERVER["REQUEST_METHOD"] == "POST")
@@ -84,7 +84,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 <script>
 $(document).ready(function(){
     // Sonstructs the suggestion engine
-    var countries = new Bloodhound({
+    var titles = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.whitespace,
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         // The url points to a json file that contains an array of country names
@@ -93,8 +93,8 @@ $(document).ready(function(){
     
     // Initializing the typeahead with remote dataset without highlighting
     $('.typeahead').typeahead(null, {
-        name: 'countries',
-        source: countries,
+        name: 'title',
+        source: titles,
         limit: 10 /* Specify max number of suggestions to be displayed */
     });
 });
