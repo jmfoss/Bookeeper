@@ -36,7 +36,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                         array(trim($_POST["display"]), SQLSRV_PARAM_IN)	
 			);
 	$bookList = sqlsrv_query($conn, $sqlbook, $paramsbook);
-	print_r(sqlsrv_fetch_array($bookList));
 	if(!$bookList)
 	{
 	    print_r(sqlsrv_errors());
