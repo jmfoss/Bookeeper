@@ -14,20 +14,13 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 }
 $displaylist = $_POST['display'];
 echo $displaylist;
-$bookArr = array();
 $sql = "EXEC displayList @userID = ?, @list = ?";
 $params = array($_SESSION["userID"], $displayList);
-$stmt = sqlsrv_query($conn, $sql, $params);
-if(!$stmt)
+$bookList = sqlsrv_query($conn, $sql, $params);
+if(!$bookList)
 {
     print_r(sqlsrv_errors());
 }
-while ($row = sqlsrv_fetch_array($stmt)) 
-{
-	$bookArr[] = $row['title'];
-	print_r($row);
-}
-sqlsrv_free_stmt( $stmt);
 
 $array = array();
 $query = $_REQUEST['query'];
@@ -192,18 +185,28 @@ input[type=submit] {
 				<option value="currentlyreading"> Currently Reading </option>
 			</select>
 			</form>
-			<th><?php echo $displayList; ?></th>
-			</thead>
-		    <?php foreach ($bookArr as $bookArr){
-			echo'<tbody>';
-			echo'<tr>'; 
-			echo'<td>'. $bookArr."</td>";
-			echo'<tr>';
-			echo'</tbody>';
-		      }
-		    ?>
-                </table>
-		
+		</table>
+		<head>
+			<title>Selected List</title>
+		</head>
+		<body>
+			<h1>Selected List</h1>
+			<hr>
+			<table border = '2'>
+			<tr>
+			<th>title</th>
+			</tr>
+			<?php
+			while ($row = sqlsrv_fetch_array($bookList)) 
+			{
+			    echo "<tr>";
+			    echo "<td>" . $row['title'] ."</td>";
+			    echo "</tr>";
+			}
+			?>
+
+			</table>
+			</body>
         	</div>
       </form>
 <script>
