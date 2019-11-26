@@ -12,6 +12,21 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: dbm_login.php");
     exit;
 }
+$displaylist = $_POST['display'];
+$bookArr = array();
+$sql = "EXEC displayList @userID = ?, @list = ?";
+$params = array($_SESSION["userID"], $displayList);
+$stmt = sqlsrv_query($conn, $sql, $params);
+if(!$stmt)
+{
+    print_r(sqlsrv_errors());
+}
+while ($row = sqlsrv_fetch_array($stmt)) 
+{
+	$bookArr[] = $row['title'];
+}
+sqlsrv_free_stmt( $stmt);
+
 $array = array();
 $query = $_REQUEST['query'];
 $sql = "SELECT title FROM books WHERE title LIKE '{$query}%'";
@@ -24,6 +39,7 @@ while ($row = sqlsrv_fetch_array($stmt))
 {
 	$array[] = $row['title'];
 }
+sqlsrv_free_stmt( $stmt);
 $title = $list = $msg = "";
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
@@ -53,6 +69,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 	  {
 		$msg = "$title was added to $list";
 	  }
+	  sqlsrv_free_stmt( $stmt);
      }
 }
 ?>
@@ -159,6 +176,33 @@ input[type=submit] {
 	      <input type = "submit"  value = "Submit" style = "margin:20px;margin-top:10px"/>
 	      <span class="help-block"><?php echo $msg; ?></span>
 	      <span class="help-block"><?php echo $title_err; ?></span>
+      </form>
+   	
+
+        </div>
+              <div class = "viewlist" id="display">
+                <table>
+                    <tr>
+ 		        <form  action = "" method = "post">
+			<select name="display" style = "margin:20px; padding:10px">
+				<option value="read"> Read </option>
+				<option value="wanttoread"> Want to Read </option>
+				<option value="currentlyreading"> Currently Reading </option>
+			</select>
+			</form>
+			<th><?php echo $displayList; ?></th>
+			</thead>
+		    <?php foreach ($bookArr as $bookArr){
+			echo'<tbody>';
+			echo'<tr>'; 
+			echo'<td>'. $bookArr."</td>";
+			echo'<tr>';
+			echo'</tbody>';
+		      }
+		    ?>
+                </table>
+		
+        	</div>
       </form>
 <script>
 function autocomplete(inp, arr) {
