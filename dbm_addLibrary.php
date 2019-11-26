@@ -24,7 +24,7 @@ if (isset($_REQUEST['query'])) {
         );
     }
     //RETURN JSON ARRAY
-    print_r($array);
+    echo json_encode($array);
 }
 $title = $list = "";
 if($_SERVER["REQUEST_METHOD"] == "POST")
