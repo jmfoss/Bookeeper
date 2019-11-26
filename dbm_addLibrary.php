@@ -16,6 +16,11 @@ if (isset($_REQUEST['query'])) {
     $query = $_REQUEST['query'];
     $sql = "SELECT title FROM books WHERE title LIKE ?";
     $stmt = sqlsrv_query($conn, $sql, array($query));
+    if($stmt)
+    {
+	    echo "oh no";
+	    print_r(sqlsrv_errors());
+    }
 	$array = array();
     while ($row = sqlsrv_fetch_array($stmt)) {
         $array[] = array (
@@ -66,6 +71,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
 <html>
   <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
