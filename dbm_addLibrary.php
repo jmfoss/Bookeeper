@@ -27,7 +27,7 @@ while ($row = sqlsrv_fetch_array($stmt))
 	$array[] = $row['title'];
 }
 sqlsrv_free_stmt( $stmt);
-$title = $list = $msg = "";
+$title = $list = $msg = $displaylist = "";
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
 	$displaylist = trim($_POST["display"]);
