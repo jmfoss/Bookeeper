@@ -12,7 +12,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: dbm_login.php");
     exit;
 }
-$displaylist = $_POST['display'];
+$displaylist = trim($_POST["list"]);
 $sql = "EXEC displayList @userID = ?, @list = ?";
 $params = array($_SESSION["userID"], $displayList);
 $bookList = sqlsrv_query($conn, $sql, $params);
