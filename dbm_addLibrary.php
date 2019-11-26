@@ -157,16 +157,14 @@ input[type=submit] {
                 <table>
                     <tr>
  	
-            			<select name="list" style = "margin:20px; padding:10px">
-                			<option value="read"> Read </option>
-                			<option value="wanttoread"> Want to Read </option>
-                			<option value="currentlyreading"> Currently Reading </option>
-				</select>
-                        <!--Make sure the form has the autocomplete function switched off:-->
-			<form autocomplete="off" action="/action_page.php">
+			<select name="list" style = "margin:20px; padding:10px">
+				<option value="read"> Read </option>
+				<option value="wanttoread"> Want to Read </option>
+				<option value="currentlyreading"> Currently Reading </option>
+			</select>
 			  <div class="autocomplete" style="width:300px;">
 			    <input id="myInput" type="text" name="title" placeholder="title">
-		            <span class="help-block"><?php echo $title_err; ?></span>
+			    <span class="help-block"><?php echo $title_err; ?></span>
 			  </div>
 			</form>
 
