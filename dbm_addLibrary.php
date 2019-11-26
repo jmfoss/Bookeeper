@@ -16,7 +16,7 @@ if (isset($_REQUEST['title'])) {
     $query = $_REQUEST['title'];
     $sql = "SELECT title FROM books WHERE title LIKE ?";
     $stmt = sqlsrv_query($conn, $sql, array($query));
-    if($stmt)
+    if(!$stmt)
     {
 	    echo "oh no";
 	    print_r(sqlsrv_errors());
