@@ -163,8 +163,6 @@ input[type=submit] {
 			</select>
 			  <div class="autocomplete" style="width:300px;">
 			    <input id="myInput" type="text" name="title" placeholder="title">
-			    <span class="help-block"><?php echo $title_err; ?></span>
-		            <span class="help-block"><?php echo $msg; ?></span>
 			  </div>
 			</form>
 
@@ -173,6 +171,7 @@ input[type=submit] {
           <input type = "reset"  value = "Reset Form" style = "margin:20px;margin-top:10px"/>
 	      <input type = "submit"  value = "Submit" style = "margin:20px;margin-top:10px"/>
 	      <span class="help-block"><?php echo $msg; ?></span>
+	      <span class="help-block"><?php echo $title_err; ?></span>
       </form>
 <script>
 function autocomplete(inp, arr) {
