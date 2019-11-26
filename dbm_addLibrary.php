@@ -24,7 +24,6 @@ while ($row = sqlsrv_fetch_array($stmt))
 {
 	$array[] = $row['title'];
 }
-echo json_encode($array);
 $title = $list = $msg = "";
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
@@ -174,18 +173,17 @@ input[type=submit] {
 	      <span class="help-block"><?php echo $title_err; ?></span>
       </form>
     <script>
+	    
     $(document).ready(function () {
         $('#title').typeahead({
-            source: function (query, result) {
-                $.ajax({
-                    url: "dbm_addLibrary.php",
-		    data: 'query=' + query,            
-                    dataType: "json",
-                    type: "POST",
-                    success: function (data) {
-			  result($.map(data, function (item) {
-			return item;
-                        }));
+            source: <?php echo json_encode($array); ?>,
+            success: function (data) { result($.map(data, function (item) { return item; }));}
+	    change: function (event, ui) {
+                if(!ui.item){
+                    //http://api.jqueryui.com/autocomplete/#event-change -
+                    // The item selected from the menu, if any. Otherwise the property is null
+                    //so clear the item for force selection
+                    $("#title").val("");
                     }
                 });
             }
