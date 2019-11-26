@@ -187,11 +187,9 @@ input[type=submit] {
                 	<table>
  		        	<form  action = "" method = "post">
 					<select name="display" style = "margin:20px; padding:10px">
-						<option selected="selected"><?php echo $displaylist; ?></option>
-
-						<option value="read"> Read </option>
-						<option value="wanttoread"> Want to Read </option>
-						<option value="currentlyreading"> Currently Reading </option>
+						<option <?php if ($displaylist == 'read' ) echo 'selected' ; ?> value="read"> Read </option>
+						<option <?php if ($displaylist == 'wanttoread' ) echo 'selected' ; ?> value="wanttoread"> Want to Read </option>
+						<option <?php if ($displaylist == 'currentlyreading' ) echo 'selected' ; ?> value="currentlyreading"> Currently Reading </option>
 					</select>
 					<input type="submit" name="displayList" value="Display" />
 				</form>
