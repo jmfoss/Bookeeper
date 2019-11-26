@@ -13,27 +13,18 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     exit;
 }
 $array = array();
-if (isset($_REQUEST['query'])) {
 	echo "test";
     $query = $_REQUEST['query'];
-    $sql = "SELECT title FROM books WHERE title LIKE %?%";
-    $stmt = sqlsrv_query($conn, $sql, array($query));
+    $sql = "SELECT title FROM books WHERE title LIKE ?";
+    $stmt = sqlsrv_query($conn, $sql, "{$query}%");
     if(!$stmt)
     {
 	    echo "oh no";
 	    print_r(sqlsrv_errors());
     }
-	
     while ($row = sqlsrv_fetch_array($stmt)) {
-        $array[] = array (
-            'label' => $row['title'],
-            'value' => $row['title'],
-        );
+        $array[] = $row['title'];
     }
-	print_r($array);
-    //RETURN JSON ARRAY
-    
-}
 $title = $list = "";
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
