@@ -16,7 +16,7 @@ $array = array();
 if (isset($_REQUEST['query'])) {
 	echo "test";
     $query = $_REQUEST['query'];
-    $sql = "SELECT title FROM books WHERE title LIKE ?";
+    $sql = "SELECT title FROM books WHERE title LIKE %?%";
     $stmt = sqlsrv_query($conn, $sql, array($query));
     if(!$stmt)
     {
@@ -30,8 +30,9 @@ if (isset($_REQUEST['query'])) {
             'value' => $row['title'],
         );
     }
+	print_r($array);
     //RETURN JSON ARRAY
-    echo json_encode($array);
+    
 }
 $title = $list = "";
 if($_SERVER["REQUEST_METHOD"] == "POST")
