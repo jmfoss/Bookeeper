@@ -182,7 +182,7 @@ $(document).ready(function(){
 				</select>
                         <div class="form-group <?php echo (!empty($title_err)) ? 'has-error' : ''; ?>">
 			  <td> <label style = "margin:10px; padding:10px"> Title </label> </td>
-                          <td> <input id="ip2" type="text" class="typeahead tt-query" autocomplete="off" spellcheck="false" name="title" value="<?php echo $title; ?>" style = "margin:10px; padding:2px"> </td>
+                          <td> <input id="ip2" type="text" class="typeahead tt-query" autocomplete="off" spellcheck="false" name="title" value="<?php echo $title; ?>"> </td>
 			  <span class="help-block"><?php echo $title_err; ?></span>
 		        </div>  
                 </table>
