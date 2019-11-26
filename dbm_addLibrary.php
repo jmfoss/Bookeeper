@@ -12,6 +12,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: dbm_login.php");
     exit;
 }
+$array = array();
 if (isset($_REQUEST['query'])) {
 	echo "test";
     $query = $_REQUEST['query'];
@@ -22,7 +23,7 @@ if (isset($_REQUEST['query'])) {
 	    echo "oh no";
 	    print_r(sqlsrv_errors());
     }
-	$array = array();
+	
     while ($row = sqlsrv_fetch_array($stmt)) {
         $array[] = array (
             'label' => $row['title'],
@@ -76,76 +77,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script  type="text/javascript" src="/examples/js/typeahead/0.11.1/typeahead.bundle.js"></script>
-	<script type="text/javascript">
-	$(document).ready(function(){
-	    // Sonstructs the suggestion engine
-	    var titles = new Bloodhound({
-		datumTokenizer: Bloodhound.tokenizers.whitespace,
-		queryTokenizer: Bloodhound.tokenizers.whitespace,
-		// The url points to a json file that contains an array of country names
-		prefetch: 'dbm_addLibrary.php?query=%QUERY'
-	    });
-
-	    // Initializing the typeahead with remote dataset without highlighting
-	    $('.typeahead').typeahead(null, {
-		name: 'title',
-		source: titles,
-		limit: 10 /* Specify max number of suggestions to be displayed */
-	    });
-	});
-	</script>
-	<style type="text/css">
-	.bs-example {
-		font-family: sans-serif;
-		position: relative;
-		margin: 100px;
-	}
-	.typeahead, .tt-query, .tt-hint {
-		border: 2px solid #CCCCCC;
-		border-radius: 8px;
-		font-size: 22px; /* Set input font size */
-		height: 30px;
-		line-height: 30px;
-		outline: medium none;
-		padding: 8px 12px;
-		width: 396px;
-	}
-	.typeahead {
-		background-color: #FFFFFF;
-	}
-	.typeahead:focus {
-		border: 2px solid #0097CF;
-	}
-	.tt-query {
-		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
-	}
-	.tt-hint {
-		color: #999999;
-	}
-	.tt-menu {
-		background-color: #FFFFFF;
-		border: 1px solid rgba(0, 0, 0, 0.2);
-		border-radius: 8px;
-		box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-		margin-top: 12px;
-		padding: 8px 0;
-		width: 422px;
-	}
-	.tt-suggestion {
-		font-size: 22px;  /* Set suggestion dropdown font size */
-		padding: 3px 20px;
-	}
-	.tt-suggestion:hover {
-		cursor: pointer;
-		background-color: #0097CF;
-		color: #FFFFFF;
-	}
-	.tt-suggestion p {
-		margin: 0;
-	}
-</style>
   </head>
   <body>
     <div id="title" align="center"> <img src="logo.png" style ="margin-top: 50px"> </div>
@@ -171,7 +102,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 				</select>
                         <div class="form-group <?php echo (!empty($title_err)) ? 'has-error' : ''; ?>">
 			  <td> <label style = "margin:10px; padding:10px"> Title </label> </td>
-                          <td> <input type="text" class="typeahead tt-query" autocomplete="off" spellcheck="false" name="title" value="<?php echo $title; ?>"> </td>
+                          <td> <input id="ip2" type="text" name="title" value="<?php echo $title; ?>"> </td>
 			  <span class="help-block"><?php echo $title_err; ?></span>
 		        </div>  
                 </table>
@@ -180,6 +111,108 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 	      <input type = "submit"  value = "Submit" style = "margin:20px;margin-top:10px"/>
 	      <span class="help-block"><?php echo $msg; ?></span>
       </form>
+<script>
+function autocomplete(inp, arr) {
+  /*the autocomplete function takes two arguments,
+  the text field element and an array of possible autocompleted values:*/
+  var currentFocus;
+  /*execute a function when someone writes in the text field:*/
+  inp.addEventListener("input", function(e) {
+      var a, b, i, val = this.value;
+      /*close any already open lists of autocompleted values*/
+      closeAllLists();
+      if (!val) { return false;}
+      currentFocus = -1;
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement("DIV");
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      /*append the DIV element as a child of the autocomplete container:*/
+      this.parentNode.appendChild(a);
+      /*for each item in the array...*/
+      for (i = 0; i < arr.length; i++) {
+        /*check if the item starts with the same letters as the text field value:*/
+        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+          /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+          /*make the matching letters bold:*/
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          /*execute a function when someone clicks on the item value (DIV element):*/
+          b.addEventListener("click", function(e) {
+              /*insert the value for the autocomplete text field:*/
+              inp.value = this.getElementsByTagName("input")[0].value;
+              /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+              closeAllLists();
+          });
+          a.appendChild(b);
+        }
+      }
+  });
+  /*execute a function presses a key on the keyboard:*/
+  inp.addEventListener("keydown", function(e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) { //up
+        /*If the arrow UP key is pressed,
+        decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          /*and simulate a click on the "active" item:*/
+          if (x) x[currentFocus].click();
+        }
+      }
+  });
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
+    if (!x) return false;
+    /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+    /*close all autocomplete lists in the document,
+    except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  }
+  /*execute a function when someone clicks in the document:*/
+  document.addEventListener("click", function (e) {
+      closeAllLists(e.target);
+  });
+}
 
-    
+/*An array containing all the country names in the world:*/
+var titles = <?php echo json_echo($array);?>;
+/*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+autocomplete(document.getElementById("ip2"), titles);
+</script>
   </body>
+</html>
