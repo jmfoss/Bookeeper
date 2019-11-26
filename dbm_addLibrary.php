@@ -13,18 +13,18 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     exit;
 }
 $array = array();
-	echo "test";
-    $query = $_REQUEST['query'];
-    $sql = "SELECT title FROM books WHERE title LIKE '{$query}%'";
-    $stmt = sqlsrv_query($conn, $sql);
-    if(!$stmt)
-    {
-	    echo "oh no";
-	    print_r(sqlsrv_errors());
-    }
-    while ($row = sqlsrv_fetch_array($stmt)) {
-        $array[] = $row['title'];
-    }
+$query = $_REQUEST['query'];
+$sql = "SELECT title FROM books WHERE title LIKE '{$query}%'";
+$stmt = sqlsrv_query($conn, $sql);
+if(!$stmt)
+{
+    print_r(sqlsrv_errors());
+}
+while ($row = sqlsrv_fetch_array($stmt)) 
+{
+	$array[] = $row['title'];
+}
+
 $title = $list = "";
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
@@ -250,7 +250,7 @@ function autocomplete(inp, arr) {
 /*An array containing all the country names in the world:*/
 var countries = <?php echo json_encode($array);?>;
 /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
-autocomplete(document.getElementById("myInput"), countries);
+autocomplete(document.getElementById("ip2"), countries);
 </script>
 
 </body>
