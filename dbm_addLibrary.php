@@ -25,7 +25,7 @@ while ($row = sqlsrv_fetch_array($stmt))
 	$array[] = $row['title'];
 }
 
-$title = $list = "";
+$title = $list = $msg = "";
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
      if(empty(trim($_POST["title"])))
@@ -48,11 +48,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
           $stmt = sqlsrv_query($conn, $sql, $params);
           if($stmt == false)
           {
-               echo "This book is already in the your list.";
+               $msg = "This book is already in the your list.";
           }
 	  else
 	  {
-		echo "$title was added to $list";
+		$msg = "$title was added to $list";
 	  }
      }
 }
@@ -164,6 +164,7 @@ input[type=submit] {
 			  <div class="autocomplete" style="width:300px;">
 			    <input id="myInput" type="text" name="title" placeholder="title">
 			    <span class="help-block"><?php echo $title_err; ?></span>
+		            <span class="help-block"><?php echo $msg; ?></span>
 			  </div>
 			</form>
 
