@@ -140,6 +140,9 @@ input[type=submit] {
 </body>
   </head>
   <body>
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="//netsh.pp.ua/upwork-demo/1/js/typeahead.js"></script>
     <div id="title" align="center"> <img src="logo.png" style ="margin-top: 50px"> </div>
     <div class="topnav" id="myTopnav">
       <a href="dbm_main.php"> Home </a>
@@ -180,9 +183,6 @@ input[type=submit] {
             success: function (data) { result($.map(data, function (item) { return item; }));}
 	    change: function (event, ui) {
                 if(!ui.item){
-                    //http://api.jqueryui.com/autocomplete/#event-change -
-                    // The item selected from the menu, if any. Otherwise the property is null
-                    //so clear the item for force selection
                     $("#title").val("");
                     }
                 });
