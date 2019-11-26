@@ -13,7 +13,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     exit;
 }
 $displaylist = $_POST['display'];
-echo $displaylist;
 $sql = "EXEC displayList @userID = ?, @list = ?";
 $params = array($_SESSION["userID"], $displayList);
 $bookList = sqlsrv_query($conn, $sql, $params);
@@ -175,22 +174,21 @@ input[type=submit] {
    	
 
         </div>
-              <div class = "viewlist" id="display">
-                <table>
-                    <tr>
- 		        <form  action = "" method = "post">
-			<select name="display" style = "margin:20px; padding:10px">
-				<option value="read"> Read </option>
-				<option value="wanttoread"> Want to Read </option>
-				<option value="currentlyreading"> Currently Reading </option>
-			</select>
-			</form>
-		</table>
+
 		<head>
 			<title>Selected List</title>
 		</head>
 		<body>
-			<h1>Selected List</h1>
+			<h1>Lists</h1>
+                	<table>
+ 		        	<form  action = "" method = "post">
+					<select name="display" style = "margin:20px; padding:10px">
+						<option value="read"> Read </option>
+						<option value="wanttoread"> Want to Read </option>
+						<option value="currentlyreading"> Currently Reading </option>
+					</select>
+				</form>
+			</table>
 			<hr>
 			<table border = '2'>
 			<tr>
