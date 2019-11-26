@@ -137,12 +137,45 @@ input[type=submit] {
 </head>     
 <body>
 
-<h2>Autocomplete</h2>
 
-<p>Start typing:</p>
+</body>
+  </head>
+  <body>
+    <div id="title" align="center"> <img src="logo.png" style ="margin-top: 50px"> </div>
+    <div class="topnav" id="myTopnav">
+      <a href="dbm_main.php"> Home </a>
+      <a href="dbm_searchbooks.html"> Search Books </a>
+      <a href="dbm_addbooks.html"> Add Books </a>
+      <a href="dbm_library.html" class="active"> My Library </a>
+        <i class="fa fa-bars"> </i>
+      </a>
+    </div>
+        <form autocomplete="off" action = "" method = "post">
 
-<!--Make sure the form has the autocomplete function switched off:-->
+        </div>
+              <div class = "autocomplete" id="questions">
+                <table>
+                    <tr>
+ 	
+            			<select name="list" style = "margin:20px; padding:10px">
+                			<option value="read"> Read </option>
+                			<option value="wanttoread"> Want to Read </option>
+                			<option value="currentlyreading"> Currently Reading </option>
+				</select>
+                        <!--Make sure the form has the autocomplete function switched off:-->
+			<form autocomplete="off" action="/action_page.php">
+			  <div class="autocomplete" style="width:300px;">
+			    <input id="myInput" type="text" name="title" placeholder="title">
+		            <span class="help-block"><?php echo $title_err; ?></span>
+			  </div>
+			</form>
 
+                </table>
+        	</div>
+          <input type = "reset"  value = "Reset Form" style = "margin:20px;margin-top:10px"/>
+	      <input type = "submit"  value = "Submit" style = "margin:20px;margin-top:10px"/>
+	      <span class="help-block"><?php echo $msg; ?></span>
+      </form>
 <script>
 function autocomplete(inp, arr) {
   /*the autocomplete function takes two arguments,
@@ -246,44 +279,5 @@ var countries = <?php echo json_encode($array);?>;
 /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
 autocomplete(document.getElementById("myInput"), countries);
 </script>
-
-</body>
-  </head>
-  <body>
-    <div id="title" align="center"> <img src="logo.png" style ="margin-top: 50px"> </div>
-    <div class="topnav" id="myTopnav">
-      <a href="dbm_main.php"> Home </a>
-      <a href="dbm_searchbooks.html"> Search Books </a>
-      <a href="dbm_addbooks.html"> Add Books </a>
-      <a href="dbm_library.html" class="active"> My Library </a>
-        <i class="fa fa-bars"> </i>
-      </a>
-    </div>
-        <form autocomplete="off" action = "" method = "post">
-
-        </div>
-              <div class = "autocomplete" id="questions">
-                <table>
-                    <tr>
- 	
-            			<select name="list" style = "margin:20px; padding:10px">
-                			<option value="read"> Read </option>
-                			<option value="wanttoread"> Want to Read </option>
-                			<option value="currentlyreading"> Currently Reading </option>
-				</select>
-                        <!--Make sure the form has the autocomplete function switched off:-->
-			<form autocomplete="off" action="/action_page.php">
-			  <div class="autocomplete" style="width:300px;">
-			    <input id="myInput" type="text" name="title" placeholder="title">
-			  </div>
-			</form>
-			  <span class="help-block"><?php echo $title_err; ?></span>
-		        </div>  
-                </table>
-        	</div>
-          <input type = "reset"  value = "Reset Form" style = "margin:20px;margin-top:10px"/>
-	      <input type = "submit"  value = "Submit" style = "margin:20px;margin-top:10px"/>
-	      <span class="help-block"><?php echo $msg; ?></span>
-      </form>
   </body>
 </html>
