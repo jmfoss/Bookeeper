@@ -55,9 +55,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 	  }
      }
 }
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -70,42 +67,33 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     <link rel="stylesheet" type="text/css" href="style.css">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-</head>     
-<body>
 <style>
 * {
   box-sizing: border-box;
 }
-
 body {
   font: 16px Arial;  
 }
-
 /*the container must be positioned relative:*/
 .autocomplete {
   position: relative;
   display: inline-block;
 }
-
 input {
   border: 1px solid transparent;
   background-color: #f1f1f1;
   padding: 10px;
   font-size: 16px;
 }
-
 input[type=text] {
   background-color: #f1f1f1;
   width: 100%;
 }
-
 input[type=submit] {
   background-color: DodgerBlue;
   color: #fff;
   cursor: pointer;
 }
-
 .autocomplete-items {
   position: absolute;
   border: 1px solid #d4d4d4;
@@ -117,25 +105,25 @@ input[type=submit] {
   left: 0;
   right: 0;
 }
-
 .autocomplete-items div {
   padding: 10px;
   cursor: pointer;
   background-color: #fff; 
   border-bottom: 1px solid #d4d4d4; 
 }
-
 /*when hovering an item:*/
 .autocomplete-items div:hover {
   background-color: #e9e9e9; 
 }
-
 /*when navigating through the items using the arrow keys:*/
 .autocomplete-active {
   background-color: DodgerBlue !important; 
   color: #ffffff; 
 }
 </style>
+</head>     
+<body>
+
 
 </body>
   </head>
@@ -161,7 +149,7 @@ input[type=submit] {
 				<option value="currentlyreading"> Currently Reading </option>
 			</select>
 			  <div class="autocomplete" style="width:300px;">
-			    <input id="title" type="text" name="title" placeholder="title">
+			    <input id="myInput" type="text" name="title" placeholder="title">
 			  </div>
 			</form>
 
@@ -269,10 +257,10 @@ function autocomplete(inp, arr) {
       closeAllLists(e.target);
   });
 }
-
-var titles = <?php echo json_encode($array); ?>;
-autocomplete(document.getElementById("title"), titles);
+/*An array containing all the country names in the world:*/
+var countries = <?php echo json_encode($array);?>;
+/*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+autocomplete(document.getElementById("myInput"), countries);
 </script>
-
   </body>
 </html>
