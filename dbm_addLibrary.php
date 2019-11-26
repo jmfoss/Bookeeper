@@ -12,11 +12,11 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: dbm_login.php");
     exit;
 }
-$displaylist = trim($_POST["list"]);
+$displaylist = trim($_POST["display"]);
 $sql = "EXEC displayList @userID = ?, @list = ?";
 $params = array($_SESSION["userID"], $displayList);
 $bookList = sqlsrv_query($conn, $sql, $params);
-print_r(sqlsrv_fetch_array($bookList));
+print_r($bookList);
 if(!$bookList)
 {
     print_r(sqlsrv_errors());
@@ -38,6 +38,7 @@ sqlsrv_free_stmt( $stmt);
 $title = $list = $msg = "";
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
+     $displaylist = trim($_POST["display"]);
      if(empty(trim($_POST["title"])))
      {
       $title_err = "Please enter a title.";
@@ -188,13 +189,11 @@ input[type=submit] {
 						<option value="wanttoread"> Want to Read </option>
 						<option value="currentlyreading"> Currently Reading </option>
 					</select>
+					<input type="submit" name="displayList" value="Display" />
 				</form>
 			</table>
 			<hr>
 			<table border = '2'>
-			<tr>
-			<th>title</th>
-			</tr>
 			<?php
 			while ($row = sqlsrv_fetch_array($bookList)) 
 			{
@@ -203,7 +202,6 @@ input[type=submit] {
 			    echo "</tr>";
 			}
 			?>
-
 			</table>
 			</body>
         	</div>
