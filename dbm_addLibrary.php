@@ -24,6 +24,7 @@ if(!$stmt)
 while ($row = sqlsrv_fetch_array($stmt)) 
 {
 	$bookArr[] = $row['title'];
+	print_r($row);
 }
 sqlsrv_free_stmt( $stmt);
 
