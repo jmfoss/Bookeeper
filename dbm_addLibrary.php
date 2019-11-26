@@ -12,15 +12,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: dbm_login.php");
     exit;
 }
-$displaylist = trim($_POST["display"]);
-$sql = "EXEC displayList @userID = ?, @list = ?";
-$params = array($_SESSION["userID"], $displayList);
-$bookList = sqlsrv_query($conn, $sql, $params);
-print_r(sqlsrv_fetch_array($bookList));
-if(!$bookList)
-{
-    print_r(sqlsrv_errors());
-}
+
 
 $array = array();
 $query = $_REQUEST['query'];
@@ -38,7 +30,15 @@ sqlsrv_free_stmt( $stmt);
 $title = $list = $msg = "";
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
-     $displaylist = trim($_POST["display"]);
+     	$displaylist = trim($_POST["display"]);
+	$sql = "EXEC displayList @userID = ?, @list = ?";
+	$params = array($_SESSION["userID"], $displayList);
+	$bookList = sqlsrv_query($conn, $sql, $params);
+	print_r(sqlsrv_fetch_array($bookList));
+	if(!$bookList)
+	{
+	    print_r(sqlsrv_errors());
+	}
      if(empty(trim($_POST["title"])))
      {
       $title_err = "Please enter a title.";
