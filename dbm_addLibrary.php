@@ -78,16 +78,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 		datumTokenizer: Bloodhound.tokenizers.whitespace,
 		queryTokenizer: Bloodhound.tokenizers.whitespace,
 		// The url points to a json file that contains an array of country names
-		prefetch: '/examples/data/countries.json'
+		prefetch: 'dbm_addLibrary.php?query=%QUERY'
 	    });
 
-	    // Initializing the typeahead with remote dataset
+	    // Initializing the typeahead with remote dataset without highlighting
 	    $('.typeahead').typeahead(null, {
 		name: 'title',
 		source: titles,
-		limit: 10 /* Specify maximum number of suggestions to be displayed */
+		limit: 10 /* Specify max number of suggestions to be displayed */
 	    });
-	});  
+	});
 	</script>
 	<style type="text/css">
 	.bs-example {
@@ -149,24 +149,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
       <a href="dbm_library.html" class="active"> My Library </a>
         <i class="fa fa-bars"> </i>
       </a>
-<script>
-$(document).ready(function(){
-    // Sonstructs the suggestion engine
-    var titles = new Bloodhound({
-        datumTokenizer: Bloodhound.tokenizers.whitespace,
-        queryTokenizer: Bloodhound.tokenizers.whitespace,
-        // The url points to a json file that contains an array of country names
-        prefetch: 'dbm_addLibrary.php?query=%QUERY'
-    });
-    
-    // Initializing the typeahead with remote dataset without highlighting
-    $('.typeahead').typeahead(null, {
-        name: 'title',
-        source: titles,
-        limit: 10 /* Specify max number of suggestions to be displayed */
-    });
-});
-</script>
     </div>
         <form action = "" method = "post">
 
