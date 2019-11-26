@@ -146,8 +146,7 @@ input[type=submit] {
       <a href="dbm_main.php"> Home </a>
       <a href="dbm_searchbooks.html"> Search Books </a>
       <a href="dbm_addbooks.html"> Add Books </a>
-      <a href="dbm_library.html" class="active"> My Library </a>
-        <i class="fa fa-bars"> </i>
+      <a href="dbm_addLibrary.php" class="active"> My Library </a>
       </a>
     </div>
         <form autocomplete="off" action = "" method = "post">
