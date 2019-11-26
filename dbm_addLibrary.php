@@ -68,6 +68,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>  
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
@@ -140,9 +142,6 @@ input[type=submit] {
 </body>
   </head>
   <body>
-    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="//netsh.pp.ua/upwork-demo/1/js/typeahead.js"></script>
     <div id="title" align="center"> <img src="logo.png" style ="margin-top: 50px"> </div>
     <div class="topnav" id="myTopnav">
       <a href="dbm_main.php"> Home </a>
@@ -175,20 +174,28 @@ input[type=submit] {
 	      <span class="help-block"><?php echo $msg; ?></span>
 	      <span class="help-block"><?php echo $title_err; ?></span>
       </form>
-    <script>
-	    
-    $(document).ready(function () {
-        $('#title').typeahead({
-            source: <?php echo json_encode($array); ?>,
-            success: function (data) { result($.map(data, function (item) { return item; }));}
-	    change: function (event, ui) {
-                if(!ui.item){
-                    $("#title").val("");
-                    }
-                });
-            }
-        });
-    });
+<script>
+$(document).ready(function(){
+ var array = <?php echo json_encode($array); ?>;
+ $('#title').typeahead({
+  source: function(query, result)
+  {
+   $.ajax({
+    url:"fetch.php",
+    method:"POST",
+    data:{query:query},
+    dataType:"json",
+    success:function(array)
+    {
+     result($.map(array, function(item){
+      return item;
+     }));
+    }
+   })
+  }
+ });
+ 
+});
 </script>
   </body>
 </html>
