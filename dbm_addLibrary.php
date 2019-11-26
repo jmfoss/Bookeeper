@@ -31,6 +31,7 @@ $title = $list = $msg = "";
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
      	$displaylist = trim($_POST["display"]);
+	echo $displaylist;
 	$sql = "EXEC displayList @userID = ?, @list = ?";
 	$params = array($_SESSION["userID"], $displayList);
 	$bookList = sqlsrv_query($conn, $sql, $params);
