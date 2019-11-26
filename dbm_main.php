@@ -41,8 +41,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <!-- Table with links to ppt, tech doc and progress report -->
     <table align = "center">
       <tr>
-        <td style = "margin:20px; padding:20px; color:#edeff7; background-color:#2b3370"> <a href="isptechdoc.pdf"> Presentation </a> </td>
-        <td style = "margin:20px; padding:20px; color:#edeff7; background-color:#2b3370"> <a href="ppt.pdf"> Final Report </a> </td>
+        <td style = "margin:20px; padding:20px; color:#2b3770; background-color:#b1bfcc"> <a href="isptechdoc.pdf"> Presentation </a> </td>
+        <td style = "margin:20px; padding:20px; color:#2b3770; background-color:#b1bfcc"> <a href="ppt.pdf"> Final Report </a> </td>
       </tr>
     </table>
 
