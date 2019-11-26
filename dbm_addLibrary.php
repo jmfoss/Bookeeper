@@ -88,10 +88,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         <i class="fa fa-bars"> </i>
       </a>
     </div>
-        <form action = "" method = "post">
+        <form autocomplete="off" action = "" method = "post">
 
         </div>
-              <div class = "wrapper" id="questions">
+              <div class = "autocomplete" id="questions">
                 <table>
                     <tr>
  	
@@ -102,7 +102,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 				</select>
                         <div class="form-group <?php echo (!empty($title_err)) ? 'has-error' : ''; ?>">
 			  <td> <label style = "margin:10px; padding:10px"> Title </label> </td>
-                          <td> <input id="ip2" type="text" name="title" value="<?php echo $title; ?>"> </td>
+                          <td> <input id="ip2" type="text" name="title" autocomplete="off" value="<?php echo $title; ?>"> </td>
 			  <span class="help-block"><?php echo $title_err; ?></span>
 		        </div>  
                 </table>
