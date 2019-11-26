@@ -30,10 +30,11 @@ sqlsrv_free_stmt( $stmt);
 $title = $list = $msg = "";
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
+	$displaylist = trim($_POST["display"]);
 	$sqlbook = "EXEC displayList @userID = ?, @list = ?";
 	$paramsbook = array(
 			array($_SESSION["userID"], SQLSRV_PARAM_IN),
-                        array(trim($_POST["display"]), SQLSRV_PARAM_IN)	
+                        array($displaylist, SQLSRV_PARAM_IN)	
 			);
 	$bookList = sqlsrv_query($conn, $sqlbook, $paramsbook);
 	if(!$bookList)
