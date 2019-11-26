@@ -16,6 +16,7 @@ $displaylist = $_POST['display'];
 $sql = "EXEC displayList @userID = ?, @list = ?";
 $params = array($_SESSION["userID"], $displayList);
 $bookList = sqlsrv_query($conn, $sql, $params);
+print_r(sqlsrv_fetch_array($bookList));
 if(!$bookList)
 {
     print_r(sqlsrv_errors());
