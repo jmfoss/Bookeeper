@@ -142,12 +142,6 @@ input[type=submit] {
 <p>Start typing:</p>
 
 <!--Make sure the form has the autocomplete function switched off:-->
-<form autocomplete="off" action="/action_page.php">
-  <div class="autocomplete" style="width:300px;">
-    <input id="myInput" type="text" name="myCountry" placeholder="Country">
-  </div>
-  <input type="submit">
-</form>
 
 <script>
 function autocomplete(inp, arr) {
@@ -250,7 +244,7 @@ function autocomplete(inp, arr) {
 /*An array containing all the country names in the world:*/
 var countries = <?php echo json_encode($array);?>;
 /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
-autocomplete(document.getElementById("ip2"), countries);
+autocomplete(document.getElementById("myInput"), countries);
 </script>
 
 </body>
@@ -277,9 +271,12 @@ autocomplete(document.getElementById("ip2"), countries);
                 			<option value="wanttoread"> Want to Read </option>
                 			<option value="currentlyreading"> Currently Reading </option>
 				</select>
-                        <div class="form-group <?php echo (!empty($title_err)) ? 'has-error' : ''; ?>">
-			  <td> <label style = "margin:10px; padding:10px"> Title </label> </td>
-                          <td> <input id="ip2" type="text" name="title" autocomplete="off" value="<?php echo $title; ?>"> </td>
+                        <!--Make sure the form has the autocomplete function switched off:-->
+			<form autocomplete="off" action="/action_page.php">
+			  <div class="autocomplete" style="width:300px;">
+			    <input id="myInput" type="text" name="title" placeholder="title">
+			  </div>
+			</form>
 			  <span class="help-block"><?php echo $title_err; ?></span>
 		        </div>  
                 </table>
