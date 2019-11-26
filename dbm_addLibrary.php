@@ -13,6 +13,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     exit;
 }
 if (isset($_REQUEST['query'])) {
+	echo "test";
     $query = $_REQUEST['query'];
     $sql = "SELECT title FROM books WHERE title LIKE ?";
     $stmt = sqlsrv_query($conn, $sql, array($query));
