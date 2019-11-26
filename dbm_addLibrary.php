@@ -13,6 +13,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     exit;
 }
 $displaylist = $_POST['display'];
+echo $displaylist;
 $bookArr = array();
 $sql = "EXEC displayList @userID = ?, @list = ?";
 $params = array($_SESSION["userID"], $displayList);
