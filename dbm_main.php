@@ -56,6 +56,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
           <form action="dbm_logout.php" method="post">
                 <td> <label style = "margin:10px; padding:10px"> <input type="submit" name="submit" value="Log out" style = "margin:10px; padding:2px"/> </td>
           </form>
+          <form action="dbm_delete.php" method="post">
+                <td> <label style = "margin:10px; padding:10px"> <input type="submit" name="submit" value="Delete Account" style = "margin:10px; padding:2px"/> </td>
+          </form>
         </tr>
     </table>
   </body>
