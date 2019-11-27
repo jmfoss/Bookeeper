@@ -17,9 +17,19 @@
 
         // $output contains the output string
         $output = curl_exec($ch);
-        echo $output;
         // close curl resource to free up system resources
         curl_close($ch);   
+include "bootstrap.php";
+
+$options = array
+(
+    'hostname' => SOLR_SERVER_HOSTNAME,
+    'port'     => SOLR_SERVER_PORT,
+);
+
+$client = new SolrClient($options);
+
+
 ?>
 
 <!DOCTYPE html>
