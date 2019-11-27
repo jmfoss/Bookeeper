@@ -6,15 +6,6 @@
 
 <?php
 
-include "bootstrap.php";
-
-$options = array
-(
-    'hostname' => SOLR_SERVER_HOSTNAME,
-    'login'    => SOLR_SERVER_USERNAME,
-    'password' => SOLR_SERVER_PASSWORD,
-    'port'     => SOLR_SERVER_PORT,
-);
 $options = array (
     'host' => "localhost",
     'port' => 8983, //port is required
