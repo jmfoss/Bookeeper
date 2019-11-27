@@ -6,31 +6,20 @@
 
 
 <?php
-include "bootstrap.php";
-$options = array
-(
-    'hostname' => SOLR_SERVER_HOSTNAME,
-    'port'     => SOLR_SERVER_PORT,
-    'path'     => "/solr/#/bookeeper",
-);
+      // create curl resource
+        $ch = curl_init();
 
-$client = new SolrClient($options);
+        // set url
+        curl_setopt($ch, CURLOPT_URL, "http://104.230.35.171:8983/solr/bookeeper/select?q=title:Black");
 
-//$query = new SolrQuery();
+        //return the transfer as a string
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
-//$query->setQuery('title:Black');
-
-//$query->setStart(0);
-
-//$query->setRows(50);
-
-//$query->addField('title')->addField('number_of_pages')->addField('publish_date')->addField('publishers');
-
-//$query_response = $client->query($query);
-
-//$response = $query_response->getResponse();
-
-
+        // $output contains the output string
+        $output = curl_exec($ch);
+        echo $output;
+        // close curl resource to free up system resources
+        curl_close($ch);   
 ?>
 
 <!DOCTYPE html>
