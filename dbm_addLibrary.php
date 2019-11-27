@@ -27,9 +27,20 @@ while ($row = sqlsrv_fetch_array($stmt))
 	$array[] = $row['title'];
 }
 sqlsrv_free_stmt( $stmt);
-$title = $list = $msg = $displaylist = "";
+$title = $list = $msg = $displaylist = $move_msg = "";
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
+	if(isset($_POST["move"]))
+	{
+		$sqlmove = "EXEC moveBook @userID = ?, @title = ?, @list = ?";
+		$paramsmove = array(
+				  array($_SESSION["userID"], SQLSRV_PARAM_IN),
+				  array($title, SQLSRV_PARAM_IN),
+				  array($list, SQLSRV_PARAM_IN)
+				 );
+		sqlsrv_query($conn, $sqlmove, $paramsmove);
+		$move_msg = "{$title} moved.";
+	}
 	$displaylist = trim($_POST["display"]);
 	$sqlbook = "EXEC displayList @userID = ?, @list = ?";
 	$paramsbook = array(
@@ -248,9 +259,8 @@ th {
                 </table>
         	</div>
           <input type = "reset"  value = "Reset Form" style = "margin:20px;margin-top:10px"/>
-	      <input type = "submit"  value = "Submit" style = "margin:20px;margin-top:10px"/>
-	      <span class="help-block"><?php echo $msg; ?></span>
-	      <span class="help-block"><?php echo $title_err; ?></span>
+	      <input type = "submit"  value = "Submit" name = "move" style = "margin:20px;margin-top:10px"/>
+	      <span class="help-block"><?php echo $move_msg; ?></span>
       </form>
    	
 
