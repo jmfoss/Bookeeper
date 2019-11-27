@@ -135,7 +135,10 @@ input[type=submit] {
   background-color: DodgerBlue !important; 
   color: #ffffff; 
 }
-	
+
+tr {
+     background-color: #fff;
+}
 tr:nth-child(even) {background-color: #f2f2f2;}
 	
 th, td {
