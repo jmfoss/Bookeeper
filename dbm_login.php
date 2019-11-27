@@ -101,8 +101,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         
         
         #test {
-            animation-delay: 5s;
             animation: fadein 5s;
+            animation-duration: 5s;
+            animation-delay: 3s;
             -moz-animation: fadein 5s; /* Firefox */
             -webkit-animation: fadein 5s; /* Safari and Chrome */
             -o-animation: fadein 5s; /* Opera */
