@@ -36,9 +36,16 @@ if (isset($_POST['move']))
 			  array($title, SQLSRV_PARAM_IN),
 			  array($list, SQLSRV_PARAM_IN)
 			 );
-	sqlsrv_query($conn, $sqlmove, $paramsmove);
-	$move_msg = "{$title} moved.";
-	echo sqlsrv_errors();
+	$stmtMove = sqlsrv_query($conn, $sqlmove, $paramsmove);
+	if (!$stmtMove)
+	{
+			echo sqlsrv_errors();
+	}
+	else
+	{
+		$move_msg = "$title has been moved.";
+	}
+	
 }
 else if (isset($_POST['add']))
 {
