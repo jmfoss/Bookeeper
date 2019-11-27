@@ -102,7 +102,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 </head>
 <body>
     <div id="title" align="center"> <img src="logo.png" style ="margin-top: 50px"> </div>
-    <div class="wrapper" style = "margin: auto; width: 50%; padding: 10px">
+    <div class="wrapper" style = "margin: auto; width: 40%; padding: 10px">
         <h2>Login</h2>
         <p>Please fill in your credentials to login.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
