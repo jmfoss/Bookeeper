@@ -50,19 +50,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             $row = sqlsrv_fetch_array($stmt);
             // Check if username exists, if yes then verify password
             if(!empty($row))
-            {                    
-                
-                $hash = password_hash($password, PASSWORD_DEFAULT);
-                echo $hash;
-                echo "\n";
-                if (password_verify($password, $hash))
-                {
-                    echo "verified\n";
-                }
-                {
-                    echo $row["password"];
-                    echo "\n";
-                }
+            {                              
                 if(password_verify($password, $row["password"]))
                 {
                     // Password is correct, so start a new session
