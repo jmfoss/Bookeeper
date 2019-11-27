@@ -25,7 +25,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <!-- <div id="title"> <h1 align="center"> B O O K E E P E R </h1> </div> -->
     <div class="topnav" id="myTopnav">
       <a href="dbm_main.php" class="active"> Home </a>
-      <a href="dbm_searchbooks.html"> Search Books </a>
+      <a href="dbm_searchbooks.php"> Search Books </a>
       <a href="dbm_addbook.php"> Add Books </a>
       <a href="dbm_addLibrary.php"> My Library </a>
       <!-- <a href="uploadDoc.html"> Upload Documents </a> -->
