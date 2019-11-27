@@ -138,6 +138,11 @@ input[type=submit] {
 	
 tr:nth-child(even) {background-color: #f2f2f2;}
 	
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+	
 </style>
 </head>     
 <body>
@@ -198,7 +203,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 				</form>
 			</table>
 			<hr>
-			<table border = '2'>
+			<table>
 			<?php
 			while ($row = sqlsrv_fetch_array($bookList)) 
 			{
