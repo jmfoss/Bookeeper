@@ -30,6 +30,15 @@ sqlsrv_free_stmt( $stmt);
 $title = $list = $msg = $displaylist = $move_msg = "";	
 if (isset($_POST['move']))
 {
+	if(empty(trim($_POST["titlemove"])))
+	     {
+	      $move_msg = "Please enter a title.";
+	     } 
+	     else
+	     {
+	      $title = trim($_POST["titlemove"]);
+	     }
+     	$list = trim($_POST["listmove"]);
 	$sqlmove = "EXEC moveBook @userID = ?, @title = ?, @list = ?";
 	$paramsmove = array(
 			  array($_SESSION["userID"], SQLSRV_PARAM_IN),
@@ -258,9 +267,9 @@ th {
                 <table>
                     <tr>
  			<div class="autocomplete" style="width:300px;">
-			 <input id="moveInput" type="text" name="title" placeholder="title">
+			 <input id="moveInput" type="text" name="titlemove" placeholder="title">
 			 </div>
-			 <select name="To" style = "margin:20px; padding:10px">
+			 <select name="listmove" style = "margin:20px; padding:10px">
 				<option value="read"> Read </option>
 				<option value="wanttoread"> Want to Read </option>
 				<option value="currentlyreading"> Currently Reading </option>
