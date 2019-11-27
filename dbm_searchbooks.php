@@ -16,7 +16,7 @@
     <div id="title" align="center"> <img src="logo.png" style ="margin-top: 50px"> </div>
     <div class="topnav" id="myTopnav">
       <a href="dbm_main.php"> Home </a>
-      <a href="dbm_searchbooks.html" class="active"> Search Books </a>
+      <a href="dbm_searchbooks.php" class="active"> Search Books </a>
       <a href="dbm_addbook.php"> Add Books </a>
       <a href="dbm_addLibrary.php"> My Library </a>
       <!-- <a href="uploadDoc.html"> Upload Documents </a> -->
