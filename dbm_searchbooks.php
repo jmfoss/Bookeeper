@@ -6,7 +6,7 @@
 
 
 <?php
-
+include "bootstrap.php";
 $options = array (
     'host' => "localhost",
     'port' => 8983, 
