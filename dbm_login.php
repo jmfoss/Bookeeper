@@ -98,11 +98,53 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     <style type="text/css">
         body{ font: 14px sans-serif; }
         .wrapper{ width: 350px; padding: 20px; }
+        
+        
+        #test {
+            animation: fadein 2s;
+            -moz-animation: fadein 2s; /* Firefox */
+            -webkit-animation: fadein 2s; /* Safari and Chrome */
+            -o-animation: fadein 2s; /* Opera */
+        }
+        @keyframes fadein {
+            from {
+               opacity:0;
+            }
+            to {
+               opacity:1;
+            }
+         }
+        
+        @-moz-keyframes fadein { /* Firefox */
+            from {
+                opacity:0;
+            }
+            to {
+                opacity:1;
+            }
+         }
+         @-webkit-keyframes fadein { /* Safari and Chrome */
+            from {
+                opacity:0;
+            }
+            to {
+                 opacity:1;
+            }
+         }
+         
+        @-o-keyframes fadein { /* Opera */
+            from {
+                opacity:0;
+            }
+            to {
+              opacity: 1;
+            }
+        }    
     </style>
 </head>
 <body>
     <div id="title" align="center"> <img src="logo.png" style ="margin-top: 50px"> </div>
-    <div class="wrapper" style = "margin: auto; width: 40%; padding: 10px">
+    <div class="wrapper" id = "test" style = "margin: auto; width: 40%; padding: 10px">
         <h2>Login</h2>
         <p>Please fill in your credentials to login.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
