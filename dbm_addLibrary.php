@@ -266,15 +266,14 @@ th {
 		<h1 style = "margin-left: 25px"> Move book</h1>
                 <table>
                     <tr>
- 			<div class="autocomplete" style="width:300px;">
-			 <input id="moveInput" type="text" name="titlemove" placeholder="title">
-			 </div>
 			 <select name="listmove" style = "margin:20px; padding:10px">
 				<option value="read"> Read </option>
 				<option value="wanttoread"> Want to Read </option>
 				<option value="currentlyreading"> Currently Reading </option>
 			</select>
-
+ 			<div class="autocomplete" style="width:300px;">
+			 <input id="moveInput" type="text" name="titlemove" placeholder="title">
+			 </div>
 			</form>
 
                 </table>
