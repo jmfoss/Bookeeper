@@ -229,7 +229,7 @@ th {
     <div id="title" align="center"> <img src="logo.png" style ="margin-top: 50px"> </div>
     <div class="topnav" id="myTopnav">
       <a href="dbm_main.php"> Home </a>
-      <a href="dbm_searchbooks.html"> Search Books </a>
+      <a href="dbm_searchbooks.php"> Search Books </a>
       <a href="dbm_addbook.php"> Add Books </a>
       <a href="dbm_addLibrary.php" class="active"> My Library </a>
       </a>
