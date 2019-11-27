@@ -153,6 +153,38 @@ th {
   color: white;
 }
 	
+/* Split the screen in half */
+.split {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+  background-color: #111;
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+  background-color: red;
+}
+
+/* If you want the content centered horizontally and vertically */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+	
 </style>
 </head>     
 <body>
@@ -172,8 +204,8 @@ th {
         <form autocomplete="off" action = "" method = "post">
 
         </div>
-	      <h1 style = "margin-left: 25px"> Add to List </h1>
-              <div class = "autocomplete" id="questions">
+              <div class = "autocomplete" class="split left" id="questions">
+		<h1 style = "margin-left: 25px"> Add to List </h1>
                 <table>
                     <tr>
  	
@@ -202,6 +234,7 @@ th {
 			<title>Selected List</title>
 		</head>
 		<body>
+		<div class="split right">
 			<h1 style = "margin-left: 25px"> View Lists </h1>
                 	<table>
  		        	<form  action = "" method = "post">
