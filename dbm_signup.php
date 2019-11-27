@@ -81,19 +81,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     // Check input errors before inserting in database
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err))
     {
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        echo $hashed_password;
         $params = array(   
-                        //array(&$_SESSION["userID"], SQLSRV_PARM_OUT),
                         array($username, SQLSRV_PARAM_IN),
-                        array($hashed_password, SQLSRV_PARAM_IN),
+                        array(password_hash($password, PASSWORD_DEFAULT), SQLSRV_PARAM_IN),
                         );
         $sql = "EXEC addUser @username = ?, @password = ?";
         $stmt = sqlsrv_query($conn, $sql, $params);
         if($stmt != False)
         {
             // Redirect to login page
-            //header("location: dbm_main.php");
+            header("location: dbm_main.php");
         }
         else
         {
