@@ -51,7 +51,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             // Check if username exists, if yes then verify password
             if(!empty($row))
             {                    
-                echo $row["password"];
+                
                 if(password_verify($password, $row["password"]))
                 {
                     // Password is correct, so start a new session
@@ -67,7 +67,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                 }
                 else
                 {
-                    $password_err = "The password you entered was not valid.";
+                    $password_err = "$row['password'] The password you entered was not valid.";
                 }
             } 
             else
