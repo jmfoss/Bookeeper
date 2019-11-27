@@ -1,7 +1,7 @@
 <?php
 
 /* Domain name of the Solr server */
-define('SOLR_SERVER_HOSTNAME', 'localhost');
+define('SOLR_SERVER_HOSTNAME', '104.230.35.171');
 
 /* Whether or not to run in secure mode */
 define('SOLR_SECURE', true);
