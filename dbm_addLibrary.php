@@ -173,6 +173,7 @@ th {
 /* Control the right side */
 .right {
   right: 0;
+  margin-top: 100px;
   background-color: red;
 }
 
