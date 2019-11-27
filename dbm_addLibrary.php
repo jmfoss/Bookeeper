@@ -212,6 +212,7 @@ th, td {
 			{
 			    echo "<tr>";
 			    echo "<td>" . $row['title'] ."</td>";
+			    echo "<td>" . $row['author'] ."</td>";
 			    echo "</tr>";
 			}
 			?>
