@@ -122,7 +122,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
  
     <div class="wrapper">
      <table align = "center">   
-     <h2>Sign Up</h2>
+     <tr> 
+      <td> <h2>Sign Up</h2> </td>
+     </tr>
         <br>
         <p>Please fill this form to create an account.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
