@@ -40,21 +40,9 @@ if (isset($_POST['move']))
 	$move_msg = "{$title} moved.";
 	echo sqlsrv_errors();
 }
-if($_SERVER["REQUEST_METHOD"] == "POST")
+else if (isset($_POST['add']))
 {
-	
 
-	$displaylist = trim($_POST["display"]);
-	$sqlbook = "EXEC displayList @userID = ?, @list = ?";
-	$paramsbook = array(
-			array($_SESSION["userID"], SQLSRV_PARAM_IN),
-                        array($displaylist, SQLSRV_PARAM_IN)	
-			);
-	$bookList = sqlsrv_query($conn, $sqlbook, $paramsbook);
-	if(!$bookList)
-	{
-	    print_r(sqlsrv_errors());
-	}
      if(empty(trim($_POST["title"])))
      {
       $title_err = "Please enter a title.";
@@ -83,6 +71,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 	  }
 	  sqlsrv_free_stmt( $stmt);
      }
+}
+else if (isset($_POST['displayList'])) 
+{
+	$displaylist = trim($_POST["display"]);
+	$sqlbook = "EXEC displayList @userID = ?, @list = ?";
+	$paramsbook = array(
+			array($_SESSION["userID"], SQLSRV_PARAM_IN),
+                        array($displaylist, SQLSRV_PARAM_IN)	
+			);
+	$bookList = sqlsrv_query($conn, $sqlbook, $paramsbook);
+	if(!$bookList)
+	{
+	    print_r(sqlsrv_errors());
+	}
 }
 ?>
 
@@ -248,14 +250,14 @@ th {
 		<h1 style = "margin-left: 25px"> Move book</h1>
                 <table>
                     <tr>
+ 			<div class="autocomplete" style="width:300px;">
+			 <input id="moveInput" type="text" name="title" placeholder="title">
+			 </div>
 			 <select name="To" style = "margin:20px; padding:10px">
 				<option value="read"> Read </option>
 				<option value="wanttoread"> Want to Read </option>
 				<option value="currentlyreading"> Currently Reading </option>
 			</select>
-			<div class="autocomplete" style="width:300px;">
-			 <input id="moveInput" type="text" name="title" placeholder="title">
-			 </div>
 
 			</form>
 
