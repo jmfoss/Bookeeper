@@ -101,10 +101,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         
         
         #test {
-            animation: fadein 10s;
-            -moz-animation: fadein 10s; /* Firefox */
-            -webkit-animation: fadein 10s; /* Safari and Chrome */
-            -o-animation: fadein 10s; /* Opera */
+            animation-delay: 5s;
+            animation: fadein 5s;
+            -moz-animation: fadein 5s; /* Firefox */
+            -webkit-animation: fadein 5s; /* Safari and Chrome */
+            -o-animation: fadein 5s; /* Opera */
         }
         @keyframes fadein {
             from {
