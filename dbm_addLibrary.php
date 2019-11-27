@@ -231,19 +231,17 @@ th {
 
         </div>
               <div class = "autocomplete" id="questions">
-		<h1 style = "margin-left: 25px"> Move book </h1>
+		<h1 style = "margin-left: 25px"> Move book 	From  	To</h1>
                 <table>
                     <tr>
  			<div class="autocomplete" style="width:300px;">
 			 <input id="myInput" type="text" name="title" placeholder="title">
 			 </div>
-			<h1 style = "margin-left: 10px"> From </h1>
 			    <select name="From" style = "margin:20px; padding:10px">
 				<option value="read"> Read </option>
 				<option value="wanttoread"> Want to Read </option>
 				<option value="currentlyreading"> Currently Reading </option>
 			</select>
-			    <h1 style = "margin-left: 10px"> To </h1>
 			 <select name="To" style = "margin:20px; padding:10px">
 				<option value="read"> Read </option>
 				<option value="wanttoread"> Want to Read </option>
