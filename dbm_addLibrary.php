@@ -236,7 +236,7 @@ th {
 		</head>
 		<body>
 		<div>
-			<h1 style = "margin-left: 25px"> View Lists </h1>
+			<h1 style = "margin-left: 25px; margin-bottom: 100px"> View Lists </h1>
                 	<table>
  		        	<form  action = "" method = "post">
 					<select name="display" style = "margin:20px; padding:10px">
