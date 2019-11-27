@@ -40,7 +40,7 @@ if (isset($_POST['move']))
 	$move_msg = "{$title} moved.";
 	echo sqlsrv_errors();
 }
-else if (isset($_POST['add']))
+if($_SERVER["REQUEST_METHOD"] == "POST")
 {
 	
 
