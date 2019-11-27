@@ -39,7 +39,7 @@ if (isset($_POST['move']))
 	      $title = trim($_POST["titlemove"]);
 	     }
      	$list = trim($_POST["listmove"]);
-	$sqlmove = "EXEC moveBook @userID = ?, @title = ?, @list = ?";
+	$sqlmove = "EXEC moveBook @userID = :?, @title = :?, @list = :?";
 	$paramsmove = array(
 			  array($_SESSION["userID"], SQLSRV_PARAM_IN),
 			  array($title, SQLSRV_PARAM_IN),
