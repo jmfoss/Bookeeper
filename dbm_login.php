@@ -145,7 +145,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     </style>
 </head>
 <body>
-    <div id="title" id = "test" align="center"> <img src="logo.png" style ="margin-top: 50px"> </div>
+    <div id = "test" align="center"> <img src="logo.png" style ="margin-top: 50px"> </div>
     <div class="wrapper" style = "margin: auto; width: 40%; padding: 10px">
         <h2>Login</h2>
         <p>Please fill in your credentials to login.</p>
