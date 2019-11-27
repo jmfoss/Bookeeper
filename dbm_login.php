@@ -54,13 +54,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                 
                 $hash = password_hash($password, PASSWORD_DEFAULT);
                 echo $hash;
+                echo "\n";
                 if (password_verify($password, $hash))
                 {
-                    echo "verified";
+                    echo "verified\n";
                 }
                 else
                 {
                     echo $row["password"];
+                    echo "\n";
                 }
                 if(password_verify($password, $row["password"]))
                 {
