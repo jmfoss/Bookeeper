@@ -173,8 +173,8 @@ th {
 /* Control the right side */
 .right {
   right: 0;
-  margin-top: 100px;
-  background-color: red;
+  margin-top: 300px;
+  background-color: #8e9cad;
 }
 
 /* If you want the content centered horizontally and vertically */
