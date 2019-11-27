@@ -13,7 +13,7 @@ $options = array (
     'path' => "/solr/#/bookeeper",
 );
 
-//$client = new SolrClient($options);
+$client = new SolrClient($options);
 
 //$query = new SolrQuery();
 
