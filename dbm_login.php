@@ -51,7 +51,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             // Check if username exists, if yes then verify password
             if(!empty($row))
             {                    
-                if($password == $row["password"])
+                if(password_verify($password, $row["password"]))
                 {
                     // Password is correct, so start a new session
                     session_start();
