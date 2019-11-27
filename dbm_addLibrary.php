@@ -206,7 +206,7 @@ th, td {
 				</form>
 			</table>
 			<hr>
-			<table>
+			<table style = "margin-left: 20px">
 			<?php
 			while ($row = sqlsrv_fetch_array($bookList)) 
 			{
