@@ -120,7 +120,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 <body>
     <div id="title" align="center"> <img src="logo.png" style ="margin-top: 50px"> </div>
  
-    <div class="wrapper" style = "margin: auto; width: 50%; border: 3px solid green; padding: 10px">
+    <div class="wrapper" style = "margin: auto; width: 50%; padding: 10px">
       <h2>Sign Up</h2>
         <br>
         <p>Please fill this form to create an account.</p>
