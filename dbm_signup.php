@@ -120,11 +120,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 <body>
     <div id="title" align="center"> <img src="logo.png" style ="margin-top: 50px"> </div>
  
-    <div class="wrapper">
-     <table align = "center">   
-     <tr> 
-      <td> <h2>Sign Up</h2> </td>
-     </tr>
+    <div class="wrapper" style = "margin: auto; width: 50%; border: 3px solid green; padding: 10px">
+      <h2>Sign Up</h2>
         <br>
         <p>Please fill this form to create an account.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
@@ -149,7 +146,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             </div>
             <p>Already have an account? <a href="dbm_login.php">Login here</a>.</p>
         </form>
-     </table>
     </div>    
 </body>
 </html>
