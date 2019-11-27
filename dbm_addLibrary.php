@@ -141,9 +141,16 @@ tr {
 }
 tr:nth-child(even) {background-color: #f2f2f2;}
 	
-th, td {
+td {
   padding: 15px;
   text-align: left;
+}
+
+th {
+  padding: 15px;
+  text-align: left;
+  background-color: #285ac7;
+  color: white;
 }
 	
 </style>
@@ -208,11 +215,14 @@ th, td {
 			<hr>
 			<table style = "margin-left: 20px">
 			<?php
+			if ($displaylist == 'read') echo " <th> Read </th> ";
+			if ($displaylist == 'wanttoread') echo " <th> Want to Read </th>";
+			if ($displaylist == 'currentlyreading') echo " <th> Currently Reading </th> ";
+				
 			while ($row = sqlsrv_fetch_array($bookList)) 
 			{
 			    echo "<tr>";
 			    echo "<td>" . $row['title'] ."</td>";
-			    echo "<td>" . $row['author'] ."</td>";
 			    echo "</tr>";
 			}
 			?>
