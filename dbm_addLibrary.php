@@ -30,7 +30,8 @@ sqlsrv_free_stmt( $stmt);
 $title = $list = $msg = $displaylist = $move_msg = "";
 if($_SERVER["REQUEST_METHOD"] == "POST")
 {
-	if(isset($_POST["move"]))
+	
+	if (isset($_POST['move']))
 	{
 		$sqlmove = "EXEC moveBook @userID = ?, @title = ?, @list = ?";
 		$paramsmove = array(
