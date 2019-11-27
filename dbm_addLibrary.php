@@ -231,17 +231,12 @@ th {
 
         </div>
               <div class = "autocomplete" id="questions">
-		<h1 style = "margin-left: 25px"> Move book 	From  	To</h1>
+		<h1 style = "margin-left: 25px"> Move book</h1>
                 <table>
                     <tr>
  			<div class="autocomplete" style="width:300px;">
-			 <input id="myInput" type="text" name="title" placeholder="title">
+			 <input id="moveInput" type="text" name="title" placeholder="title">
 			 </div>
-			    <select name="From" style = "margin:20px; padding:10px">
-				<option value="read"> Read </option>
-				<option value="wanttoread"> Want to Read </option>
-				<option value="currentlyreading"> Currently Reading </option>
-			</select>
 			 <select name="To" style = "margin:20px; padding:10px">
 				<option value="read"> Read </option>
 				<option value="wanttoread"> Want to Read </option>
@@ -392,10 +387,9 @@ function autocomplete(inp, arr) {
       closeAllLists(e.target);
   });
 }
-/*An array containing all the country names in the world:*/
-var countries = <?php echo json_encode($array);?>;
-/*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
-autocomplete(document.getElementById("myInput"), countries);
+var titles = <?php echo json_encode($array);?>;
+autocomplete(document.getElementById("myInput"), titles);
+autocomplete(document.getElementById("moveInput"), titles);
 </script>
   </body>
 </html>
