@@ -121,7 +121,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     <div id="title" align="center"> <img src="logo.png" style ="margin-top: 50px"> </div>
  
     <div class="wrapper">
-        <h2>Sign Up</h2>
+     <table align = "center">   
+     <h2>Sign Up</h2>
         <br>
         <p>Please fill this form to create an account.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
@@ -146,6 +147,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             </div>
             <p>Already have an account? <a href="dbm_login.php">Login here</a>.</p>
         </form>
+     </table>
     </div>    
 </body>
 </html>
