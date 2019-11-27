@@ -19,7 +19,7 @@
         $output = curl_exec($ch);
         curl_close($ch); 
         $array = json_decode($output);
-        print_r($array[0]);
+        //print_r($array[0]);
         // close curl resource to free up system resources
           
 
