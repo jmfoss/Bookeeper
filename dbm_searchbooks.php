@@ -5,6 +5,34 @@
 <!-- Main page -->
 
 
+<?php
+
+$options = array (
+    'host' => "localhost",
+    'port' => 8983, 
+    'path' => '/solr/#/bookeeper',
+);
+
+$client = new SolrClient($options);
+
+$query = new SolrQuery();
+
+$query->setQuery('title:Black');
+
+$query->setStart(0);
+
+$query->setRows(50);
+
+$query->addField('title')->addField('number_of_pages')->addField('publish_date')->addField('publishers');
+
+$query_response = $client->query($query);
+
+$response = $query_response->getResponse();
+
+print_r($response);
+
+?>
+
 <!DOCTYPE html>
 
 <html>
