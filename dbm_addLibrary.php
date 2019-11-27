@@ -172,7 +172,7 @@ th {
         <form autocomplete="off" action = "" method = "post">
 
         </div>
-	      <h1 style = "margin-left: 45px"> Add to List </h1>
+	      <h1 style = "margin-left: 25px"> Add to List </h1>
               <div class = "autocomplete" id="questions">
                 <table>
                     <tr>
@@ -202,7 +202,7 @@ th {
 			<title>Selected List</title>
 		</head>
 		<body>
-			<h1 style = "margin-left: 45px"> View Lists </h1>
+			<h1 style = "margin-left: 25px"> View Lists </h1>
                 	<table>
  		        	<form  action = "" method = "post">
 					<select name="display" style = "margin:20px; padding:10px">
