@@ -52,7 +52,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             if(!empty($row))
             {                    
                 
-                echo password_verify($password, $row["password"]);
+                $hash = password_hash($password, PASSWORD_DEFAULT);
+                echo $hash;
+                if (password_verify($password, $hash))
+                {
+                    echo "verified";
+                }
+                else
+                {
+                    echo $row["password"];
+                }
                 if(password_verify($password, $row["password"]))
                 {
                     // Password is correct, so start a new session
