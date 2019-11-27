@@ -59,7 +59,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
                 {
                     echo "verified\n";
                 }
-                else
                 {
                     echo $row["password"];
                     echo "\n";
