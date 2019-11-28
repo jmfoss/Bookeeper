@@ -34,9 +34,10 @@ $query->setStart(2)->setRows(20);
 $query->setFields(array('title'));
 // sort the results by price ascending
 $query->addSort('price', $query::SORT_ASC);
-/*
+
 // this executes the query and returns the result
 $resultset = $client->select($query);
+/*
 // display the total number of documents found by solr
 echo 'NumFound: '.$resultset->getNumFound();
 // display the max score
