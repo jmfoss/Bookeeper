@@ -7,7 +7,7 @@
 
 <?php
 
-require_once "/vendor/autoload.php";
+require'vendor/autoload.php';
 $config = array(
     'endpoint' => array(
         'localhost' => array(
