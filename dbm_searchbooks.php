@@ -25,8 +25,9 @@ $client = new Solarium\Client($config);
 // get a select query instance
 $query = $client->createSelect();
 // set a query (all prices starting from 12)
-/*
+
 $query->setQuery('title:Harry*');
+/*
 // set start and rows param (comparable to SQL limit) using fluent interface
 $query->setStart(2)->setRows(20);
 // set fields to fetch (this overrides the default setting 'all fields')
