@@ -22,7 +22,6 @@ $config = array(
 // check solarium version available
 //echo 'Solarium library version: ' . Solarium\Client::VERSION . ' - ';
 $client = new Solarium\Client($config);
-print_r($client);
 $ping = $client->createPing();
 
 // execute the ping query
