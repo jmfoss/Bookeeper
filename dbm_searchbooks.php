@@ -20,8 +20,19 @@
           
         curl_close($ch); 
         $array = json_decode($output);
-        print_r($array[0]);
         // close curl resource to free up system resources
+     include "bootstrap.php";
+
+$options = array
+(
+    'hostname' => SOLR_SERVER_HOSTNAME,
+    'login'    => SOLR_SERVER_USERNAME,
+    'password' => SOLR_SERVER_PASSWORD,
+    'port'     => SOLR_SERVER_PORT,
+);
+
+
+
 
 
           
