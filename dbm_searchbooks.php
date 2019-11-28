@@ -8,33 +8,29 @@
 <?php
 
 require_once "../vendor/autoload.php";     
-// create curl resource
-        $ch = curl_init();
 
-        // set url
-        curl_setopt($ch, CURLOPT_URL, "http://104.230.35.171:8983/solr/bookeeper/select?q=title:Black");
+require(__DIR__.'/init.php');
+htmlHeader();
 
-        //return the transfer as a string
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+// check solarium version available
+echo 'Solarium library version: ' . Solarium\Client::VERSION . ' - ';
 
-        // $output contains the output string
-        $output = curl_exec($ch);
-          
-        curl_close($ch); 
-        $array = json_decode($output);
-        // close curl resource to free up system resources
-     include "bootstrap.php";
+// create a client instance
+$client = new Solarium\Client($config);
 
-$options = array
-(
-    'hostname' => SOLR_SERVER_HOSTNAME,
-    'login'    => SOLR_SERVER_USERNAME,
-    'password' => SOLR_SERVER_PASSWORD,
-    'port'     => SOLR_SERVER_PORT,
-);
+// create a ping query
+$ping = $client->createPing();
 
-
-
+// execute the ping query
+try {
+    $result = $client->ping($ping);
+    echo 'Ping query successful';
+    echo '<br/><pre>';
+    var_dump($result->getData());
+    echo '</pre>';
+} catch (Solarium\Exception $e) {
+    echo 'Ping query failed';
+}
 
 
           
