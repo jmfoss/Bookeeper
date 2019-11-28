@@ -6,7 +6,9 @@
 
 
 <?php
-      // create curl resource
+
+require_once "../vendor/autoload.php";     
+// create curl resource
         $ch = curl_init();
 
         // set url
