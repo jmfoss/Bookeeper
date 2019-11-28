@@ -26,7 +26,7 @@ $client = new Solarium\Client($config);
 $query = $client->createSelect();
 // set a query (all prices starting from 12)
 
-$query->setQuery('title:"Animal Farm"');
+$query->setQuery('*:*');
 
 // set start and rows param (comparable to SQL limit) using fluent interface
 $query->setStart(2)->setRows(20);
