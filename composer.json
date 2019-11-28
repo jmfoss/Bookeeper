@@ -1,1 +1,6 @@
 
+{
+    "require": {
+        "solarium/solarium": "~5.0.0"
+    }
+}
