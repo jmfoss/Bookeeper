@@ -12,22 +12,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: dbm_login.php");
     exit;
 }
-require_once "/vendor/autoload.php";
-$config = array(
-    'endpoint' => array(
-        'localhost' => array(
-            'host' => '127.0.0.1',
-            'port' => 8983,
-            'path' => '/#/',
-            'core' => 'bookeeper',
-        )
-    )
-);
-// check solarium version available
-echo 'Solarium library version: ' . Solarium\Client::VERSION . ' - ';
-$client = new Solarium\Client($config);
-          
-
 
 ?>
 
