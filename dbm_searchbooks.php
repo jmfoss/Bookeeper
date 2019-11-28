@@ -7,7 +7,6 @@
 
 <?php
 
-require_once "/vendor/autoload.php";     
 
 
 // check solarium version available
