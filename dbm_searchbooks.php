@@ -7,7 +7,7 @@
 
 <?php
 
-
+require(__DIR__.'/init.php');
 
 // check solarium version available
 //echo 'Solarium library version: ' . Solarium\Client::VERSION . ' - ';
