@@ -11,7 +11,8 @@ session_start();
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: dbm_login.php");
     exit;
-     require_once "/vendor/autoload.php";
+}
+require_once "/vendor/autoload.php";
 $config = array(
     'endpoint' => array(
         'localhost' => array(
@@ -27,7 +28,7 @@ echo 'Solarium library version: ' . Solarium\Client::VERSION . ' - ';
 $client = new Solarium\Client($config);
           
 
-}
+
 ?>
 
 <html>
