@@ -7,7 +7,7 @@
 
 <?php
 
-require_once "vendor/autoload.php";
+require_once "/vendor/autoload.php";
 
 // check solarium version available
 //echo 'Solarium library version: ' . Solarium\Client::VERSION . ' - ';
