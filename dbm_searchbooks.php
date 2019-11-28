@@ -12,7 +12,7 @@ require'vendor/autoload.php';
 $config = array(
     'endpoint' => array(
         'localhost' => array(
-            'host' => '127.0.0.1',
+            'host' => '104.230.35.171',
             'port' => 8983,
             'path' => '/#/',
             'core' => 'bookeeper',
