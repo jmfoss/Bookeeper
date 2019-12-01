@@ -18,46 +18,31 @@ $config = array(
     )
 );
 require(__DIR__.'/init.php');
-use Solarium\Client;
-use Solarium\Core\Plugin\AbstractPlugin;
-use Solarium\QueryType\Select\Query\Query as Select;
-// This is a custom query class that could have some customized logic
-class MyQuery extends Select
-{
-    // ...customization here...
-}
-// this very simple plugin that modifies the default querytype mapping
-class QueryCustomizer extends AbstractPlugin
-{
-    public function initPlugin($client, $options)
-    {
-        $client->registerQueryType(
-            Client::QUERY_SELECT,
-            'MyQuery'
-        );
-    }
-}
-// create a client instance and register the plugin
-$client = new Client($config);
-$client->registerPlugin('querycustomizer', 'QueryCustomizer');
-// create a select query instance
-$query = $client->createSelect();
-// check the query class, it should be our custom query class
-echo 'Query class: ' . get_class($query) . '<br/>';
-// execute the query and display the results
-$resultset = $client->select($query);
-echo 'NumFound: '.$resultset->getNumFound();
-foreach ($resultset as $document) {
-    echo '<hr/><table>';
-    foreach ($document as $field => $value) {
-        if (is_array($value)) {
-            $value = implode(', ', $value);
+require(__DIR__.'/init.php');
+htmlHeader();
+// create a client instance
+$client = new Solarium\Client($config);
+// get a suggester query instance
+$query = $client->createSuggester();
+$query->setQuery('c');
+$query->setDictionary('mySuggester');
+$query->setBuild(true);
+$query->setCount(10);
+// this executes the query and returns the result
+$resultset = $client->suggester($query);
+echo '<b>Query:</b> '.$query->getQuery().'<hr/>';
+// display results for each term
+foreach ($resultset as $dictionary => $terms) {
+    echo '<h3>' . $dictionary . '</h3>';
+    foreach ($terms as $term => $termResult) {
+        echo '<h4>' . $term . '</h4>';
+        echo 'NumFound: '.$termResult->getNumFound().'<br/>';
+        foreach ($termResult as $result) {
+            echo '- '.$result['term'].'<br/>';
         }
-        echo '<tr><th>' . $field . '</th><td>' . $value . '</td></tr>';
     }
-    echo '</table>';
+    echo '<hr/>';
 }
-
 ?>
 
 <!DOCTYPE html>
