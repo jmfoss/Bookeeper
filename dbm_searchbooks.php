@@ -18,8 +18,7 @@ $config = array(
     )
 );
 require(__DIR__.'/init.php');
-require(__DIR__.'/init.php');
-htmlHeader();
+
 // create a client instance
 $client = new Solarium\Client($config);
 // get a suggester query instance
