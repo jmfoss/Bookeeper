@@ -6,6 +6,8 @@
 
 
 <?php
+
+require_once "config.php";
 // check solarium version available
 echo 'Solarium library version: ' . Solarium\Client::VERSION . ' - ';
 
