@@ -26,7 +26,6 @@ $client = new Solarium\Client($config);
 $query = $client->createSuggester();
 $query->setQuery('h'); //multiple terms
 $query->setDictionary('suggest');
-$query->setOnlyMorePopular(true);
 $query->setCount(10);
 $query->setCollate(true);
 
