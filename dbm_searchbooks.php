@@ -18,6 +18,10 @@ $config = array(
         )
     )
 );
+// set error reporting high
+error_reporting(E_ALL | E_STRICT);
+// make sure we see them
+ini_set('display_errors', 'On');
 
 require(__DIR__.'/init.php');
 htmlHeader();
