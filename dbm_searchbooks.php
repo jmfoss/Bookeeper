@@ -25,7 +25,7 @@ $client = new Solarium\Client($config);
 // get a suggester query instance
 $query = $client->createSuggester();
 $query->setQuery('h'); //multiple terms
-$query->setDictionary('suggest');
+$query->setDictionary('suggester');
 $query->setCount(10);
 
 // this executes the query and returns the result
