@@ -6,7 +6,7 @@
 
 
 <?php
-/*
+
 $config = array(
     'endpoint' => array(
         'localhost' => array(
@@ -44,7 +44,7 @@ try {
 } catch (Solarium\Exception $e) {
     echo 'Ping query failed';
 }        
-*/
+
 ?>
 
 <!DOCTYPE html>
