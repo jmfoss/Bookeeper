@@ -14,7 +14,6 @@ $config = array(
         'localhost' => array(
             'host' => '104.230.35.171',
             'port' => 8983,
-            'path' => '/#/',
             'core' => 'bookeeper',
         )
     )
