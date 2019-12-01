@@ -24,7 +24,6 @@ error_reporting(E_ALL | E_STRICT);
 ini_set('display_errors', 'On');
 
 require(__DIR__.'/init.php');
-htmlHeader();
 // check solarium version available
 echo 'Solarium library version: ' . Solarium\Client::VERSION . ' - ';
 
