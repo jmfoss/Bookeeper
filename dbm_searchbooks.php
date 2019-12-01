@@ -46,8 +46,6 @@ echo '<b>Query:</b> '.$query->getQuery().'<hr/>';
     echo '<hr/>';
 }
 
-// display collation
-echo 'Collation: '.$resultset->getCollation();
 ?>
 
 <!DOCTYPE html>
