@@ -6,30 +6,27 @@
 
 
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', true);
-require'vendor/autoload.php';
-$config = array(
-    'endpoint' => array(
-        'localhost' => array(
-            'host' => '104.230.35.171',
-            'port' => 8983,
-            'core' => 'bookeeper',
-        )
-    )
-);
+require(__DIR__.'/init.php');
+
 // check solarium version available
-//echo 'Solarium library version: ' . Solarium\Client::VERSION . ' - ';
+echo 'Solarium library version: ' . Solarium\Client::VERSION . ' - ';
+
+// create a client instance
 $client = new Solarium\Client($config);
 
+// create a ping query
 $ping = $client->createPing();
 
 // execute the ping query
 try {
     $result = $client->ping($ping);
+    echo 'Ping query successful';
+    echo '<br/><pre>';
+    var_dump($result->getData());
+    echo '</pre>';
 } catch (Solarium\Exception $e) {
-    // the SOLR server is inaccessible, do something
-}         
+    echo 'Ping query failed';
+}        
 
 ?>
 
