@@ -20,9 +20,6 @@ $config = array(
     )
 );
 require(__DIR__.'/init.php');
-
-htmlHeader();
-
 // create a client instance
 $client = new Solarium\Client($config);
 
@@ -53,7 +50,6 @@ foreach ($resultset as $document) {
     echo '</table>';
 }
 
-htmlFooter();
     
 
 ?>
