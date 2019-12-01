@@ -27,7 +27,6 @@ $query = $client->createSuggester();
 $query->setQuery('h'); //multiple terms
 $query->setDictionary('suggest');
 $query->setCount(10);
-$query->setCollate(true);
 
 // this executes the query and returns the result
 $resultset = $client->suggester($query);
