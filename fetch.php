@@ -29,5 +29,6 @@ $resultset = $client->suggester($query);
         }
     }
 }
+echo $userQuery;
 echo json_encode($suggestions);
 ?>
