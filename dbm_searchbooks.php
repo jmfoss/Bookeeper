@@ -20,13 +20,13 @@ $config = array(
 require(__DIR__.'/init.php');
 $client = new Solarium\Client($config);
 
-$query = trim($_REQUEST['query']);
+$userQuery = trim($_REQUEST['query']);
 // create a client instance
 
 
 // get a suggester query instance
 $query = $client->createSuggester();
-$query->setQuery($query);
+$query->setQuery($userQuery);
 $suggestions = $resultset;
 // this executes the query and returns the result
 $resultset = $client->suggester($query);
