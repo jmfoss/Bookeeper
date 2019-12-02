@@ -5,53 +5,6 @@
 <!-- Main page -->
 
 
-<?php
-
-$config = array(
-    'endpoint' => array(
-        'localhost' => array(
-            'host' => '104.230.35.171',
-            'port' => 8983,
-            'path' => '/',
-            'core' => 'bookeeper',
-        )
-    )
-);
-require(__DIR__.'/init.php');
-$client = new Solarium\Client($config);
-$userQuery = "Harry";
-
-if(!empty(trim($_REQUEST['query'])))
-{
-   $userQuery = trim($_REQUEST['query']);
-} 
-
-// create a client instance
-
-
-// get a suggester query instance
-$query = $client->createSuggester();
-$query->setQuery($userQuery);
-// this executes the query and returns the result
-$resultset = $client->suggester($query);
-
-echo '<b>Query:</b> '.$query->getQuery().'<hr/>';
-
- foreach ($resultset as $dictionary => $terms) {
-    echo '<h3>' . $dictionary . '</h3>';
-    foreach ($terms as $term => $termResult) {
-        echo '<h4>' . $term . '</h4>';
-        echo 'NumFound: '.$termResult->getNumFound().'<br/>';
-        foreach ($termResult as $result) {
-            echo '- '.$result['term'].'<br/>';
-        }
-    }
-
-    echo '<hr/>';
-}
-
-?>
-
 <!DOCTYPE html>
 
 <html>
