@@ -20,6 +20,15 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
  </head>
  <body>
+   <body>
+    <div id="title" align="center"> <img src="logo.png" style ="margin-top: 50px"> </div>
+    <div class="topnav" id="myTopnav">
+      <a href="dbm_main.php"> Home </a>
+      <a href="dbm_searchbooks.php" class="active"> Search Books </a>
+      <a href="dbm_addbook.php"> Add Books </a>
+      <a href="dbm_addLibrary.php"> My Library </a>
+      </a>
+    </div>
   <br /><br />
   <div class="container" style="width:600px;">
    <br /><br />
