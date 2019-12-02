@@ -21,7 +21,7 @@ require(__DIR__.'/init.php');
 $client = new Solarium\Client($config);
 
 
-$userQuery = $_REQUEST['query'];
+$userQuery = trim($_REQUEST['query']);
 // create a client instance
 
 
