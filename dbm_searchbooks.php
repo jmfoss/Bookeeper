@@ -20,7 +20,7 @@ $config = array(
 require(__DIR__.'/init.php');
 $client = new Solarium\Client($config);
 $userQuery = "";
-$userQuery = $_GET['query'];
+$userQuery = trim($_GET['query']);
 // create a client instance
 
 
