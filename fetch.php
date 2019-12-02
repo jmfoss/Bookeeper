@@ -11,11 +11,11 @@ $config = array(
 );
 require(__DIR__.'/init.php');
 $client = new Solarium\Client($config);
-$userQuery = "Harry";
+$userQuery = "";
 $suggestions = array();
 if(isset($_POST["query"]))
 {
-	//$userQuery = trim($_POST["query"]);	     
+	$userQuery = trim($_POST["query"]);	     
 } 
 
 // create a client instance
@@ -25,7 +25,6 @@ $query->setQuery($userQuery);
 
 // this executes the query and returns the result
 $resultset = $client->suggester($query);
-print_r($resultset);
  foreach ($resultset as $dictionary => $terms) {
     foreach ($terms as $term => $termResult) {
         foreach ($termResult as $result) {
