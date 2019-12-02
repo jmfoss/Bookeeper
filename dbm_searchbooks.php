@@ -35,6 +35,7 @@
    <input type="text" name="title" id="title" class="form-control input-lg" autocomplete="off" placeholder="Type your title" />
   </div>
  </body>
+      </html>
 <script>
 $(document).ready(function(){
  
@@ -48,7 +49,6 @@ $(document).ready(function(){
     dataType:"json",
     success:function(data)
     {
-     document.write(data);
      result($.map(data, function(item){
       return item;
      }));
@@ -59,5 +59,4 @@ $(document).ready(function(){
  
 });
 </script>
-      </html>
 
