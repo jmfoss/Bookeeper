@@ -19,15 +19,14 @@ $config = array(
 );
 require(__DIR__.'/init.php');
 $client = new Solarium\Client($config);
-$userQuery = "";
 
-$userQuery = trim($_REQUEST['query']);
+$query = trim($_REQUEST['query']);
 // create a client instance
 
 
 // get a suggester query instance
 $query = $client->createSuggester();
-$query->setQuery($userQuery);
+$query->setQuery($query);
 $suggestions = $resultset;
 // this executes the query and returns the result
 $resultset = $client->suggester($query);
@@ -165,9 +164,9 @@ th {
     <div id="title" align="center"> <img src="logo.png" style ="margin-top: 50px"> </div>
     <div class="topnav" id="myTopnav">
       <a href="dbm_main.php"> Home </a>
-      <a href="dbm_searchbooks.php"> Search Books </a>
+      <a href="dbm_searchbooks.php" class="active"> Search Books </a>
       <a href="dbm_addbook.php"> Add Books </a>
-      <a href="dbm_addLibrary.php" class="active"> My Library </a>
+      <a href="dbm_addLibrary.php" > My Library </a>
       </a>
     </div>
         <form autocomplete="off" action = "" method = "post">
