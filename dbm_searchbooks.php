@@ -27,7 +27,6 @@
       <a href="dbm_searchbooks.php" class="active"> Search Books </a>
       <a href="dbm_addbook.php"> Add Books </a>
       <a href="dbm_addLibrary.php"> My Library </a>
-      </a>
     </div>
   <br /><br />
   <div class="container" style="width:600px;">
@@ -36,8 +35,6 @@
    <input type="text" name="title" id="title" class="form-control input-lg" autocomplete="off" placeholder="Type your title" />
   </div>
  </body>
-</html>
-
 <script>
 $(document).ready(function(){
  
@@ -61,4 +58,5 @@ $(document).ready(function(){
  
 });
 </script>
+      </html>
 
