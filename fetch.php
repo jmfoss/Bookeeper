@@ -13,7 +13,11 @@ require(__DIR__.'/init.php');
 $client = new Solarium\Client($config);
 $userQuery = "";
 $suggestions = array();
-$userQuery = $_POST["query"];
+if(!empty(trim($_POST["query"])))
+{
+	  $userQuery = trim($_POST["query"]);	     
+} 
+
 // create a client instance
 // get a suggester query instance
 $query = $client->createSuggester();
