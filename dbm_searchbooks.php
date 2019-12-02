@@ -19,8 +19,8 @@ $config = array(
 );
 require(__DIR__.'/init.php');
 $client = new Solarium\Client($config);
-
-$userQuery = trim($_REQUEST['query']);
+$userQuery = "";
+$userQuery = $_GET['query'];
 // create a client instance
 
 
@@ -172,50 +172,73 @@ th {
         <form autocomplete="off" action = "" method = "post">
 
         </div>
-              <div class = "autocomplete" id="query">
-		<h1 style = "margin-left: 25px"> Move book</h1>
-                <table>
-                    <tr>
- 			<div class="autocomplete" style="width:300px;">
-			     <input id="userQuery" type="text" name="userQuery" placeholder="Search a title">
-			 </div>
-			</form>
-
-                </table>
-        	</div>
-	      <input type = "submit"  value = "Submit" name = "Search" style = "margin:20px;margin-top:10px"/>
+              <body>
+    	<h2>The form</h2>
+		    <form>
+			<input type="text" name="name" id="input" list="huge_list">Name
+			<datalist id="huge_list">
+			</datalist>
+			<br/>
+			<input type="submit">
+		    </form>
+		</body>
           </form>
 <script>
-function showResult(str) {
-  if (str.length==0) {
-    document.getElementById("livesearch").innerHTML="";
-    document.getElementById("livesearch").style.border="0px";
-    return;
-  }
-  if (window.XMLHttpRequest) {
-    // code for IE7+, Firefox, Chrome, Opera, Safari
-    xmlhttp=new XMLHttpRequest();
-  } else {  // code for IE6, IE5
-    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-  }
-  xmlhttp.onreadystatechange=function() {
-    if (this.readyState==4 && this.status==200) {
-      document.getElementById("livesearch").innerHTML=this.responseText;
-      document.getElementById("livesearch").style.border="1px solid #A5ACB2";
+window.addEventListener("load", function(){
+
+    // Add a keyup event listener to our input element
+    var name_input = document.getElementById('input');
+    name_input.addEventListener("keyup", function(event){hinter(event)});
+
+    // create one global XHR object 
+    // so we can abort old requests when a new one is make
+    window.hinterXHR = new XMLHttpRequest();
+});
+
+// Autocomplete for form
+function hinter(event) {
+
+    // retireve the input element
+    var input = event.target;
+
+    // retrieve the datalist element
+    var huge_list = document.getElementById('huge_list');
+
+    // minimum number of characters before we start to generate suggestions
+    var min_characters = 0;
+
+    if (input.value.length < min_characters ) { 
+        return;
+    } else { 
+
+        // abort any pending requests
+        window.hinterXHR.abort();
+
+        window.hinterXHR.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+
+                // We're expecting a json response so we convert it to an object
+                var response = JSON.parse( this.responseText ); 
+
+                // clear any previously loaded options in the datalist
+                huge_list.innerHTML = "";
+
+                response.forEach(function(item) {
+                    // Create a new <option> element.
+                    var option = document.createElement('option');
+                    option.value = item;
+
+                    // attach the option to the datalist element
+                    huge_list.appendChild(option);
+                });
+            }
+        };
+
+        window.hinterXHR.open("GET", "/query.php?query=" + input.value, true);
+        window.hinterXHR.send()
     }
-  }
-  xmlhttp.open("GET","livesearch.php?q="+str,true);
-  xmlhttp.send();
 }
 </script>
-<body>
-
-<form>
-<input type="text" size="30" onkeyup="showResult(this.value)">
-<div id="livesearch"></div>
-</form>
-
-</body>
 </html>
 
 
