@@ -29,10 +29,9 @@ $resultset = $client->suggester($query);
  foreach ($resultset as $dictionary => $terms) {
     foreach ($terms as $term => $termResult) {
         foreach ($termResult as $result) {
-            $suggestions = $result['term'];
+            $suggestions[] = $result['term'];
         }
     }
 }
-echo $userQuery;
 echo json_encode($suggestions);
 ?>
