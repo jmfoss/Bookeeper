@@ -62,132 +62,44 @@ echo '<b>Query:</b> '.$query->getQuery().'<hr/>';
     <link rel="stylesheet" type="text/css" href="style.css">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-* {
-  box-sizing: border-box;
-}
-body {
-  font: 16px Arial;  
-}
-/*the container must be positioned relative:*/
-.autocomplete {
-  position: relative;
-  display: inline-block;
-}
-input {
-  border: 1px solid transparent;
-  background-color: #f1f1f1;
-  padding: 10px;
-  font-size: 16px;
-}
-input[type=text] {
-  background-color: #f1f1f1;
-  width: 100%;
-}
-input[type=submit] {
-  background-color: DodgerBlue;
-  color: #fff;
-  cursor: pointer;
-}
-.autocomplete-items {
-  position: absolute;
-  border: 1px solid #d4d4d4;
-  border-bottom: none;
-  border-top: none;
-  z-index: 99;
-  /*position the autocomplete items to be the same width as the container:*/
-  top: 100%;
-  left: 0;
-  right: 0;
-}
-.autocomplete-items div {
-  padding: 10px;
-  cursor: pointer;
-  background-color: #fff; 
-  border-bottom: 1px solid #d4d4d4; 
-}
-/*when hovering an item:*/
-.autocomplete-items div:hover {
-  background-color: #e9e9e9; 
-}
-/*when navigating through the items using the arrow keys:*/
-.autocomplete-active {
-  background-color: DodgerBlue !important; 
-  color: #ffffff; 
-}
-tr {
-     background-color: #fff;
-}
-tr:nth-child(even) {background-color: #f2f2f2;}
-	
-td {
-  padding: 15px;
-  text-align: left;
-}
-th {
-  padding: 15px;
-  text-align: left;
-  background-color: #285ac7;
-  color: white;
-}
-	
-/* Split the screen in half */
-.split {
-  height: 100%;
-  width: 50%;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  overflow-x: hidden;
-  padding-top: 20px;
-}
-/* Control the left side */
-.left {
-  left: 0;
-  background-color: #111;
-}
-/* Control the right side */
-.right {
-  right: 0;
-  margin-top: 250px;
-  background-color: #8e9cad;
-}
-/* If you want the content centered horizontally and vertically */
-.centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-	
-</style>
-</head>     
-  </head>
-  <body>
-    <div id="title" align="center"> <img src="logo.png" style ="margin-top: 50px"> </div>
-    <div class="topnav" id="myTopnav">
-      <a href="dbm_main.php"> Home </a>
-      <a href="dbm_searchbooks.php" class="active"> Search Books </a>
-      <a href="dbm_addbook.php"> Add Books </a>
-      <a href="dbm_addLibrary.php" > My Library </a>
-      </a>
-    </div>
-      </form>
-        <form autocomplete="off" action = "" method = "post">
-        </div>
-              <div class = "autocomplete" id="questions">
-		<h1 style = "margin-left: 25px"> Move book</h1>
-                <table>
- 			<div class="autocomplete" style="width:300px;">
-			 <input id="search" type="text" name="search" placeholder="title">
-			 </div>
-			</form>
-
-                </table>
-        	</div>
-	      <input type = "submit"  value = "Submit" name = "search" style = "margin:20px;margin-top:10px"/>
-      </form>
+ <head>
+  <title>Webslesson Tutorial | Autocomplete Textbox using Bootstrap Typehead with Ajax PHP</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
+ </head>
+ <body>
+  <br /><br />
+  <div class="container" style="width:600px;">
+   <h2 align="center">Autocomplete Textbox using Bootstrap Typeahead with Ajax PHP</h2>
+   <br /><br />
+   <label>Search Country</label>
+   <input type="text" name="country" id="country" class="form-control input-lg" autocomplete="off" placeholder="Type Country Name" />
+  </div>
+ </body>
 </html>
 
+<script>
+$(document).ready(function(){
+ 
+ $('#country').typeahead({
+  source: function(query, result)
+  {
+   $.ajax({
+    url:"fetch.php",
+    method:"POST",
+    data:{query:query},
+    dataType:"json",
+    success:function(data)
+    {
+     result($.map(data, function(item){
+      return item;
+     }));
+    }
+   })
+  }
+ });
+ 
+});
+</script>
 
