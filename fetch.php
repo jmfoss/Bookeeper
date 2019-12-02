@@ -13,9 +13,9 @@ require(__DIR__.'/init.php');
 $client = new Solarium\Client($config);
 $userQuery = "";
 $suggestions = array();
-if(!empty(trim($_POST["query"])))
+if(isset($_POST["query"]))
 {
-	  $userQuery = trim($_POST["query"]);	     
+	$userQuery = trim($_POST["query"]);	     
 } 
 
 // create a client instance
