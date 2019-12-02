@@ -11,7 +11,7 @@ $config = array(
 );
 require(__DIR__.'/init.php');
 $client = new Solarium\Client($config);
-$userQuery = "";
+$userQuery = "Harry";
 $suggestions = array();
 if(isset($_POST["query"]))
 {
