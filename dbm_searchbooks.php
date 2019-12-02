@@ -48,6 +48,7 @@ $(document).ready(function(){
     dataType:"json",
     success:function(data)
     {
+     document.write(data);
      result($.map(data, function(item){
       return item;
      }));
