@@ -33,6 +33,7 @@
    <label>Search a Book</label>
    <input type="text" name="search" id="search" class="form-control input-lg" value="<?php echo $userQuery; ?>" autocomplete="off" placeholder="Type Book Title" />
   </div>
+     <br> <br>
      <div class="container" style="width:600px;">
           <input type="radio" name="sort" value="nosort" id="nosort"> No Sort   
           <input type="radio" name="sort" value="pagecount" id="pagecount"> Sort by Page Count   
