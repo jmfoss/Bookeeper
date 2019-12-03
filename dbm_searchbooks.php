@@ -70,7 +70,7 @@
                                   echo '<hr/><table>';
                                   echo '<tr><th>title</th><td>' . $document->title . '</td></tr>';
                                   echo '<tr><th>pages</th><td>' . $document->number_of_pages . '</td></tr>';
-                                  echo 'http://covers.openlibrary.org/b/isbn/'.$document->isbn_10[0].'-S.jpg';
+                                  echo 'http://covers.openlibrary.org/b/isbn/'.$document->isbn_10[0].'-M.jpg';
                                   echo '</table>';
                               }
                    }
