@@ -16,7 +16,7 @@ $query = $client->createSelect();
 // get the facetset component
 $facetSet = $query->getFacetSet();
 // create a facet query instance and set options
-$facetSet->createFacetQuery('title')->setQuery('harry');
+$facetSet->createFacetQuery('title')->setQuery('intitle: harry');
 // this executes the query and returns the result
 $resultset = $client->select($query);
 // display the total number of documents found by solr
