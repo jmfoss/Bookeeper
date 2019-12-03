@@ -74,7 +74,6 @@
                          {
                               $queryString = $queryString.' AND title:*'.$value.'*';
                          }
-                        echo $queryString;
                          $query->setQuery($queryString);
                          $query->setStart(2)->setRows(20);
                          $query->setFields(array('title', 'number_of_pages', 'isbn_10', 'publish_date'));
