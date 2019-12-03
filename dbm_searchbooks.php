@@ -69,10 +69,13 @@
                          $userQuery = trim($_POST["search"]);
                          $Querys = explode(" ", $userQuery);
                          $queryString = 'title:'.$Querys[0].'~*';
-                         foreach (array_shift($Querys) as $value)
-                         {
-                              $queryString = $queryString.' AND title:*'.$value.'~*';
-                         }
+                        if(!empty($Querys))
+                        {
+                              foreach (array_shift($Querys) as $value)
+                              {
+                                   $queryString = $queryString.' AND title:*'.$value.'~*';
+                              }
+                        }
                         echo $queryString;
                          $query->setQuery('title:'.$userQuery.'*');
                          $query->setStart(2)->setRows(20);
