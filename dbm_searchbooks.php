@@ -57,7 +57,7 @@
                    {
 
                          $userQuery = trim($_POST["search"]);
-                         $query->setQuery('title:*'.$userQuery.'*');
+                         $query->setQuery('title:'.$userQuery.'*');
                          $query->setStart(2)->setRows(20);
                          $query->setFields(array('title', 'number_of_pages', 'isbn_10'));
                          // this executes the query and returns the result
@@ -70,7 +70,7 @@
                                   echo '<hr/><table>';
                                   echo '<tr><th>title</th><td>' . $document->title . '</td></tr>';
                                   echo '<tr><th>pages</th><td>' . $document->number_of_pages . '</td></tr>';
-                                  echo '<tr><th>isbn_10</th><td>' . $document->isbn_10[0] . '</td></tr>';
+                                  echo 'http://covers.openlibrary.org/b/isbn/'.$document->isbn_10[0].'-S.jpg';
                                   echo '</table>';
                               }
                    }
