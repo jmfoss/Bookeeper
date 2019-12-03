@@ -93,9 +93,9 @@
                                   echo '<hr/><div style="background-color:#b4cbf0; padding:20px">';
                             
                                   echo '<img src= "http://covers.openlibrary.org/b/isbn/'.$document->isbn_10[0].'-M.jpg">';
-                                  echo '<h3>Title: </h3><p>' . $document->title . '</p>';
-                                  echo '<h3>Page Count: </h3><p>' . $document->number_of_pages . '</p>';
-                                  echo '<h3>Date Published: </h3><p>' . $document->publish_date . '</p>';
+                                  echo '<h5>Title: </h5><p style="font-size:25px;"><b>' . $document->title . '</b></p>';
+                                  echo '<h5>Page Count: </h5><p style="font-size:25px;"><b>' . $document->number_of_pages . '</b></p>';
+                                  echo '<h5>Date Published: </h5><p style="font-size:25px;"><b>' . $document->publish_date . '</b></p>';
                                   
                                   echo '</div>';
                               }
