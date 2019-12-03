@@ -59,7 +59,7 @@
                          $userQuery = trim($_POST["search"]);
                          $query->setQuery('title:'.$userQuery.'*');
                          $query->setStart(2)->setRows(20);
-                         $query->setFields(array('title', 'number_of_pages', 'isbn_10'));
+                         $query->setFields(array('title', 'number_of_pages', 'isbn_10', 'publish_date'));
                          // this executes the query and returns the result
                          $resultset = $client->select($query);
                          // display the total number of documents found by solr
@@ -70,6 +70,7 @@
                                   echo '<hr/><table>';
                                   echo '<tr><th>title</th><td>' . $document->title . '</td></tr>';
                                   echo '<tr><th>pages</th><td>' . $document->number_of_pages . '</td></tr>';
+                                  echo '<tr><th>Date published</th><td>' . $document->publish_date . '</td></tr>';
                                   echo '<img src= "http://covers.openlibrary.org/b/isbn/'.$document->isbn_10[0].'-M.jpg">';
                                   echo '</table>';
                               }
