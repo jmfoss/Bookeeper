@@ -3,9 +3,6 @@
      28 October 2019 -->
 
 <!-- Main page -->
-<?php
-     $userQuery = "";
-?>
 
 <!DOCTYPE html>
 <html>
@@ -53,6 +50,7 @@
                // get a select query instance
                $query = $client->createSelect();
                // create a facet query instance and set options
+               $userQuery = "";
                if($_SERVER["REQUEST_METHOD"] == "POST")
                  {
                    if(!empty(trim($_POST["search"])))
