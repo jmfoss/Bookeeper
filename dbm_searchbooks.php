@@ -79,7 +79,7 @@
                          // display facet query count
                          // show documents using the resultset iterator
                                    foreach ($resultset as $document) {
-                                  echo '<hr/><table align = "center">';
+                                  echo '<hr/><table align = "center" width="500">';
                                   echo '<tr><th>title</th><td>' . $document->title . '</td></tr>';
                                   echo '<tr><th>pages</th><td>' . $document->number_of_pages . '</td></tr>';
                                   echo '<tr><th>Date published</th><td>' . $document->publish_date . '</td></tr>';
