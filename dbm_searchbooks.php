@@ -38,8 +38,8 @@
           <table> 
                <tr>
                     <td style = "padding: 15px"> <input type="radio" name="sort" value="nosort" id="nosort"> No Sort</td>   
-                    <td style = "padding: 15px"> <input type="radio" name="sort" value="pagecount" id="pagecount"> Sort by Page Count</td>
-                    <td style = "padding: 15px"> <input type="radio" name="sort" value="published" id="published"> Sort by Published Date </td>
+                    <td style = "padding: 15px"> <input type="radio" name="sort" value="number_of_pages" id="pagecount"> Sort by Page Count</td>
+                    <td style = "padding: 15px"> <input type="radio" name="sort" value="publish_date" id="published"> Sort by Published Date </td>
                </tr>
           </table> 
           
@@ -71,7 +71,10 @@
                          $query->setQuery('title:'.$userQuery.'*');
                          $query->setStart(2)->setRows(20);
                          $query->setFields(array('title', 'number_of_pages', 'isbn_10', 'publish_date'));
-                         $query->addSort('number_of_pages', $query::SORT_ASC);
+                        if (isset($_POST['radio']) && ($_POST['radio'] != "nosort"))
+                        {
+                              $query->addSort($_POST['radio'], $query::SORT_ASC);
+                        }
                          $query->createFilterQuery('Pages')->setQuery('number_of_pages:[* TO *]');
                          $query->createFilterQuery('ISBNS')->setQuery('isbn_10:[* TO *]');
                          // this executes the query and returns the result
