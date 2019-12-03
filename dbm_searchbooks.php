@@ -3,7 +3,9 @@
      28 October 2019 -->
 
 <!-- Main page -->
-
+<?php
+     $userQuery = "";
+?>
 
 <!DOCTYPE html>
 <html>
