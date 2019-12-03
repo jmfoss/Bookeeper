@@ -66,8 +66,14 @@
                  {
                    if(!empty(trim($_POST["search"])))
                    {
-
                          $userQuery = trim($_POST["search"]);
+                         $Querys = explode(" ", $userQuery);
+                         $queryString = 'title:'.$Querys[0].'~*';
+                         foreach (array_shift($Querys) as $value)
+                         {
+                              $queryString = $queryString.' AND title:*'.$value.'~*';
+                         }
+                        echo $queryString;
                          $query->setQuery('title:'.$userQuery.'*');
                          $query->setStart(2)->setRows(20);
                          $query->setFields(array('title', 'number_of_pages', 'isbn_10', 'publish_date'));
