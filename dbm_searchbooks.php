@@ -84,14 +84,14 @@
                          // display facet query count
                          // show documents using the resultset iterator
                                    foreach ($resultset as $document) {
-                                  echo '<hr/><table align = "center" width="500" style = "border-radius: 25px; background: #99bdf7; padding: 50px; width: 1000px; height: 200px; empty-cells: show;">';
+                                  echo '<hr/><div style="background-color:#b4cbf0; padding:20px">';
                             
-                                  echo '<tr><td><img src= "http://covers.openlibrary.org/b/isbn/'.$document->isbn_10[0].'-M.jpg"></td>';
-                                  echo '<th>title</th><td>' . $document->title . '</td></tr>';
-                                  echo '<tr><th>pages</th><td>' . $document->number_of_pages . '</td></tr>';
-                                  echo '<tr><th>Date published</th><td>' . $document->publish_date . '</td></tr>';
+                                  echo '<img src= "http://covers.openlibrary.org/b/isbn/'.$document->isbn_10[0].'-M.jpg">';
+                                  echo '<h3>Title: </h3><p>' . $document->title . '</p>';
+                                  echo '<h3>Page Count: </h3><p>' . $document->number_of_pages . '</p>';
+                                  echo '<h3>Date Published: </h3><p>' . $document->publish_date . '</p>';
                                   
-                                  echo '</table>';
+                                  echo '</div>';
                               }
                    }
                }
