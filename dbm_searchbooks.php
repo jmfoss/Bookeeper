@@ -33,7 +33,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
           // this executes the query and returns the result
           $resultset = $client->select($query);
           // display the total number of documents found by solr
-          echo 'NumFound: '.$resultset->getNumFound();
+       
           // display facet query count
           // show documents using the resultset iterator
     }
@@ -70,7 +70,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
    <input type="text" name="search" id="search" class="form-control input-lg" autocomplete="off" placeholder="Type Book Title" />
   </div>
       </form>
-      <?php           foreach ($resultset as $document) {
+      <?php  
+         echo 'NumFound: '.$resultset->getNumFound();
+           foreach ($resultset as $document) {
               echo '<hr/><table>';
               echo '<tr><th>title</th><td>' . $document->title . '</td></tr>';
               echo '<tr><th>pages</th><td>' . $document->number_of_pages . '</td></tr>';
