@@ -37,9 +37,9 @@
      <div class="container" style="width:600px;">
           <table> 
                <tr>
-                    <td style = "margin-right:10px" > <input type="radio" name="sort" value="nosort" id="nosort"> No Sort </td>   
-                    <td style = "margin-right:10px" ><input type="radio" name="sort" value="pagecount" id="pagecount"> Sort by Page Count </td>
-                    <td style = "margin-right:10px" > <input type="radio" name="sort" value="published" id="published"> Sort by Published Date </td>
+                    <td margin-right=10px> <input type="radio" name="sort" value="nosort" id="nosort"> No Sort </td>   
+                    <td margin-right=10px> <input type="radio" name="sort" value="pagecount" id="pagecount"> Sort by Page Count </td>
+                    <td margin-right=10px> <input type="radio" name="sort" value="published" id="published"> Sort by Published Date </td>
                </tr>
           </table> 
           
