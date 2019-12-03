@@ -57,7 +57,6 @@
                    {
 
                          $userQuery = trim($_POST["search"]);
-                         echo 'title:'.$userQuery.'*';
                          $query->setQuery('title:*'.$userQuery.'*');
                          $query->setStart(2)->setRows(20);
                          $query->setFields(array('title', 'number_of_pages', 'isbn_10'));
