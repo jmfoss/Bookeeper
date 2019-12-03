@@ -3,7 +3,47 @@
      28 October 2019 -->
 
 <!-- Main page -->
-
+<?php 
+$config = array(
+    'endpoint' => array(
+        'localhost' => array(
+            'host' => '104.230.35.171',
+            'port' => 8983,
+            'path' => '/',
+            'core' => 'bookeeper',
+        )
+    )
+);
+require(__DIR__.'/init.php');
+$client = new Solarium\Client($config);
+// get a select query instance
+$query = $client->createSelect();
+// create a facet query instance and set options
+if($_SERVER["REQUEST_METHOD"] == "POST")
+  {
+    if(!empty(trim($_POST["search"])))
+    {
+         
+          $userQuery = trim($_POST["search"]); 
+          $query->setQuery('title:{$userQuery}');
+          $query->setStart(2)->setRows(20);
+          $query->setFields(array('title', 'number_of_pages', 'isbn_10'));
+          // this executes the query and returns the result
+          $resultset = $client->select($query);
+          // display the total number of documents found by solr
+          echo 'NumFound: '.$resultset->getNumFound();
+          // display facet query count
+          // show documents using the resultset iterator
+          foreach ($resultset as $document) {
+              echo '<hr/><table>';
+              echo '<tr><th>title</th><td>' . $document->title . '</td></tr>';
+              echo '<tr><th>pages</th><td>' . $document->number_of_pages . '</td></tr>';
+              echo '<tr><th>isbn_10</th><td>' . $document->isbn_10[0] . '</td></tr>';
+              echo '</table>';
+          }
+    }
+}
+?>
 
 <!DOCTYPE html>
 <html>
@@ -25,7 +65,7 @@
          </div>
   </head>
  <body>
-
+<form action = "" method = "post">
   <br /><br />
   <div class="container" style="width:600px;">
 
@@ -34,6 +74,7 @@
    <label>Search a Book</label>
    <input type="text" name="search" id="search" class="form-control input-lg" autocomplete="off" placeholder="Type Book Title" />
   </div>
+      </form>
  </body>
 </html>
 
@@ -60,26 +101,6 @@ $(document).ready(function(){
  
 });
 
-var input = document.getElementById("search");
-input.addEventListener("keyup", function(event) {
-  if (event.keyCode === 13) {
-   event.preventDefault();
-   function(query, result)
-  {
-   $.ajax({
-    url:"search.php",
-    method:"POST",
-    data:{query:query},
-    dataType:"json",
-    success:function(data)
-    {
-     result($.map(data, function(item){
-      return item;
-     }));
-    }
-   })
-  }
-  }
-});
+
 
 </script>
