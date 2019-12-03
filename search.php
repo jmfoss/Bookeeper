@@ -16,13 +16,13 @@ $query = $client->createSelect();
 // get the facetset component
 $facetSet = $query->getFacetSet();
 // create a facet query instance and set options
-$facetSet->createFacetQuery('title')->setQuery('intitle: harry');
+$facetSet->createFacetQuery('titles')->setQuery('title:harry');
 // this executes the query and returns the result
 $resultset = $client->select($query);
 // display the total number of documents found by solr
 echo 'NumFound: '.$resultset->getNumFound();
 // display facet query count
-$count = $resultset->getFacetSet()->getFacet('title')->getValue();
+$count = $resultset->getFacetSet()->getFacet('titles')->getValue();
 echo '<hr/>Facet query count : ' . $count;
 // show documents using the resultset iterator
 foreach ($resultset as $document) {
