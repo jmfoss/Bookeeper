@@ -60,6 +60,7 @@
                          $query->setQuery('title:'.$userQuery.'*');
                          $query->setStart(2)->setRows(20);
                          $query->setFields(array('title', 'number_of_pages', 'isbn_10', 'publish_date'));
+                         $query->addSort('number_of_pages', $query::SORT_ASC);
                          // this executes the query and returns the result
                          $resultset = $client->select($query);
                          // display the total number of documents found by solr
