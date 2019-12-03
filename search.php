@@ -14,7 +14,7 @@ $client = new Solarium\Client($config);
 // get a select query instance
 $query = $client->createSelect();
 // create a facet query instance and set options
-$query->setQuery('*:*');
+$query->setQuery('title:harry');
 $query->setStart(2)->setRows(20);
 $query->setFields(array('title', 'number_of_pages', 'isbn_10'));
 // this executes the query and returns the result
