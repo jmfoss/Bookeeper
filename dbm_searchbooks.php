@@ -72,7 +72,7 @@
                          array_shift($Querys);
                          foreach ($Querys as $value)
                          {
-                              $queryString = $queryString.' AND title:*'.$value.'~*';
+                              $queryString = $queryString.' AND title:*'.$value.'*';
                          }
                         echo $queryString;
                          $query->setQuery($queryString);
