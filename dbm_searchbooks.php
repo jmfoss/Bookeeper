@@ -81,7 +81,7 @@
                          // display facet query count
                          // show documents using the resultset iterator
                                    foreach ($resultset as $document) {
-                                  echo '<hr/><table align = "center" width="500" style = "border-radius: 25px; background: #99bdf7; padding: 50px; width: 1000px; height: 200px;">';
+                                  echo '<hr/><table align = "center" width="500" style = "border-radius: 25px; background: #99bdf7; padding: 50px; width: 1000px; height: 200px; empty-cells: show;">';
                             
                                   echo '<tr><td><img src= "http://covers.openlibrary.org/b/isbn/'.$document->isbn_10[0].'-M.jpg"></td>';
                                   echo '<th>title</th><td>' . $document->title . '</td></tr>';
