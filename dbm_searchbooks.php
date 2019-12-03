@@ -31,7 +31,7 @@
 
    <br /><br />
    <label>Search a Book</label>
-   <input type="text" name="search" id="search" class="form-control input-lg" value="<?php echo $userQuery; ?>" autocomplete="off" placeholder="Type Book Title" />
+   <input type="text" name="search" id="search" class="form-control input-lg" value="<?php echo isset($_POST['search']) ? $_POST['search'] : '' ?>" autocomplete="off" placeholder="Type Book Title" />
   </div>
      <br>
      <div class="container" style="width:600px;">
