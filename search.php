@@ -12,14 +12,30 @@ $config = array(
 require(__DIR__.'/init.php');
 $client = new Solarium\Client($config);
 $userQuery = "";
-$results = array();
-if(!empty($_POST["query"]))
+//if(!empty($_POST["query"]))
 {
-	$userQuery = trim($_POST["query"]);	     
+	//$userQuery = trim($_POST["query"]);	     
 } 
-$query = $client->createQuery($client::QUERY_SELECT);
+// get a select query instance
+$query = $client->createSelect();
+// get the dismax component and set a boost query
+$edismax = $query->getEDisMax();
+$query->setQuery('harry');
 
-// this executes the query and returns the result
-$resultset = $client->execute("title:{$userQuery}");
-echo json_encode($resultset);
+$resultset = $client->select($query);
+
+echo 'NumFound: '.$resultset->getNumFound();
+// show documents using the resultset iterator
+foreach ($resultset as $document) {
+    echo '<hr/><table>';
+    // the documents are also iterable, to get all fields
+    foreach ($document as $field => $value) {
+        // this converts multivalue fields to a comma-separated string
+        if (is_array($value)) {
+            $value = implode(', ', $value);
+        }
+        echo '<tr><th>' . $field . '</th><td>' . $value . '</td></tr>';
+    }
+    echo '</table>';
+}
 ?>
