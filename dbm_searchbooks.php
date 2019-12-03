@@ -81,7 +81,7 @@
                          // display facet query count
                          // show documents using the resultset iterator
                                    foreach ($resultset as $document) {
-                                  echo '<hr/><table align = "center" width="500" style = "border-radius: 25px; background: #99bdf7; padding: 200px; width: 1000px; height: 450px;">';
+                                  echo '<hr/><table align = "center" width="500" style = "border-radius: 25px; background: #99bdf7; padding: 200px; width: 1000px; height: 200px;">';
                                   echo '<tr><th>title</th><td>' . $document->title . '</td></tr>';
                                   echo '<tr><th>pages</th><td>' . $document->number_of_pages . '</td></tr>';
                                   echo '<tr><th>Date published</th><td>' . $document->publish_date . '</td></tr>';
