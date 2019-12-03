@@ -27,7 +27,7 @@ foreach ($resultset as $document) {
     echo '<hr/><table>';
     echo '<tr><th>title</th><td>' . $document->title . '</td></tr>';
     echo '<tr><th>pages</th><td>' . $document->number_of_pages . '</td></tr>';
-    echo '<tr><th>isbn_10</th><td>' . $document->isbn_10 . '</td></tr>';
+    echo '<tr><th>isbn_10</th><td>' . $document->isbn_10[0] . '</td></tr>';
     echo '</table>';
 }
 ?>
