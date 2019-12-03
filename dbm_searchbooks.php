@@ -32,7 +32,7 @@
 
    <br /><br />
    <label>Search a Book</label>
-   <input type="text" name="search" id="search" class="form-control input-lg" autocomplete="off" placeholder="Type Book Title" />
+   <input type="text" name="search" id="search" class="form-control input-lg" value="<?php echo $userQuery; ?>" autocomplete="off" placeholder="Type Book Title" />
   </div>
       </form>
       <?php 
