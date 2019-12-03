@@ -71,9 +71,9 @@
                          $query->setQuery('title:'.$userQuery.'*');
                          $query->setStart(2)->setRows(20);
                          $query->setFields(array('title', 'number_of_pages', 'isbn_10', 'publish_date'));
-                        if (isset($_POST['radio']) && ($_POST['radio'] != "nosort"))
+                        if (isset($_POST['sort']) && ($_POST['sort'] != "nosort"))
                         {
-                              $query->addSort($_POST['radio'], $query::SORT_ASC);
+                              $query->addSort($_POST['sort'], $query::SORT_ASC);
                         }
                          $query->createFilterQuery('Pages')->setQuery('number_of_pages:[* TO *]');
                          $query->createFilterQuery('ISBNS')->setQuery('isbn_10:[* TO *]');
