@@ -68,9 +68,8 @@
                    {
                          $userQuery = trim($_POST["search"]);
                          $Querys = explode(" ", $userQuery);
-                         $queryString = 'title:'.$Querys[0].'~*';
-                         $shifted = array_shift($Querys);
-                         foreach ($shifted as $value)
+                         $queryString = "";//'title:'.$Querys[0].'~*';
+                         foreach ($Querys as $value)
                          {
                               $queryString = $queryString.' AND title:*'.$value.'~*';
                          }
