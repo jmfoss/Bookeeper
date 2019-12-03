@@ -11,31 +11,23 @@ $config = array(
 );
 require(__DIR__.'/init.php');
 $client = new Solarium\Client($config);
-$userQuery = "";
-//if(!empty($_POST["query"]))
-{
-	//$userQuery = trim($_POST["query"]);	     
-} 
 // get a select query instance
 $query = $client->createSelect();
-// get the dismax component and set a boost query
-$edismax = $query->getEDisMax();
-$query->setQuery('harry');
-
+// get the facetset component
+$facetSet = $query->getFacetSet();
+// create a facet query instance and set options
+$facetSet->createFacetQuery('title')->setQuery('title:harry');
+// this executes the query and returns the result
 $resultset = $client->select($query);
-
+// display the total number of documents found by solr
 echo 'NumFound: '.$resultset->getNumFound();
+// display facet query count
+$count = $resultset->getFacetSet()->getFacet('title')->getValue();
+echo '<hr/>Facet query count : ' . $count;
 // show documents using the resultset iterator
 foreach ($resultset as $document) {
     echo '<hr/><table>';
-    // the documents are also iterable, to get all fields
-    foreach ($document as $field => $value) {
-        // this converts multivalue fields to a comma-separated string
-        if (is_array($value)) {
-            $value = implode(', ', $value);
-        }
-        echo '<tr><th>' . $field . '</th><td>' . $value . '</td></tr>';
-    }
+    echo '<tr><th>title</th><td>' . $document->title . '</td></tr>';
     echo '</table>';
 }
 ?>
