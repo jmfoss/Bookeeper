@@ -19,6 +19,7 @@ $client = new Solarium\Client($config);
 // get a select query instance
 $query = $client->createSelect();
 // create a facet query instance and set options
+$resultset = array();
 if($_SERVER["REQUEST_METHOD"] == "POST")
   {
     if(!empty(trim($_POST["search"])))
@@ -35,13 +36,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
           echo 'NumFound: '.$resultset->getNumFound();
           // display facet query count
           // show documents using the resultset iterator
-          foreach ($resultset as $document) {
-              echo '<hr/><table>';
-              echo '<tr><th>title</th><td>' . $document->title . '</td></tr>';
-              echo '<tr><th>pages</th><td>' . $document->number_of_pages . '</td></tr>';
-              echo '<tr><th>isbn_10</th><td>' . $document->isbn_10[0] . '</td></tr>';
-              echo '</table>';
-          }
     }
 }
 ?>
@@ -76,6 +70,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
    <input type="text" name="search" id="search" class="form-control input-lg" autocomplete="off" placeholder="Type Book Title" />
   </div>
       </form>
+      <?php           foreach ($resultset as $document) {
+              echo '<hr/><table>';
+              echo '<tr><th>title</th><td>' . $document->title . '</td></tr>';
+              echo '<tr><th>pages</th><td>' . $document->number_of_pages . '</td></tr>';
+              echo '<tr><th>isbn_10</th><td>' . $document->isbn_10[0] . '</td></tr>';
+              echo '</table>';
+          }
+      ?>
  </body>
 </html>
 
