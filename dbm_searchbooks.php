@@ -1,4 +1,4 @@
-<!-- Joseph Santucci, Joshua FOss
+<!-- Joseph Santucci, Joshua Foss
      Database Management
      28 October 2019 -->
 
@@ -82,8 +82,9 @@
                          // show documents using the resultset iterator
                                    foreach ($resultset as $document) {
                                   echo '<hr/><table align = "center" width="500" style = "border-radius: 25px; background: #99bdf7; padding: 50px; width: 1000px; height: 200px;">';
-                                  echo '<tr><th>title</th><td>' . $document->title . '</td>';
-                                  echo '<td><img src= "http://covers.openlibrary.org/b/isbn/'.$document->isbn_10[0].'-M.jpg"></td></tr>';
+                            
+                                  echo '<tr><td><img src= "http://covers.openlibrary.org/b/isbn/'.$document->isbn_10[0].'-M.jpg"></td>';
+                                  echo '<th>title</th><td>' . $document->title . '</td></tr>';
                                   echo '<tr><th>pages</th><td>' . $document->number_of_pages . '</td></tr>';
                                   echo '<tr><th>Date published</th><td>' . $document->publish_date . '</td></tr>';
                                   
