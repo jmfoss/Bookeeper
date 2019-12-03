@@ -59,4 +59,27 @@ $(document).ready(function(){
  });
  
 });
+
+var input = document.getElementById("search");
+input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+   event.preventDefault();
+   function(query, result)
+  {
+   $.ajax({
+    url:"search.php",
+    method:"POST",
+    data:{query:query},
+    dataType:"json",
+    success:function(data)
+    {
+     result($.map(data, function(item){
+      return item;
+     }));
+    }
+   })
+  }
+  }
+});
+
 </script>
