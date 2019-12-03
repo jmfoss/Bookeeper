@@ -34,9 +34,9 @@
    <input type="text" name="search" id="search" class="form-control input-lg" value="<?php echo $userQuery; ?>" autocomplete="off" placeholder="Type Book Title" />
   </div>
      <div class="container" style="width:600px;">
-          <input type="radio" name="nosort" value="nosort"> No Sort
-          <input type="radio" name="pagecount" value="pagecount"> Sort by Page Count
-          <input type="radio" name="published" value="published"> Sort by Published Date
+          <input type="radio" name="sort" value="nosort" id="nosort"> No Sort   
+          <input type="radio" name="sort" value="pagecount" id="pagecount"> Sort by Page Count   
+          <input type="radio" name="sort" value="published" id="published"> Sort by Published Date
           
      </div>
       </form>
