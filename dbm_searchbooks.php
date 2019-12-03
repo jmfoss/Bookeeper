@@ -85,7 +85,7 @@
                                   echo '<tr><th>title</th><td>' . $document->title . '</td></tr>';
                                   echo '<tr><th>pages</th><td>' . $document->number_of_pages . '</td></tr>';
                                   echo '<tr><th>Date published</th><td>' . $document->publish_date . '</td></tr>';
-                                  echo '<img src= "http://covers.openlibrary.org/b/isbn/'.$document->isbn_10[0].'-M.jpg">';
+                                  echo '<tr><td><img src= "http://covers.openlibrary.org/b/isbn/'.$document->isbn_10[0].'-M.jpg"></td></tr>';
                                   echo '</table>';
                               }
                    }
